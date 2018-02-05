@@ -1,0 +1,68 @@
+{% for table in tables %}
+table({{ table.getName() }}) {
+    {% for column in table.getColumns() %}
+        {% if column.getTypeParameters() %}
+            {% if column.getOtherParameters() %}
+                [\t]column('{{ column.getName() }}', '{{ column.getType() }}[{{ column.getTypeParameters()|join(', ') }}]', '{{ column.getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+            {% else %}
+                [\t]column('{{ column.getName() }}', '{{ column.getType() }}[{{ column.getTypeParameters()|join(', ') }}]')
+            {% endif %}
+        {% else %}
+            {% if column.getOtherParameters() %}
+                [\t]column('{{ column.getName() }}', '{{ column.getType() }}', '{{ column.getOtherParameters()|join(' ') }}')
+            {% else %}
+                [\t]column('{{ column.getName() }}', '{{ column.getType() }}')
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    {% if table.getPrimaryKey() %}
+        {% if table.getPrimaryKey().getOtherParameters() %}
+            [\t]primary_key('{{ table.getPrimaryKey().getColumns()|join(', ') }}', '{{ table.getPrimaryKey().getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+        {% else %}
+            [\t]primary_key('{{ table.getPrimaryKey().getColumns()|join(', ') }}')
+        {% endif %}
+    {% endif %}
+
+    {% for simpleIndex in table.getSimpleIndexs() %}
+        {% if simpleIndex.getOtherParameters() %}
+            [\t]index('{{ simpleIndex.getColumns()|join(', ') }}', '{{ simpleIndex.getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+        {% else %}
+            [\t]index('{{ simpleIndex.getColumns()|join(', ') }}')
+        {% endif %}
+    {% endfor %}
+
+    {% for uniqueIndex in table.getUniqueIndexs() %}
+        {% if uniqueIndex.getOtherParameters() %}
+            [\t]unique_index('{{ uniqueIndex.getColumns()|join(', ') }}', '{{ uniqueIndex.getOtherParameters()|replace({"'": '"'})|raw }}')
+        {% else %}
+            [\t]unique_index('{{ uniqueIndex.getColumns()|join(', ') }}')
+        {% endif %}
+    {% endfor %}
+
+    {% for fulltextIndex in table.getFullTextIndexs() %}
+        {% if fulltextIndex.getOtherParameters() %}
+            [\t]fulltext_index('{{ fulltextIndex.getColumns()|join(', ') }}', '{{ fulltextIndex.getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+        {% else %}
+            [\t]fulltext_index('{{ fulltextIndex.getColumns()|join(', ') }}')
+        {% endif %}
+    {% endfor %}
+
+    {% for spatialIndex in table.getSpatialIndexs() %}
+        {% if spatialIndex.getOtherParameters() %}
+            [\t]spatial_index('{{ spatialIndex.getColumns()|join(', ') }}', '{{ spatialIndex.getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+        {% else %}
+            [\t]spatial_index('{{ spatialIndex.getColumns()|join(', ') }}')
+        {% endif %}
+    {% endfor %}
+    }
+{% endfor %}
+[\n]
+{% for connection in connections %}
+    {% if connection.getType() == "OneToOne" %}
+        connection_one_to_one({{ connection.getChildTableName() }}, {{ connection.getParentTableName() }})
+    {% endif %}
+    {% if connection.getType() == "OneToMany" %}
+        connection_one_to_many({{ connection.getChildTableName() }}, {{ connection.getParentTableName() }})
+    {% endif %}
+{% endfor %}

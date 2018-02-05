@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+use Symfony\Component\Console\Application;
+
+require realpath(__DIR__) . '/vendor/autoload.php';
+
+$parser = new \Pongee\DatabaseToDocumention\Parser\MysqlParser();
+
+$application = new Application();
+
+$application->add(
+	new \Pongee\DatabaseToDocumention\Command\Mysql\MysqlPlantumlCommand(
+        $parser, getcwd()
+	)
+);
+
+$application->add(
+	new \Pongee\DatabaseToDocumention\Command\Mysql\MysqlJsonCommand(
+        $parser, getcwd()
+	)
+);
+
+$application->run();
