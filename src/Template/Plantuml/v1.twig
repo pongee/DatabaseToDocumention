@@ -1,3 +1,122 @@
+!ifndef TABLE_BORDER_COLOR
+	!define TABLE_BORDER_COLOR Chocolate
+!endif
+
+!ifndef TABLE_BACKGROUND_COLOR
+	!define TABLE_BACKGROUND_COLOR AntiqueWhite
+!endif
+
+skinparam class {
+	BackgroundColor TABLE_BACKGROUND_COLOR
+	BorderColor TABLE_BORDER_COLOR
+	ArrowColor TABLE_BORDER_COLOR
+}
+!define table(name) class "name" << (T, TABLE_BORDER_COLOR ) >>
+
+!definelong primary_key(column1)
+	-<i>PK</i> [<b>column1</b>]
+!enddefinelong
+!definelong primary_key(column1, column2)
+	-<i>PK</i> [<b>column1, column2</b>]
+!enddefinelong
+!definelong primary_key(column1, column2, column3)
+	-<i>PK</i> [<b>column1, column2, column3</b>]
+!enddefinelong
+!definelong primary_key(column1, column2, column3, column4)
+	-<i>PK</i> [<b>column1, column2, column3, column4</b>]
+!enddefinelong
+!definelong primary_key(column1, column2, column3, column4, column5)
+	-<i>PK</i> [<b>column1, column2, column3, column4, column5</b>]
+!enddefinelong
+
+!definelong column(column, type)
+	+<b>column</b> <u>type</u>
+!enddefinelong
+!definelong column(column, type, extra)
+	+<b>column</b> <u>type</u> extra
+!enddefinelong
+
+
+!definelong index(column1)
+	~<i>KEY</i> [<b>column1</b>]
+!enddefinelong
+!definelong index(column1, column2)
+	~<i>KEY</i> [<b>column1, column2</b>]
+!enddefinelong
+!definelong index(column1, column2, column3)
+	~<i>KEY</i> [<b>column1, column2, column3</b>]
+!enddefinelong
+!definelong index(column1, column2, column3, column4)
+	~<i>KEY</i> [<b>column1, column2, column3, column4</b>]
+!enddefinelong
+!definelong index(column1, column2, column3, column4, column5)
+	~<i>KEY</i> [<b>column1, column2, column3, column4, column5</b>]
+!enddefinelong
+
+
+!definelong unique_index(column1)
+	#<i>UNIQUE KEY</i> [<b>column1</b>]
+!enddefinelong
+!definelong unique_index(column1, column2)
+	#<i>UNIQUE KEY</i> [<b>column1, column2</b>]
+!enddefinelong
+!definelong unique_index(column1, column2, column3)
+	#<i>UNIQUE KEY</i> [<b>column1, column2, column3</b>]
+!enddefinelong
+!definelong unique_index(column1, column2, column3, column4)
+	#<i>UNIQUE KEY</i> [<b>column1, column2, column3, column4</b>]
+!enddefinelong
+!definelong unique_index(column1, column2, column3, column4, column5)
+	#<i>UNIQUE KEY</i> [<b>column1, column2, column3, column4, column5</b>]
+!enddefinelong
+
+!definelong fulltext_index(column1)
+	#<i>FULLTEXT KEY</i> [<b>column1</b>]
+!enddefinelong
+!definelong fulltext_index(column1, column2)
+	#<i>FULLTEXT KEY</i> [<b>column1, column2</b>]
+!enddefinelong
+!definelong fulltext_index(column1, column2, column3)
+	#<i>FULLTEXT KEY</i> [<b>column1, column2, column3</b>]
+!enddefinelong
+!definelong fulltext_index(column1, column2, column3, column4)
+	#<i>FULLTEXT KEY</i> [<b>column1, column2, column3, column4</b>]
+!enddefinelong
+!definelong fulltext_index(column1, column2, column3, column4, column5)
+	#<i>FULLTEXT KEY</i> [<b>column1, column2, column3, column4, column5</b>]
+!enddefinelong
+
+!definelong spatial_index(column1)
+	#<i>SPATIAL KEY</i> [<b>column1</b>]
+!enddefinelong
+!definelong spatial_index(column1, column2)
+	#<i>SPATIAL KEY</i> [<b>column1, column2</b>]
+!enddefinelong
+!definelong spatial_index(column1, column2, column3)
+	#<i>SPATIAL KEY</i> [<b>column1, column2, column3</b>]
+!enddefinelong
+!definelong spatial_index(column1, column2, column3, column4)
+	#<i>SPATIAL KEY</i> [<b>column1, column2, column3, column4</b>]
+!enddefinelong
+!definelong spatial_index(column1, column2, column3, column4, column5)
+	#<i>SPATIAL KEY</i> [<b>column1, column2, column3, column4, column5</b>]
+!enddefinelong
+
+
+!definelong connection_one_to_one(from, to, alignment = "")
+	from "1" -- "1" to
+!enddefinelong
+
+!definelong connection_one_to_many(from, to, alignment = "")
+	from "n" }-- "1" to
+!enddefinelong
+
+hide methods
+hide stereotypes
+
+skinparam linetype polyline
+left to right direction
+
 {% for table in tables %}
 table({{ table.getName() }}) {
     {% for column in table.getColumns() %}

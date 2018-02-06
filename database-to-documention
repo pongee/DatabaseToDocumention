@@ -3,7 +3,12 @@
 
 use Symfony\Component\Console\Application;
 
-require realpath(__DIR__) . '/vendor/autoload.php';
+foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $autoload) {
+    if (file_exists($file)) {
+        require $autoload;
+        break;
+    }
+}
 
 $parser = new \Pongee\DatabaseToDocumention\Parser\MysqlParser();
 
