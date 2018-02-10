@@ -610,6 +610,14 @@ return (new Schema())
                     'NOT NULL'
                 )
             )
+            ->addColumn(
+                new Column(
+                    'description',
+                    'TEXT',
+                    [],
+                    ''
+                )
+            )
             ->setPrimaryKey(new PrimaryKey(['film_id']))
             ->addFullTextIndex(
                 new FulltextIndex(

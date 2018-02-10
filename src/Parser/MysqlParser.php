@@ -94,6 +94,7 @@ class MysqlParser extends ParserAbstract
     {
         preg_match_all(
             '#
+            (?!,)
             \s*
             `?
             (?<name>\w+)
@@ -150,13 +151,14 @@ class MysqlParser extends ParserAbstract
     {
         preg_match_all(
             '#
+            (?!,)
             \s*
             `?
             (?<name>\w+)
             `?
             \s+
             (?<type>
-                TINYINT|BOOL|BOOLEAN|
+                TINYINT|BOOLEAN|BOOL|
                 SMALLINT|
                 MEDIUMINT|
                 INT|INTEGER|
@@ -166,33 +168,33 @@ class MysqlParser extends ParserAbstract
                 DOUBLE|
                 DECIMAL|
 
-                CHAR|
                 VARCHAR|
+                CHAR|
                 TINYTEXT|
-                TEXT|
                 MEDIUMTEXT|
                 LONGTEXT|
+                TEXT|
 
                 JSON|
 
-                BINARY|
                 VARBINARY|
+                BINARY|
                 TINYBLOB|
-                BLOB|
                 MEDIUMBLOB|
                 LONGBLOB|
+                BLOB|
 
+                DATETIME|
+                TIMESTAMP|
                 DATE|
                 TIME|
                 YEAR|
-                DATETIME|
-                TIMESTAMP|
 
+                MULTIPOINT|
                 POINT|
                 LINESTRING|
                 POLYGON|
                 GEOMETRY|
-                MULTIPOINT|
                 MULTILINESTRING|
                 MULTIPOLYGON|
                 GEMETRYCOLLECTION
@@ -200,17 +202,17 @@ class MysqlParser extends ParserAbstract
             \s*
             (
                 (
-                    \(
-                        (?<typeParameters>.+)
-                    \)
+                \(
+                    (?<typeParameters>.+)
+                \)
                 )
                 |
                 (
-                    \s
+                    \s*
                 )
             )
             \s*
-            (?<otherParameters>.+)
+            (?<otherParameters>.*)
             (
                 COMMENT\s+
                 \'
