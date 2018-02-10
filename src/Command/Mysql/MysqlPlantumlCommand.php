@@ -52,8 +52,7 @@ class MysqlPlantumlCommand extends MysqlCommandAbstract
 
         if (self::DEFAULT_TEMPLATE == $template) {
             $templateFilePath = __DIR__ . '/../src/' . $input->getOption(self::OPTION_TEMPLATE);
-        }
-        else {
+        } else {
             $templateFilePath = $this->rootDir . $input->getOption(self::OPTION_TEMPLATE);
         }
 

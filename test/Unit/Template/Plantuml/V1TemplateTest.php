@@ -353,7 +353,7 @@ connection_one_to_many(member_log, member)
 
         $plantuml = new Plantuml($template);
 
-        $this->assertEquals(
+        $this->assertContains(
             $this->trim($extendOutput),
             $this->trim($plantuml->export($schema))
         );
