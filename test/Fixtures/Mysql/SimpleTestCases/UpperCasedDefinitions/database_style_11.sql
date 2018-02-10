@@ -16,4 +16,4 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `iu_email_password` (`nick`),
   UNIQUE KEY `iuh_email_password` (`nick`) USING HASH,
   UNIQUE KEY `iub_email_password` (`nick`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE = InnoDB DEFAULT CHARSET = latin1 COLLATE = latin1_general_ci;

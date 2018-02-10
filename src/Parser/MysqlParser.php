@@ -75,6 +75,21 @@ class MysqlParser extends ParserAbstract
         );
     }
 
+    protected function getFormatedParameter(string $string): string
+    {
+        return preg_replace('/[\r\n]+/m', ' ', trim($string));
+    }
+
+    protected function getFormatedParameters(string ...$strings): array
+    {
+        return array_map(
+            function ($string) {
+                return $this->getFormatedParameter($string);
+            },
+            $strings
+        );
+    }
+
     protected function getColumnsFromCreateTableSchema(string $createTableSchema): Table\ColumnCollectionInterface
     {
         preg_match_all(
@@ -88,6 +103,7 @@ class MysqlParser extends ParserAbstract
                ENUM|
                SET
             )
+            \s*
             (
                 \(
                     (?<typeParameters>.+)
@@ -102,7 +118,7 @@ class MysqlParser extends ParserAbstract
             )?
             \s*
             (?=(,|\)))
-        #Uxmi',
+        #Uxmis',
             $createTableSchema,
             $matches
         );
@@ -121,7 +137,7 @@ class MysqlParser extends ParserAbstract
                             $matches['typeParameters'][$i]
                         )
                     ),
-                    trim($matches['otherParameters'][$i])
+                    $this->getFormatedParameter($matches['otherParameters'][$i])
                 )
             );
         }
@@ -181,6 +197,7 @@ class MysqlParser extends ParserAbstract
                 MULTIPOLYGON|
                 GEMETRYCOLLECTION
             )
+            \s*
             (
                 (
                     \(
@@ -192,6 +209,7 @@ class MysqlParser extends ParserAbstract
                     \s
                 )
             )
+            \s*
             (?<otherParameters>.+)
             (
                 COMMENT\s+
@@ -201,7 +219,7 @@ class MysqlParser extends ParserAbstract
             )?
             \s*
             (?=(,|\)))
-        #Uxmi',
+        #Uxmis',
             $createTableSchema,
             $matches
         );
@@ -219,12 +237,13 @@ class MysqlParser extends ParserAbstract
                     )
                 );
             }
+
             $columnCollection->add(
                 new Column(
                     $columName,
                     $matches['type'][$i],
-                    $typeParameters,
-                    trim($matches['otherParameters'][$i])
+                    $this->getFormatedParameters(...$typeParameters),
+                    $this->getFormatedParameter($matches['otherParameters'][$i])
                 )
             );
         }
