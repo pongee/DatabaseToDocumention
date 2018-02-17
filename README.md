@@ -1,7 +1,7 @@
 # Database documention generator
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/pongee/database-to-documention.svg?style=flat-square)](https://packagist.org/packages/pongee/database-to-documention)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square)](https://php.net/)
+[![Latest Stable Version](https://img.shields.io/packagist/v/pongee/database-to-documention.svg)](https://packagist.org/packages/pongee/database-to-documention)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 [![Build Status](https://travis-ci.org/pongee/database-to-documention.svg?branch=master)](https://travis-ci.org/pongee/database-to-documention)
 
 ## Project goal

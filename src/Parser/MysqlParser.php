@@ -200,19 +200,13 @@ class MysqlParser extends ParserAbstract
                 GEMETRYCOLLECTION
             )
             \s*
-            (
-                (
+            (?U:
                 \(
                     (?<typeParameters>.+)
                 \)
-                )
-                |
-                (
-                    \s*
-                )
-            )
+            )?
             \s*
-            (?<otherParameters>.*)
+            (?U:(?<otherParameters>.*))
             (
                 COMMENT\s+
                 \'
@@ -220,8 +214,8 @@ class MysqlParser extends ParserAbstract
                 \'
             )?
             \s*
-            (?=(,|\)))
-        #Uxmis',
+            (?U:(?=(,|\))))
+        #xmis',
             $createTableSchema,
             $matches
         );
@@ -426,7 +420,7 @@ class MysqlParser extends ParserAbstract
     protected function getTableNameFromCreateTableSchema(string $createTableSchema): string
     {
         preg_match(
-            '/CREATE\s+TABLE.*\s*`?(?<name>\w+)`?\s*\(/Ui',
+            '/CREATE\s+TABLE.*\s*`?(?<name>(\w|[-])+)`?\s*\(/Uis',
             $createTableSchema,
             $matches
         );
