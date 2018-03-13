@@ -59,6 +59,7 @@ print $jsonExport->export($schema);
 
 <details>
   <summary>This will generate:</summary>
+  <div>
 ```json
 {
     "tables": {
@@ -86,4 +87,5 @@ print $jsonExport->export($schema);
     "connections": []
 }
 ```
+    <div>
 </details>
