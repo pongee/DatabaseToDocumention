@@ -1,19 +1,19 @@
-create table if not exists user (
-  id int(10) unsigned not null,
-  email varchar(64) collate latin1_general_ci not null,
-  password varchar(32) collate latin1_general_ci not null,
-  nick varchar(16) collate latin1_general_ci default null,
-  status enum('enabled', 'disabled') collate latin1_general_ci default null,
-  admin bit null,
-  geom geometry not null,
-  created_at datetime null,
-  updated_at datetime null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  primary key (id),
-  index i_password (password),
-  index ih_password (password) using hash,
-  index ib_password (password) using btree,
-  fulltext key if_email_password (email,password),
-  unique key iu_email_password (nick),
-  unique key iuh_email_password (nick) using hash,
-  unique key iub_email_password (nick) using btree
-) engine=InnoDB default charset=latin1 collate=latin1_general_ci;
+CREATE TABLE user (
+  id INT(10) UNSIGNED NOT NULL,
+  email VARCHAR(64) COLLATE latin1_general_ci NOT NULL,
+  password VARCHAR(32) COLLATE latin1_general_ci NOT NULL,
+  nick VARCHAR(16) COLLATE latin1_general_ci DEFAULT NULL,
+  status ENUM('enabled', 'disabled') COLLATE latin1_general_ci DEFAULT NULL,
+  admin BIT NULL,
+  geom GEOMETRY NOT NULL,
+  created_at DATETIME NULL,
+  updated_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  INDEX i_password (password),
+  INDEX ih_password (password) USING HASH,
+  INDEX ib_password (password) USING BTREE,
+  FULLTEXT KEY if_email_password (email,password),
+  UNIQUE KEY iu_email_password (nick),
+  UNIQUE KEY iuh_email_password (nick) USING HASH,
+  UNIQUE KEY iub_email_password (nick) USING BTREE
+) engine=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

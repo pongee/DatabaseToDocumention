@@ -4,7 +4,13 @@ namespace Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table;
 
 interface ColumnInterface
 {
-    public function __construct(string $name, string $type, array $typeParameters, string $otherParameters);
+    public function __construct(
+        string $name,
+        string $type,
+        array $typeParameters,
+        string $otherParameters,
+        string $comment
+    );
 
     public function getName(): string;
 
@@ -13,4 +19,6 @@ interface ColumnInterface
     public function getTypeParameters(): array;
 
     public function getOtherParameters(): string;
+
+    public function getComment(): string;
 }

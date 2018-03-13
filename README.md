@@ -44,7 +44,7 @@ include './vendor/autoload.php';
 
 $sqlSchema = '
   CREATE TABLE IF NOT EXISTS `foo` (
-    `id` INT(10) UNSIGNED NOT NULL
+    `id` INT(10) UNSIGNED NOT NULL COMMENT 'The id'
    ) ENGINE=innodb DEFAULT CHARSET=utf8;
 ';
 
@@ -57,8 +57,8 @@ $schema = $mysqlParser->run($sqlSchema, $forcedConnectionCollection);
 print $jsonExport->export($schema);
 ```
 
-This will generate:
-
+<details>
+  <summary>This will generate:</summary>
 ```json
 {
     "tables": {
@@ -70,7 +70,8 @@ This will generate:
                     "typeParameters": [
                         "10"
                     ],
-                    "otherParameters": "UNSIGNED NOT NULL"
+                    "otherParameters": "UNSIGNED NOT NULL",
+                    "comment": "The id"
                 }
             ],
             "indexs": {
@@ -85,3 +86,4 @@ This will generate:
     "connections": []
 }
 ```
+</details>

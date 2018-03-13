@@ -25,21 +25,21 @@ class PlantumlTest extends TestCase
                 (new Schema())
                     ->addTable(
                         (new Table('member'))
-                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT'))
+                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT', 'The id'))
                     ),
             ],
             [
                 (new Schema())
                     ->addTable(
                         (new Table('member'))
-                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT'))
+                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT', 'The id'))
                     )
                     ->addTable(
                         (new Table('member_data'))
-                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT'))
-                            ->addColumn(new Column('member_id', 'INT', [10], 'NOT NULL'))
-                            ->addColumn(new Column('type', 'VARCHAR', [64], 'NOT NULL'))
-                            ->addColumn(new Column('status', 'ENUM', ['enabled', 'deleted'], 'DEFAULT NULL'))
+                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT', ''))
+                            ->addColumn(new Column('member_id', 'INT', [10], 'NOT NULL', ''))
+                            ->addColumn(new Column('type', 'VARCHAR', [64], 'NOT NULL', ''))
+                            ->addColumn(new Column('status', 'ENUM', ['enabled', 'deleted'], 'DEFAULT NULL', ''))
                             ->setPrimaryKey(new PrimaryKey(['id'], 'USING HASH'))
                             ->addSimpleIndex(new SimpleIndex('idx_member_id', ['member_id'], 'USING HASH'))
                             ->addFullTextIndex(new FulltextIndex('idx_status', ['status']))
@@ -48,9 +48,9 @@ class PlantumlTest extends TestCase
                     )
                     ->addTable(
                         (new Table('member_log'))
-                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT'))
-                            ->addColumn(new Column('member_id', 'INT', [10], 'NOT NULL'))
-                            ->addColumn(new Column('log', 'VARCHAR', [255], 'NOT NULL'))
+                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT', 'The id'))
+                            ->addColumn(new Column('member_id', 'INT', [10], 'NOT NULL', 'The member id'))
+                            ->addColumn(new Column('log', 'VARCHAR', [255], 'NOT NULL', 'The log'))
                             ->setPrimaryKey(new PrimaryKey(['id'], 'USING HASH'))
                             ->addSimpleIndex(new SimpleIndex('idx_member_id', ['member_id'], 'USING HASH'))
                     )

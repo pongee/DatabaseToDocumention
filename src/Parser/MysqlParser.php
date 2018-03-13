@@ -138,7 +138,8 @@ class MysqlParser extends ParserAbstract
                             $matches['typeParameters'][$i]
                         )
                     ),
-                    $this->getFormatedParameter($matches['otherParameters'][$i])
+                    $this->getFormatedParameter($matches['otherParameters'][$i]),
+                    $matches['comment'][$i]
                 )
             );
         }
@@ -239,7 +240,8 @@ class MysqlParser extends ParserAbstract
                     $columName,
                     $matches['type'][$i],
                     $this->getFormatedParameters(...$typeParameters),
-                    $this->getFormatedParameter($matches['otherParameters'][$i])
+                    $this->getFormatedParameter($matches['otherParameters'][$i]),
+                    $matches['comment'][$i]
                 )
             );
         }

@@ -40,14 +40,14 @@ class TableTest extends TestCase
     {
         return [
             [
-                new Column('id', 'INT', [10], 'NOT NULL'),
+                new Column('id', 'INT', [10], 'NOT NULL', 'The id'),
             ],
             [
-                new Column('type', 'VARCHAR', [64], 'NOT NULL'),
+                new Column('type', 'VARCHAR', [64], 'NOT NULL', 'The type'),
             ],
             [
-                new Column('id', 'INT', [10], 'NOT NULL'),
-                new Column('type', 'VARCHAR', [64], 'NOT NULL'),
+                new Column('id', 'INT', [10], 'NOT NULL', 'The id'),
+                new Column('type', 'VARCHAR', [64], 'NOT NULL', 'The type'),
             ],
         ];
     }

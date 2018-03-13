@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class MysqlPlantumlCommand extends MysqlCommandAbstract
 {
     const OPTION_TEMPLATE  = 'template';
-    const DEFAULT_TEMPLATE = 'Template/Plantuml/v1.twig';
+    const DEFAULT_TEMPLATE = 'src/Template/Plantuml/v1.twig';
 
     protected function configure(): void
     {
@@ -48,13 +48,7 @@ class MysqlPlantumlCommand extends MysqlCommandAbstract
 
     protected function getTemplateFileContent(InputInterface $input): string
     {
-        $template = $input->getOption(self::OPTION_TEMPLATE);
-
-        if (self::DEFAULT_TEMPLATE == $template) {
-            $templateFilePath = __DIR__ . '/../src/' . $input->getOption(self::OPTION_TEMPLATE);
-        } else {
-            $templateFilePath = $this->rootDir . $input->getOption(self::OPTION_TEMPLATE);
-        }
+        $templateFilePath = $this->rootDir . $input->getOption(self::OPTION_TEMPLATE);
 
         if (!is_file($templateFilePath)) {
             throw new RuntimeException(sprintf('Bad template file path. %s is not a file', $templateFilePath));

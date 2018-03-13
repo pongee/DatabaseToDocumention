@@ -15,7 +15,8 @@ return (new Schema())
                     'ID',
                     'INT',
                     [11],
-                    'NOT NULL AUTO_INCREMENT'
+                    'NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -23,7 +24,8 @@ return (new Schema())
                     'Name',
                     'CHAR',
                     [35],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -31,7 +33,8 @@ return (new Schema())
                     'CountryCode',
                     'CHAR',
                     [3],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -39,7 +42,8 @@ return (new Schema())
                     'District',
                     'CHAR',
                     [20],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -47,7 +51,8 @@ return (new Schema())
                     'Population',
                     'INT',
                     [11],
-                    "NOT NULL DEFAULT '0'"
+                    "NOT NULL DEFAULT '0'",
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['ID']))
@@ -73,7 +78,8 @@ return (new Schema())
                     'Code',
                     'CHAR',
                     [3],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -81,7 +87,8 @@ return (new Schema())
                     'Name',
                     'CHAR',
                     [52],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -89,7 +96,8 @@ return (new Schema())
                     'Continent',
                     'enum',
                     ['Asia', 'Europe', 'North America', 'Africa', 'Oceania', 'Antarctica', 'South America'],
-                    "NOT NULL DEFAULT 'Asia'"
+                    "NOT NULL DEFAULT 'Asia'",
+                    ''
                 )
             )
             ->addColumn(
@@ -97,7 +105,8 @@ return (new Schema())
                     'Region',
                     'CHAR',
                     [26],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -105,7 +114,8 @@ return (new Schema())
                     'SurfaceArea',
                     'FLOAT',
                     [10, 2],
-                    "NOT NULL DEFAULT '0.00'"
+                    "NOT NULL DEFAULT '0.00'",
+                    ''
                 )
             )
             ->addColumn(
@@ -113,7 +123,8 @@ return (new Schema())
                     'IndepYear',
                     'SMALLINT',
                     [6],
-                    "DEFAULT NULL"
+                    "DEFAULT NULL",
+                    ''
                 )
             )
             ->addColumn(
@@ -121,7 +132,8 @@ return (new Schema())
                     'Population',
                     'INT',
                     [11],
-                    "NOT NULL DEFAULT '0'"
+                    "NOT NULL DEFAULT '0'",
+                    ''
                 )
             )
             ->addColumn(
@@ -129,7 +141,8 @@ return (new Schema())
                     'LifeExpectancy',
                     'FLOAT',
                     [3, 1],
-                    "DEFAULT NULL"
+                    "DEFAULT NULL",
+                    ''
                 )
             )
             ->addColumn(
@@ -137,7 +150,8 @@ return (new Schema())
                     'GNP',
                     'FLOAT',
                     [10, 2],
-                    "DEFAULT NULL"
+                    "DEFAULT NULL",
+                    ''
                 )
             )
             ->addColumn(
@@ -145,7 +159,8 @@ return (new Schema())
                     'GNPOld',
                     'FLOAT',
                     [10, 2],
-                    "DEFAULT NULL"
+                    "DEFAULT NULL",
+                    ''
                 )
             )
             ->addColumn(
@@ -153,7 +168,8 @@ return (new Schema())
                     'LocalName',
                     'CHAR',
                     [45],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -161,7 +177,8 @@ return (new Schema())
                     'GovernmentForm',
                     'CHAR',
                     [45],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -169,7 +186,8 @@ return (new Schema())
                     'HeadOfState',
                     'CHAR',
                     [60],
-                    "DEFAULT NULL"
+                    "DEFAULT NULL",
+                    ''
                 )
             )
             ->addColumn(
@@ -177,7 +195,8 @@ return (new Schema())
                     'Capital',
                     'INT',
                     [11],
-                    "DEFAULT NULL"
+                    "DEFAULT NULL",
+                    ''
                 )
             )
             ->addColumn(
@@ -185,7 +204,8 @@ return (new Schema())
                     'Code2',
                     'CHAR',
                     [2],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['Code']))
@@ -197,7 +217,8 @@ return (new Schema())
                     'CountryCode',
                     'CHAR',
                     [3],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -205,7 +226,8 @@ return (new Schema())
                     'Language',
                     'CHAR',
                     [30],
-                    "NOT NULL DEFAULT ''"
+                    "NOT NULL DEFAULT ''",
+                    ''
                 )
             )
             ->addColumn(
@@ -213,7 +235,8 @@ return (new Schema())
                     'IsOfficial',
                     'enum',
                     ['T', 'F'],
-                    "NOT NULL DEFAULT 'F'"
+                    "NOT NULL DEFAULT 'F'",
+                    ''
                 )
             )
             ->addColumn(
@@ -221,7 +244,8 @@ return (new Schema())
                     'Percentage',
                     'FLOAT',
                     [4, 1],
-                    "NOT NULL DEFAULT '0.0'"
+                    "NOT NULL DEFAULT '0.0'",
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['CountryCode', 'Language']))

@@ -10,10 +10,10 @@ CREATE TABLE IF NOT EXISTS user (
   updated_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   INDEX i_password (password),
-  INDEX ih_password (password) USING hash,
-  INDEX ib_password (password) USING btree,
+  INDEX ih_password (password) USING HASH,
+  INDEX ib_password (password) USING BTREE,
   FULLTEXT KEY if_email_password (email, password),
   UNIQUE KEY iu_email_password (nick),
-  UNIQUE KEY iuh_email_password (nick) USING hash,
-  UNIQUE KEY iub_email_password (nick) USING btree
+  UNIQUE KEY iuh_email_password (nick) USING HASH,
+  UNIQUE KEY iub_email_password (nick) USING BTREE
 ) engine = innodb DEFAULT charset = latin1 COLLATE = latin1_general_ci;

@@ -38,11 +38,11 @@ CREATE TABLE IF NOT EXISTS user (
   INDEX
     ih_password
     (password)
-    USING hash,
+    USING HASH,
   INDEX
     ib_password
     (password)
-    USING btree,
+    USING BTREE,
   FULLTEXT KEY
     if_email_password
     (email, password),
@@ -52,11 +52,11 @@ CREATE TABLE IF NOT EXISTS user (
   UNIQUE KEY
     iuh_email_password
     (nick)
-    USING hash,
+    USING HASH,
   UNIQUE KEY
     iub_email_password
     (nick)
-    USING btree
+    USING BTREE
 )
 engine = innodb
 DEFAULT charset = latin1

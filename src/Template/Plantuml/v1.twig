@@ -35,6 +35,9 @@ skinparam class {
 !definelong column(column, type, extra)
 	+<b>column</b> <u>type</u> extra
 !enddefinelong
+!definelong column(column, type, extra, comment)
++<b>column</b> <u>type</u> extra COMMENT 'comment'
+!enddefinelong
 
 
 !definelong index(column1)
@@ -122,22 +125,38 @@ table({{ table.getName() }}) {
     {% for column in table.getColumns() %}
         {% if column.getTypeParameters() %}
             {% if column.getOtherParameters() %}
-                [\t]column('{{ column.getName() }}', '{{ column.getType() }}[{{ column.getTypeParameters()|join(', ') }}]', '{{ column.getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+                {% if column.getComment() is not empty %}
+                    [\t]column('{{ column.getName() }}', '{{ column.getType() }}[{{ column.getTypeParameters()|join(', ') }}]', '{{ column.getOtherParameters()|replace({"'": '"'})|raw }}', '{{ column.getComment()|replace({"'": '"'})|raw }}')
+                {% else %}
+                    [\t]column('{{ column.getName() }}', '{{ column.getType() }}[{{ column.getTypeParameters()|join(', ') }}]', '{{ column.getOtherParameters()|replace({"'": '"'})|raw }}')
+                {% endif %}
             {% else %}
-                [\t]column('{{ column.getName() }}', '{{ column.getType() }}[{{ column.getTypeParameters()|join(', ') }}]')
+                {% if column.getComment() is not empty %}
+                    [\t]column('{{ column.getName() }}', '{{ column.getType() }}[{{ column.getTypeParameters()|join(', ') }}]', '', '{{ column.getComment()|replace({"'": '"'})|raw }}')
+                {% else %}
+                    [\t]column('{{ column.getName() }}', '{{ column.getType() }}[{{ column.getTypeParameters()|join(', ') }}]')
+                {% endif %}
             {% endif %}
         {% else %}
             {% if column.getOtherParameters() %}
-                [\t]column('{{ column.getName() }}', '{{ column.getType() }}', '{{ column.getOtherParameters()|join(' ') }}')
+                {% if column.getComment() is not empty %}
+                    [\t]column('{{ column.getName() }}', '{{ column.getType() }}', '{{ column.getOtherParameters()|replace({"'": '"'})|raw }}', '{{ column.getComment()|replace({"'": '"'})|raw }}')
+                {% else %}
+                    [\t]column('{{ column.getName() }}', '{{ column.getType() }}', '{{ column.getOtherParameters()|replace({"'": '"'})|raw }}')
+                {% endif %}
             {% else %}
-                [\t]column('{{ column.getName() }}', '{{ column.getType() }}')
+                {% if column.getComment() is not empty %}
+                    [\t]column('{{ column.getName() }}', '{{ column.getType() }}', '', '{{ column.getComment()|replace({"'": '"'})|raw }}')
+                {% else %}
+                    [\t]column('{{ column.getName() }}', '{{ column.getType() }}')
+                {% endif %}
             {% endif %}
         {% endif %}
     {% endfor %}
 
     {% if table.getPrimaryKey() %}
         {% if table.getPrimaryKey().getOtherParameters() %}
-            [\t]primary_key('{{ table.getPrimaryKey().getColumns()|join(', ') }}', '{{ table.getPrimaryKey().getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+            [\t]primary_key('{{ table.getPrimaryKey().getColumns()|join(', ') }}', '{{ table.getPrimaryKey().getOtherParameters()|replace({"'": '"'})|raw }}')
         {% else %}
             [\t]primary_key('{{ table.getPrimaryKey().getColumns()|join(', ') }}')
         {% endif %}
@@ -145,7 +164,7 @@ table({{ table.getName() }}) {
 
     {% for simpleIndex in table.getSimpleIndexs() %}
         {% if simpleIndex.getOtherParameters() %}
-            [\t]index('{{ simpleIndex.getColumns()|join(', ') }}', '{{ simpleIndex.getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+            [\t]index('{{ simpleIndex.getColumns()|join(', ') }}', '{{ simpleIndex.getOtherParameters()|replace({"'": '"'})|raw }}')
         {% else %}
             [\t]index('{{ simpleIndex.getColumns()|join(', ') }}')
         {% endif %}
@@ -161,7 +180,7 @@ table({{ table.getName() }}) {
 
     {% for fulltextIndex in table.getFullTextIndexs() %}
         {% if fulltextIndex.getOtherParameters() %}
-            [\t]fulltext_index('{{ fulltextIndex.getColumns()|join(', ') }}', '{{ fulltextIndex.getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+            [\t]fulltext_index('{{ fulltextIndex.getColumns()|join(', ') }}', '{{ fulltextIndex.getOtherParameters()|replace({"'": '"'})|raw }}')
         {% else %}
             [\t]fulltext_index('{{ fulltextIndex.getColumns()|join(', ') }}')
         {% endif %}
@@ -169,7 +188,7 @@ table({{ table.getName() }}) {
 
     {% for spatialIndex in table.getSpatialIndexs() %}
         {% if spatialIndex.getOtherParameters() %}
-            [\t]spatial_index('{{ spatialIndex.getColumns()|join(', ') }}', '{{ spatialIndex.getOtherParameters()|join(' ')|replace({"'": '"'})|raw }}')
+            [\t]spatial_index('{{ spatialIndex.getColumns()|join(', ') }}', '{{ spatialIndex.getOtherParameters()|replace({"'": '"'})|raw }}')
         {% else %}
             [\t]spatial_index('{{ spatialIndex.getColumns()|join(', ') }}')
         {% endif %}
@@ -185,3 +204,4 @@ table({{ table.getName() }}) {
         connection_one_to_many({{ connection.getChildTableName() }}, {{ connection.getParentTableName() }})
     {% endif %}
 {% endfor %}
+

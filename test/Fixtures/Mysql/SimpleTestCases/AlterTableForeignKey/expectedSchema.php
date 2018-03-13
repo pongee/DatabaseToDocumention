@@ -14,7 +14,8 @@ return (new Schema())
                     'user_id',
                     'INT',
                     [10],
-                    'NOT NULL AUTO_INCREMENT'
+                    'NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['user_id']))
@@ -26,7 +27,8 @@ return (new Schema())
                     'id',
                     'INT',
                     [10],
-                    'NOT NULL AUTO_INCREMENT'
+                    'NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -34,7 +36,8 @@ return (new Schema())
                     'userId',
                     'INT',
                     [10],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['id']))

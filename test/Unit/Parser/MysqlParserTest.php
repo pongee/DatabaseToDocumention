@@ -23,7 +23,7 @@ class MysqlParserTest extends TestCase
         $directoryIterator->rewind();
         foreach ($directoryIterator as $file) {
             /** @var SplFileInfo $file */
-            if ($file->isFile() && $file->getExtension() === 'sql' /*&& $file->getBasename() !== 'database_style_06.sql'*/) {
+            if ($file->isFile() && $file->getExtension() === 'sql') {
                 $forcedConnections  = new ConnectionCollection();
                 $expendedSchemaPath = dirname($file->getRealPath()) . '/expectedSchema.php';
                 $schemaObject       = include $expendedSchemaPath;

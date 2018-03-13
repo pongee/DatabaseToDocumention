@@ -13,7 +13,8 @@ return (new Schema())
                     'user_id',
                     'INT',
                     [10],
-                    'AUTO_INCREMENT'
+                    'AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addSimpleIndex(

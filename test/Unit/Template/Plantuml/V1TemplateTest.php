@@ -33,7 +33,8 @@ class V1TemplateTest extends TestCase
                                     'actor_id',
                                     'SMALLINT',
                                     [],
-                                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                                    ''
                                 )
                             )
                             ->addColumn(
@@ -41,7 +42,8 @@ class V1TemplateTest extends TestCase
                                     'first_name',
                                     'VARCHAR',
                                     [45],
-                                    'NOT NULL'
+                                    'NOT NULL',
+                                    ''
                                 )
                             )
                             ->addColumn(
@@ -49,7 +51,8 @@ class V1TemplateTest extends TestCase
                                     'last_name',
                                     'VARCHAR',
                                     [45],
-                                    'NOT NULL'
+                                    'NOT NULL',
+                                    ''
                                 )
                             )
                             ->addColumn(
@@ -57,7 +60,8 @@ class V1TemplateTest extends TestCase
                                     'last_update',
                                     'TIMESTAMP',
                                     [],
-                                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                                    ''
                                 )
                             )
                     )
@@ -68,7 +72,8 @@ class V1TemplateTest extends TestCase
                                     'address_id',
                                     'SMALLINT',
                                     [],
-                                    'UNSIGNED UNSIGNED NOT NULL AUTO_INCREMENT'
+                                    'UNSIGNED UNSIGNED NOT NULL AUTO_INCREMENT',
+                                    'The address id'
                                 )
                             )
                             ->addColumn(
@@ -76,7 +81,8 @@ class V1TemplateTest extends TestCase
                                     'address',
                                     'VARCHAR',
                                     [50],
-                                    'NOT NULL'
+                                    'NOT NULL',
+                                    'The address'
                                 )
                             )
                             ->addColumn(
@@ -84,7 +90,8 @@ class V1TemplateTest extends TestCase
                                     'address2',
                                     'VARCHAR',
                                     [50],
-                                    'DEFAULT NULL'
+                                    'DEFAULT NULL',
+                                    'The address2'
                                 )
                             )
                             ->addColumn(
@@ -92,7 +99,8 @@ class V1TemplateTest extends TestCase
                                     'district',
                                     'VARCHAR',
                                     [20],
-                                    'NOT NULL'
+                                    'NOT NULL',
+                                    'The district'
                                 )
                             )
                     ),
@@ -104,10 +112,10 @@ table(actor) {
     column('last_update', 'TIMESTAMP', 'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
 }
 table(address) {
-    column('address_id', 'SMALLINT', 'UNSIGNED UNSIGNED NOT NULL AUTO_INCREMENT')
-    column('address', 'VARCHAR[50]', 'NOT NULL')
-    column('address2', 'VARCHAR[50]', 'DEFAULT NULL')
-    column('district', 'VARCHAR[20]', 'NOT NULL')
+    column('address_id', 'SMALLINT', 'UNSIGNED UNSIGNED NOT NULL AUTO_INCREMENT', 'The address id')
+    column('address', 'VARCHAR[50]', 'NOT NULL', 'The address')
+    column('address2', 'VARCHAR[50]', 'DEFAULT NULL', 'The address2')
+    column('district', 'VARCHAR[20]', 'NOT NULL', 'The district')
 }
 ",
             ],
@@ -120,7 +128,8 @@ table(address) {
                                     'id',
                                     'INT',
                                     [10],
-                                    'NOT NULL DEFAULT'
+                                    'NOT NULL DEFAULT',
+                                    ''
                                 )
                             )
                     ),
@@ -139,7 +148,8 @@ table(member) {
                                     'id',
                                     'INT',
                                     [10],
-                                    'NOT NULL DEFAULT'
+                                    'NOT NULL DEFAULT',
+                                    ''
                                 )
                             )
                             ->setPrimaryKey(new PrimaryKey(['id']))
@@ -151,7 +161,8 @@ table(member) {
                                     'id',
                                     'INT',
                                     [10],
-                                    'NOT NULL DEFAULT'
+                                    'NOT NULL DEFAULT',
+                                    ''
                                 )
                             )
                             ->addColumn(
@@ -159,7 +170,8 @@ table(member) {
                                     'member_id',
                                     'INT',
                                     [10],
-                                    'NOT NULL'
+                                    'NOT NULL',
+                                    ''
                                 )
                             )
                             ->addColumn(
@@ -167,7 +179,8 @@ table(member) {
                                     'type',
                                     'VARCHAR',
                                     [64],
-                                    'NOT NULL'
+                                    'NOT NULL',
+                                    ''
                                 )
                             )
                             ->addColumn(
@@ -175,7 +188,8 @@ table(member) {
                                     'status',
                                     'ENUM',
                                     ['enabled', 'deleted'],
-                                    'DEFAULT NULL'
+                                    'DEFAULT NULL',
+                                    ''
                                 )
                             )
                             ->setPrimaryKey(
@@ -211,7 +225,8 @@ table(member) {
                                     'id',
                                     'INT',
                                     [10],
-                                    'NOT NULL DEFAULT'
+                                    'NOT NULL DEFAULT',
+                                    ''
                                 )
                             )
                             ->addColumn(
@@ -219,7 +234,8 @@ table(member) {
                                     'member_id',
                                     'INT',
                                     [10],
-                                    'NOT NULL'
+                                    'NOT NULL',
+                                    ''
                                 )
                             )
                             ->addColumn(
@@ -227,6 +243,7 @@ table(member) {
                                     'action',
                                     'ENUM',
                                     ['login', 'logout'],
+                                    '',
                                     ''
                                 )
                             )
@@ -235,6 +252,7 @@ table(member) {
                                     'message',
                                     'VARCHAR',
                                     [64],
+                                    '',
                                     ''
                                 )
                             )
@@ -243,7 +261,8 @@ table(member) {
                                     'created_at',
                                     'DATETIME',
                                     [],
-                                    'NOT NULL'
+                                    'NOT NULL',
+                                    ''
                                 )
                             )
                             ->setPrimaryKey(

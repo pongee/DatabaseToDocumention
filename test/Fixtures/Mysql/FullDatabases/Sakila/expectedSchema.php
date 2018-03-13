@@ -18,7 +18,8 @@ return (new Schema())
                     'actor_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -26,7 +27,8 @@ return (new Schema())
                     'first_name',
                     'VARCHAR',
                     [45],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -34,7 +36,8 @@ return (new Schema())
                     'last_name',
                     'VARCHAR',
                     [45],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -42,7 +45,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['actor_id']))
@@ -60,7 +64,8 @@ return (new Schema())
                     'address_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -68,7 +73,8 @@ return (new Schema())
                     'address',
                     'VARCHAR',
                     [50],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -76,7 +82,8 @@ return (new Schema())
                     'address2',
                     'VARCHAR',
                     [50],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -84,7 +91,8 @@ return (new Schema())
                     'district',
                     'VARCHAR',
                     [20],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -92,7 +100,8 @@ return (new Schema())
                     'city_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -100,7 +109,8 @@ return (new Schema())
                     'postal_code',
                     'VARCHAR',
                     [10],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -108,7 +118,8 @@ return (new Schema())
                     'phone',
                     'VARCHAR',
                     [20],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -116,7 +127,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['address_id']))
@@ -142,7 +154,8 @@ return (new Schema())
                     'category_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -150,7 +163,8 @@ return (new Schema())
                     'name',
                     'VARCHAR',
                     [25],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -158,7 +172,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['category_id']))
@@ -170,7 +185,8 @@ return (new Schema())
                     'city_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -178,7 +194,8 @@ return (new Schema())
                     'city',
                     'VARCHAR',
                     [50],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -186,7 +203,8 @@ return (new Schema())
                     'country_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -194,7 +212,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['city_id']))
@@ -220,7 +239,8 @@ return (new Schema())
                     'country_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -228,7 +248,8 @@ return (new Schema())
                     'country',
                     'VARCHAR',
                     [50],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -236,7 +257,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['country_id']))
@@ -248,7 +270,8 @@ return (new Schema())
                     'customer_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -256,7 +279,8 @@ return (new Schema())
                     'store_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -264,7 +288,8 @@ return (new Schema())
                     'first_name',
                     'VARCHAR',
                     [45],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -272,7 +297,8 @@ return (new Schema())
                     'last_name',
                     'VARCHAR',
                     [45],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -280,7 +306,8 @@ return (new Schema())
                     'email',
                     'VARCHAR',
                     [50],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -288,7 +315,8 @@ return (new Schema())
                     'address_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -296,7 +324,8 @@ return (new Schema())
                     'active',
                     'BOOLEAN',
                     [],
-                    'NOT NULL DEFAULT TRUE'
+                    'NOT NULL DEFAULT TRUE',
+                    ''
                 )
             )
             ->addColumn(
@@ -304,7 +333,8 @@ return (new Schema())
                     'create_date',
                     'DATETIME',
                     [],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -312,7 +342,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['customer_id']))
@@ -358,7 +389,8 @@ return (new Schema())
                     'film_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -366,7 +398,8 @@ return (new Schema())
                     'title',
                     'VARCHAR',
                     [255],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -374,7 +407,8 @@ return (new Schema())
                     'description',
                     'TEXT',
                     [],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -382,7 +416,8 @@ return (new Schema())
                     'release_year',
                     'YEAR',
                     [],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -390,7 +425,8 @@ return (new Schema())
                     'language_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -398,7 +434,8 @@ return (new Schema())
                     'original_language_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED DEFAULT NULL'
+                    'UNSIGNED DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -406,7 +443,8 @@ return (new Schema())
                     'rental_duration',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL DEFAULT 3'
+                    'UNSIGNED NOT NULL DEFAULT 3',
+                    ''
                 )
             )
             ->addColumn(
@@ -414,7 +452,8 @@ return (new Schema())
                     'rental_rate',
                     'DECIMAL',
                     [4, 2],
-                    'NOT NULL DEFAULT 4.99'
+                    'NOT NULL DEFAULT 4.99',
+                    ''
                 )
             )
             ->addColumn(
@@ -422,7 +461,8 @@ return (new Schema())
                     'length',
                     'SMALLINT',
                     [],
-                    'UNSIGNED DEFAULT NULL'
+                    'UNSIGNED DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -430,7 +470,8 @@ return (new Schema())
                     'replacement_cost',
                     'DECIMAL',
                     [5, 2],
-                    'NOT NULL DEFAULT 19.99'
+                    'NOT NULL DEFAULT 19.99',
+                    ''
                 )
             )
             ->addColumn(
@@ -438,7 +479,8 @@ return (new Schema())
                     'rating',
                     'ENUM',
                     ['G', 'PG', 'PG-13', 'R', 'NC-17'],
-                    "DEFAULT 'G'"
+                    "DEFAULT 'G'",
+                    ''
                 )
             )
             ->addColumn(
@@ -451,7 +493,8 @@ return (new Schema())
                         'Deleted Scenes',
                         'Behind the Scenes',
                     ],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -459,7 +502,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['film_id']))
@@ -505,7 +549,8 @@ return (new Schema())
                     'actor_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -513,7 +558,8 @@ return (new Schema())
                     'film_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -521,7 +567,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['actor_id', 'film_id']))
@@ -555,7 +602,8 @@ return (new Schema())
                     'film_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -563,7 +611,8 @@ return (new Schema())
                     'category_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -571,7 +620,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['film_id', 'category_id']))
@@ -599,7 +649,8 @@ return (new Schema())
                     'film_id',
                     'SMALLINT',
                     [],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -607,7 +658,8 @@ return (new Schema())
                     'title',
                     'VARCHAR',
                     [255],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -615,6 +667,7 @@ return (new Schema())
                     'description',
                     'TEXT',
                     [],
+                    '',
                     ''
                 )
             )
@@ -633,7 +686,8 @@ return (new Schema())
                     'inventory_id',
                     'MEDIUMINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -641,7 +695,8 @@ return (new Schema())
                     'film_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -649,7 +704,8 @@ return (new Schema())
                     'store_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -657,7 +713,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['inventory_id']))
@@ -697,7 +754,8 @@ return (new Schema())
                     'language_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -705,7 +763,8 @@ return (new Schema())
                     'name',
                     'CHAR',
                     [20],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -713,7 +772,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['language_id']))
@@ -725,7 +785,8 @@ return (new Schema())
                     'payment_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -733,7 +794,8 @@ return (new Schema())
                     'customer_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -741,7 +803,8 @@ return (new Schema())
                     'staff_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -749,7 +812,8 @@ return (new Schema())
                     'rental_id',
                     'INT',
                     [],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -757,7 +821,8 @@ return (new Schema())
                     'amount',
                     'DECIMAL',
                     [5, 2],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -765,7 +830,8 @@ return (new Schema())
                     'payment_date',
                     'DATETIME',
                     [],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -773,7 +839,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['payment_id']))
@@ -821,7 +888,8 @@ return (new Schema())
                     'rental_id',
                     'INT',
                     [],
-                    'NOT NULL AUTO_INCREMENT'
+                    'NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -829,7 +897,8 @@ return (new Schema())
                     'rental_date',
                     'DATETIME',
                     [],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -837,7 +906,8 @@ return (new Schema())
                     'inventory_id',
                     'MEDIUMINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -845,7 +915,8 @@ return (new Schema())
                     'customer_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -853,7 +924,8 @@ return (new Schema())
                     'return_date',
                     'DATETIME',
                     [],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -861,7 +933,8 @@ return (new Schema())
                     'staff_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -869,7 +942,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['rental_id']))
@@ -929,7 +1003,8 @@ return (new Schema())
                     'staff_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -937,7 +1012,8 @@ return (new Schema())
                     'first_name',
                     'VARCHAR',
                     [45],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -945,7 +1021,8 @@ return (new Schema())
                     'last_name',
                     'VARCHAR',
                     [45],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -953,7 +1030,8 @@ return (new Schema())
                     'address_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -961,7 +1039,8 @@ return (new Schema())
                     'picture',
                     'BLOB',
                     [],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -969,7 +1048,8 @@ return (new Schema())
                     'email',
                     'VARCHAR',
                     [50],
-                    'DEFAULT NULL'
+                    'DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -977,7 +1057,8 @@ return (new Schema())
                     'store_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -985,7 +1066,8 @@ return (new Schema())
                     'active',
                     'BOOLEAN',
                     [],
-                    'NOT NULL DEFAULT TRUE'
+                    'NOT NULL DEFAULT TRUE',
+                    ''
                 )
             )
             ->addColumn(
@@ -993,7 +1075,8 @@ return (new Schema())
                     'username',
                     'VARCHAR',
                     [16],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -1001,7 +1084,8 @@ return (new Schema())
                     'password',
                     'VARCHAR',
                     [40],
-                    'BINARY DEFAULT NULL'
+                    'BINARY DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -1009,7 +1093,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['staff_id']))
@@ -1049,7 +1134,8 @@ return (new Schema())
                     'store_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -1057,7 +1143,8 @@ return (new Schema())
                     'manager_staff_id',
                     'TINYINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -1065,7 +1152,8 @@ return (new Schema())
                     'address_id',
                     'SMALLINT',
                     [],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -1073,7 +1161,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['store_id']))

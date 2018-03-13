@@ -3,7 +3,7 @@
 
 use Symfony\Component\Console\Application;
 
-foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $autoload) {
+foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php'] as $autoload) {
     if (file_exists($autoload)) {
         require $autoload;
         break;
@@ -15,15 +15,15 @@ $parser = new \Pongee\DatabaseToDocumention\Parser\MysqlParser();
 $application = new Application();
 
 $application->add(
-	new \Pongee\DatabaseToDocumention\Command\Mysql\MysqlPlantumlCommand(
+    new \Pongee\DatabaseToDocumention\Command\Mysql\MysqlPlantumlCommand(
         $parser, getcwd()
-	)
+    )
 );
 
 $application->add(
-	new \Pongee\DatabaseToDocumention\Command\Mysql\MysqlJsonCommand(
+    new \Pongee\DatabaseToDocumention\Command\Mysql\MysqlJsonCommand(
         $parser, getcwd()
-	)
+    )
 );
 
 $application->run();

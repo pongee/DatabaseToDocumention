@@ -15,7 +15,8 @@ return (new Schema())
                     'user_id',
                     'INT',
                     [10],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT'
+                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    ''
                 )
             )
             ->addColumn(
@@ -23,7 +24,8 @@ return (new Schema())
                     'first_name',
                     'VARCHAR',
                     [45],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -31,7 +33,8 @@ return (new Schema())
                     'last_name',
                     'VARCHAR',
                     [45],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -39,7 +42,8 @@ return (new Schema())
                     'last_update',
                     'TIMESTAMP',
                     [],
-                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['user_id']))
@@ -57,7 +61,8 @@ return (new Schema())
                     'id',
                     'INT',
                     [10],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -65,7 +70,8 @@ return (new Schema())
                     'email',
                     'VARCHAR',
                     [64],
-                    'COLLATE latin1_general_ci NOT NULL'
+                    'COLLATE latin1_general_ci NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -73,7 +79,8 @@ return (new Schema())
                     'password',
                     'VARCHAR',
                     [32],
-                    'COLLATE latin1_general_ci NOT NULL'
+                    'COLLATE latin1_general_ci NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -81,7 +88,8 @@ return (new Schema())
                     'nick',
                     'VARCHAR',
                     [16],
-                    'COLLATE latin1_general_ci DEFAULT NULL'
+                    'COLLATE latin1_general_ci DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -89,7 +97,8 @@ return (new Schema())
                     'status',
                     'ENUM',
                     ['enabled', 'disabled'],
-                    'COLLATE latin1_general_ci DEFAULT NULL'
+                    'COLLATE latin1_general_ci DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -97,7 +106,8 @@ return (new Schema())
                     'user_id',
                     'INT',
                     [10],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['id']))
@@ -115,7 +125,8 @@ return (new Schema())
                     'id',
                     'INT',
                     [10],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -123,7 +134,8 @@ return (new Schema())
                     'message',
                     'VARCHAR',
                     [64],
-                    'COLLATE latin1_general_ci NOT NULL'
+                    'COLLATE latin1_general_ci NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -131,7 +143,8 @@ return (new Schema())
                     'user_id',
                     'INT',
                     [10],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['id']))

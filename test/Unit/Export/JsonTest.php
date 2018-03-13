@@ -25,7 +25,7 @@ class JsonTest extends TestCase
                 (new Schema())
                     ->addTable(
                         (new Table('member'))
-                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT'))
+                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT', 'The id'))
                     ),
                 '
 {
@@ -36,7 +36,8 @@ class JsonTest extends TestCase
                     "name": "id",
                     "type": "INT",
                     "typeParameters": [10],
-                    "otherParameters": "NOT NULL DEFAULT"
+                    "otherParameters": "NOT NULL DEFAULT",
+                    "comment": "The id"
                 }
             ],
             "indexs": {"simple": [], "spatial": [], "fulltext": [], "unique": []},
@@ -51,14 +52,14 @@ class JsonTest extends TestCase
                 (new Schema())
                     ->addTable(
                         (new Table('member'))
-                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT'))
+                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT', 'The id'))
                     )
                     ->addTable(
                         (new Table('member_data'))
-                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT'))
-                            ->addColumn(new Column('member_id', 'INT', [10], 'NOT NULL'))
-                            ->addColumn(new Column('type', 'VARCHAR', [64], 'NOT NULL'))
-                            ->addColumn(new Column('status', 'ENUM', ['enabled', 'deleted'], 'DEFAULT NULL'))
+                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT', ''))
+                            ->addColumn(new Column('member_id', 'INT', [10], 'NOT NULL', ''))
+                            ->addColumn(new Column('type', 'VARCHAR', [64], 'NOT NULL', ''))
+                            ->addColumn(new Column('status', 'ENUM', ['enabled', 'deleted'], 'DEFAULT NULL', ''))
                             ->setPrimaryKey(new PrimaryKey(['id'], 'USING HASH'))
                             ->addSimpleIndex(new SimpleIndex('idx_member_id', ['member_id'], 'USING HASH'))
                             ->addFullTextIndex(new FulltextIndex('idx_status', ['status']))
@@ -67,9 +68,9 @@ class JsonTest extends TestCase
                     )
                     ->addTable(
                         (new Table('member_log'))
-                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT'))
-                            ->addColumn(new Column('member_id', 'INT', [10], 'NOT NULL'))
-                            ->addColumn(new Column('log', 'VARCHAR', [255], 'NOT NULL'))
+                            ->addColumn(new Column('id', 'INT', [10], 'NOT NULL DEFAULT', 'The id'))
+                            ->addColumn(new Column('member_id', 'INT', [10], 'NOT NULL', 'The member id'))
+                            ->addColumn(new Column('log', 'VARCHAR', [255], 'NOT NULL', 'The log'))
                             ->setPrimaryKey(new PrimaryKey(['id'], 'USING HASH'))
                             ->addSimpleIndex(new SimpleIndex('idx_member_id', ['member_id'], 'USING HASH'))
                     )
@@ -88,7 +89,8 @@ class JsonTest extends TestCase
                     "name": "id",
                     "type": "INT",
                     "typeParameters": [10],
-                    "otherParameters": "NOT NULL DEFAULT"
+                    "otherParameters": "NOT NULL DEFAULT",
+                    "comment": "The id"
                 }
             ],
             "indexs": {"simple": [], "spatial": [], "fulltext": [], "unique": []},
@@ -100,25 +102,29 @@ class JsonTest extends TestCase
                     "name": "id",
                     "type": "INT",
                     "typeParameters": [10],
-                    "otherParameters": "NOT NULL DEFAULT"
+                    "otherParameters": "NOT NULL DEFAULT",
+                    "comment": ""
                 },
                 {
                     "name": "member_id",
                     "type": "INT",
                     "typeParameters": [10],
-                    "otherParameters": "NOT NULL"
+                    "otherParameters": "NOT NULL",
+                    "comment": ""
                 },
                 {
                     "name": "type",
                     "type": "VARCHAR",
                     "typeParameters": [64],
-                    "otherParameters": "NOT NULL"
+                    "otherParameters": "NOT NULL",
+                    "comment": ""
                 },
                 {
                     "name": "status",
                     "type": "ENUM",
                     "typeParameters": ["enabled","deleted"],
-                    "otherParameters": "DEFAULT NULL"
+                    "otherParameters": "DEFAULT NULL",
+                    "comment": ""
                 }
             ],
             "indexs": {
@@ -166,19 +172,22 @@ class JsonTest extends TestCase
                     "name": "id",
                     "type": "INT",
                     "typeParameters": [10],
-                    "otherParameters": "NOT NULL DEFAULT"
+                    "otherParameters": "NOT NULL DEFAULT",
+                    "comment": "The id"
                 },
                 {
                     "name": "member_id",
                     "type": "INT",
                     "typeParameters": [10],
-                    "otherParameters": "NOT NULL"
+                    "otherParameters": "NOT NULL",
+                    "comment": "The member id"
                 },
                 {
                     "name": "log",
                     "type": "VARCHAR",
                     "typeParameters": [255],
-                    "otherParameters": "NOT NULL"
+                    "otherParameters": "NOT NULL",
+                    "comment": "The log"
                 }
             ],
             "indexs": {

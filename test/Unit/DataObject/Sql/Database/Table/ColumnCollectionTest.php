@@ -14,16 +14,16 @@ class ColumnCollectionTest extends TestCase
     {
         return [
             [
-                new Column('member_id', 'INT', [10], 'NOT NULL'),
+                new Column('member_id', 'INT', [10], 'NOT NULL', 'The member id'),
             ],
             [
-                new Column('member_id', 'INT', [10], 'NOT NULL'),
-                new Column('type', 'VARCHAR', [64], 'DEFAULT NULL'),
+                new Column('member_id', 'INT', [10], 'NOT NULL', 'The member id'),
+                new Column('type', 'VARCHAR', [64], 'DEFAULT NULL', 'The type'),
             ],
             [
-                new Column('member_id', 'INT', [10], 'NOT NULL'),
-                new Column('type', 'VARCHAR', [64], 'NOT NULL'),
-                new Column('status', 'ENUM', ['enabled', 'deleted'], 'DEFAULT NUL'),
+                new Column('member_id', 'INT', [10], 'NOT NULL', 'The member id'),
+                new Column('type', 'VARCHAR', [64], 'NOT NULL', 'The type'),
+                new Column('status', 'ENUM', ['enabled', 'deleted'], 'DEFAULT NUL', 'The status'),
             ],
         ];
     }

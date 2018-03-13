@@ -11,18 +11,23 @@ class ColumnTest extends TestCase
     public function getColumnsProvider(): array
     {
         return [
-            ['member_id', 'INT', [10], 'UNSIGNED NOT NULL AUTO_INCREMENT'],
-            ['type', 'VARCHAR', [64], 'NOT NULL'],
-            ['status', 'ENUM', ['enabled', 'deleted'], 'DEFAULT NULL'],
+            ['member_id', 'INT', [10], 'UNSIGNED NOT NULL AUTO_INCREMENT', 'The member id'],
+            ['type', 'VARCHAR', [64], 'NOT NULL', 'The type'],
+            ['status', 'ENUM', ['enabled', 'deleted'], 'DEFAULT NULL', 'The status'],
         ];
     }
 
     /**
      * @dataProvider getColumnsProvider
      */
-    public function testColumn(string $name, string $type, array $typeParameters, string $otherParameters = ''): void
-    {
-        $column = new Column($name, $type, $typeParameters, $otherParameters);
+    public function testColumn(
+        string $name,
+        string $type,
+        array $typeParameters,
+        string $otherParameters,
+        string $comment
+    ): void {
+        $column = new Column($name, $type, $typeParameters, $otherParameters, $comment);
 
         $this->assertInstanceOf(ColumnInterface::class, $column);
 
@@ -30,5 +35,6 @@ class ColumnTest extends TestCase
         $this->assertEquals($type, $column->getType());
         $this->assertEquals($typeParameters, $column->getTypeParameters());
         $this->assertEquals($otherParameters, $column->getOtherParameters());
+        $this->assertEquals($comment, $column->getComment());
     }
 }

@@ -16,7 +16,8 @@ return (new Schema())
                     'id',
                     'INT',
                     [10],
-                    'UNSIGNED NOT NULL'
+                    'UNSIGNED NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -24,7 +25,8 @@ return (new Schema())
                     'email',
                     'VARCHAR',
                     [64],
-                    'COLLATE latin1_general_ci NOT NULL'
+                    'COLLATE latin1_general_ci NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -32,7 +34,8 @@ return (new Schema())
                     'password',
                     'VARCHAR',
                     [32],
-                    'COLLATE latin1_general_ci NOT NULL'
+                    'COLLATE latin1_general_ci NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -40,7 +43,8 @@ return (new Schema())
                     'nick',
                     'VARCHAR',
                     [16],
-                    'COLLATE latin1_general_ci DEFAULT NULL'
+                    'COLLATE latin1_general_ci DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -48,7 +52,8 @@ return (new Schema())
                     'status',
                     'ENUM',
                     ['enabled', 'disabled'],
-                    'COLLATE latin1_general_ci DEFAULT NULL'
+                    'COLLATE latin1_general_ci DEFAULT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -56,7 +61,8 @@ return (new Schema())
                     'admin',
                     'BIT',
                     [],
-                    'NULL'
+                    'NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -64,7 +70,8 @@ return (new Schema())
                     'geom',
                     'GEOMETRY',
                     [],
-                    'NOT NULL'
+                    'NOT NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -72,7 +79,8 @@ return (new Schema())
                     'created_at',
                     'DATETIME',
                     [],
-                    'NULL'
+                    'NULL',
+                    ''
                 )
             )
             ->addColumn(
@@ -80,7 +88,8 @@ return (new Schema())
                     'updated_at',
                     'DATETIME',
                     [],
-                    'NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+                    'NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    ''
                 )
             )
             ->setPrimaryKey(new PrimaryKey(['id']))

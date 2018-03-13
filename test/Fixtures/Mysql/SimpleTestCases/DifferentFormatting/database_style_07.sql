@@ -44,31 +44,31 @@ CREATE TABLE
         (id),
       INDEX
         i_password
-        (password),
+        ( password ),
       INDEX
         ih_password
-        (password)
+        ( password )
         USING
-         hash,
+         HASH,
       INDEX
         ib_password
         (password)
         USING
-          btree,
+          BTREE,
       FULLTEXT KEY
         if_email_password
         ( email, password ),
       UNIQUE KEY
         iu_email_password
-        (nick),
+        ( nick ),
       UNIQUE KEY
         iuh_email_password
         ( nick )
-        USING hash,
+        USING HASH,
       UNIQUE KEY
         iub_email_password
         ( nick )
-        USING btree
+        USING BTREE
     )
     engine = innodb
     DEFAULT charset = latin1

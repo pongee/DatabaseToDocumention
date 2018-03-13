@@ -71,6 +71,7 @@ class Json implements ExportInterface
                 'type' => $column->getType(),
                 'typeParameters' => $column->getTypeParameters(),
                 'otherParameters' => $column->getOtherParameters(),
+                'comment' => $column->getComment(),
             ];
         }
 

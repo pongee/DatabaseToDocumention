@@ -1,45 +1,45 @@
 CREATE TABLE
  IF NOT EXISTS
    user (
-      id
+      `id`
         INT(10)
         UNSIGNED NOT NULL,
-      email
+      `email`
         VARCHAR(64)
         COLLATE latin1_general_ci
         NOT NULL,
-      password
+      `password`
         VARCHAR(32)
         COLLATE latin1_general_ci
         NOT NULL,
-      nick
+      `nick`
         VARCHAR(16)
         COLLATE latin1_general_ci
         DEFAULT NULL,
-      status
+      `status`
         ENUM('enabled', 'disabled')
         COLLATE latin1_general_ci
         DEFAULT NULL,
-      admin
+      `admin`
         BIT NULL,
-      geom
+      `geom`
         GEOMETRY
         NOT NULL,
-      created_at
+      `created_at`
         DATETIME
         NULL,
-      updated_at
+      `updated_at`
         DATETIME
         NULL DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP,
       PRIMARY KEY
-        (id),
+        (`id`),
       INDEX
         i_password
-        (password),
+        (`password`),
       INDEX
         ih_password
-        (password)
+        (`password`)
         USING HASH,
       INDEX
         ib_password
@@ -47,17 +47,17 @@ CREATE TABLE
         USING BTREE,
       FULLTEXT KEY
         if_email_password
-        (email, password),
+        (`email`, `password`),
       UNIQUE KEY
         iu_email_password
-        (nick),
+        (`nick`),
       UNIQUE KEY
         iuh_email_password
-        (nick)
+        (`nick`)
         USING HASH,
       UNIQUE KEY
         iub_email_password
-        (nick)
+        (`nick`)
         USING BTREE
     )
     engine = innodb
