@@ -200,14 +200,13 @@ class MysqlParser extends ParserAbstract
                 MULTIPOLYGON|
                 GEMETRYCOLLECTION
             )
-            \s*
             (?U:
+                \s*
                 \(
                     (?<typeParameters>.+)
                 \)
             )?
-            \s*
-            (?U:(?<otherParameters>.*))
+            (?U:\s+(?<otherParameters>.*))?
             (?:
                 COMMENT\s+
                 \'

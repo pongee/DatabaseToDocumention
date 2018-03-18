@@ -22,14 +22,8 @@ abstract class ParserAbstract implements ParserInterface
         $connectionCollection = new ConnectionCollection();
 
         $connectionCollection
-            ->adds(
-                ...
-                $forcedConnectionCollection
-            )
-            ->adds(
-                ...
-                $this->getConnectionsByAlterTable($nativeSqlSchema)
-            );
+            ->adds(...$forcedConnectionCollection)
+            ->adds(...$this->getConnectionsByAlterTable($nativeSqlSchema));
 
         $nativeSqlSchema = $this->removeLineComments($nativeSqlSchema);
         $nativeSqlSchema = $this->removeMultiLineComments($nativeSqlSchema);
