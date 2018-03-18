@@ -10,4 +10,4 @@ CREATE TABLE log (
 );
 
 ALTER TABLE log
-	ADD CONSTRAINT FK_log_user_id FOREIGN KEY (userId) REFERENCES user (user_id);
+  ADD CONSTRAINT FK_log_user_id FOREIGN KEY (userId) REFERENCES user (user_id);

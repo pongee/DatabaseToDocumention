@@ -111,10 +111,10 @@ class MysqlParser extends ParserAbstract
                 \)
             )
             (?<otherParameters>.+)
-            (
+            (?:
                 COMMENT\s+
                 \'
-                    (?<comment>.+)
+                    (?U:(?<comment>.+))
                 \'
             )?
             \s*
@@ -208,10 +208,10 @@ class MysqlParser extends ParserAbstract
             )?
             \s*
             (?U:(?<otherParameters>.*))
-            (
+            (?:
                 COMMENT\s+
                 \'
-                    (?<comment>.+)
+                    (?U:(?<comment>.+))
                 \'
             )?
             \s*
