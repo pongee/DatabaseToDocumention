@@ -26,10 +26,11 @@ class MysqlParser extends ParserAbstract
     {
         $table = new Table($this->getTableNameFromCreateTableSchema($createTableSchema));
 
-        foreach ($this->getColumnsFromCreateTableSchema($createTableSchema) as $column) {
+        foreach ($this->getColumnsWithoutRequiredTypeParametersFromCreateTableSchema($createTableSchema) as $column) {
             $table->addColumn($column);
         }
-        foreach ($this->getColumnsFromCreateTableSchema2($createTableSchema) as $column) {
+
+        foreach ($this->getColumnsWithRequiredTypeParametersFromCreateTableSchema($createTableSchema) as $column) {
             $table->addColumn($column);
         }
 
@@ -90,8 +91,9 @@ class MysqlParser extends ParserAbstract
         );
     }
 
-    protected function getColumnsFromCreateTableSchema(string $createTableSchema): Table\ColumnCollectionInterface
-    {
+    protected function getColumnsWithRequiredTypeParametersFromCreateTableSchema(
+        string $createTableSchema
+    ): Table\ColumnCollectionInterface {
         preg_match_all(
             '#
             (?!,)
@@ -104,13 +106,13 @@ class MysqlParser extends ParserAbstract
                ENUM|
                SET
             )
-            \s*
-            (
+            (?U:
+                \s*
                 \(
                     (?<typeParameters>.+)
                 \)
             )
-            (?<otherParameters>.+)
+            (?U:\s+(?<otherParameters>.*))?
             (?:
                 COMMENT\s+
                 \'
@@ -118,7 +120,7 @@ class MysqlParser extends ParserAbstract
                 \'
             )?
             \s*
-            (?=(,|\)))
+            (?U:(?=(,|\))))
         #Uxmis',
             $createTableSchema,
             $matches
@@ -147,9 +149,9 @@ class MysqlParser extends ParserAbstract
         return $columnCollection;
     }
 
-    protected function getColumnsFromCreateTableSchema2(string $createTableSchema
-    ): Table\ColumnCollectionInterface // @todo rename
-    {
+    protected function getColumnsWithoutRequiredTypeParametersFromCreateTableSchema(
+        string $createTableSchema
+    ): Table\ColumnCollectionInterface {
         preg_match_all(
             '#
             (?!,)

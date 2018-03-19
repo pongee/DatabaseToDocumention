@@ -1,13 +1,13 @@
-CREATE TABLE user (
-  user_id INT(10) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (user_id)
-);
+CREATE TABLE `user` (
+  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE log (
-  id INT(10) NOT NULL AUTO_INCREMENT,
-  userId INT(10) NOT NULL,
-  PRIMARY KEY (id)
-);
+CREATE TABLE `log` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `log_user_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-ALTER TABLE log
-  ADD CONSTRAINT FK_log_user_id FOREIGN KEY (userId) REFERENCES user (user_id);
+ALTER TABLE `log`
+  ADD CONSTRAINT `FK_log_user_id` FOREIGN KEY (`log_user_id`) REFERENCES `user` (`user_id`);

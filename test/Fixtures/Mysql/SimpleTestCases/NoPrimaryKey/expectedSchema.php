@@ -11,9 +11,9 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'user_id',
-                    'INT',
+                    'int',
                     [10],
-                    'AUTO_INCREMENT',
+                    'NOT NULL AUTO_INCREMENT',
                     ''
                 )
             )

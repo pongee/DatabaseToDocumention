@@ -13,16 +13,16 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'user_id',
-                    'INT',
+                    'int',
                     [10],
-                    'UNSIGNED NOT NULL AUTO_INCREMENT',
+                    'unsigned NOT NULL AUTO_INCREMENT',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'first_name',
-                    'VARCHAR',
+                    'varchar',
                     [45],
                     'NOT NULL',
                     ''
@@ -31,7 +31,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'last_name',
-                    'VARCHAR',
+                    'varchar',
                     [45],
                     'NOT NULL',
                     ''
@@ -40,7 +40,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'last_update',
-                    'TIMESTAMP',
+                    'timestamp',
                     [],
                     'NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
                     ''
@@ -59,16 +59,16 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'id',
-                    'INT',
+                    'int',
                     [10],
-                    'UNSIGNED NOT NULL',
+                    'unsigned NOT NULL',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'email',
-                    'VARCHAR',
+                    'varchar',
                     [64],
                     'COLLATE latin1_general_ci NOT NULL',
                     ''
@@ -77,7 +77,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'password',
-                    'VARCHAR',
+                    'varchar',
                     [32],
                     'COLLATE latin1_general_ci NOT NULL',
                     ''
@@ -86,7 +86,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'nick',
-                    'VARCHAR',
+                    'varchar',
                     [16],
                     'COLLATE latin1_general_ci DEFAULT NULL',
                     ''
@@ -95,7 +95,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'status',
-                    'ENUM',
+                    'enum',
                     ['enabled', 'disabled'],
                     'COLLATE latin1_general_ci DEFAULT NULL',
                     ''
@@ -104,9 +104,9 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'user_id',
-                    'INT',
+                    'int',
                     [10],
-                    'UNSIGNED NOT NULL',
+                    'unsigned NOT NULL',
                     ''
                 )
             )
@@ -117,22 +117,28 @@ return (new Schema())
                     ['email', 'password']
                 )
             )
+            ->addSimpleIndex(
+                new SimpleIndex(
+                    'fk_user_id',
+                    ['user_id']
+                )
+            )
     )
     ->addTable(
         (new Table('log'))
             ->addColumn(
                 new Column(
                     'id',
-                    'INT',
+                    'int',
                     [10],
-                    'UNSIGNED NOT NULL',
+                    'unsigned NOT NULL',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'message',
-                    'VARCHAR',
+                    'varchar',
                     [64],
                     'COLLATE latin1_general_ci NOT NULL',
                     ''
@@ -141,9 +147,9 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'user_id',
-                    'INT',
+                    'int',
                     [10],
-                    'UNSIGNED NOT NULL',
+                    'unsigned NOT NULL',
                     ''
                 )
             )

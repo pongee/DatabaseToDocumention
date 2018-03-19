@@ -12,7 +12,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'user_id',
-                    'INT',
+                    'int',
                     [10],
                     'NOT NULL AUTO_INCREMENT',
                     ''
@@ -25,7 +25,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'id',
-                    'INT',
+                    'int',
                     [10],
                     'NOT NULL AUTO_INCREMENT',
                     ''
@@ -33,8 +33,8 @@ return (new Schema())
             )
             ->addColumn(
                 new Column(
-                    'userId',
-                    'INT',
+                    'log_user_id',
+                    'int',
                     [10],
                     'NOT NULL',
                     ''
@@ -46,7 +46,7 @@ return (new Schema())
         new OneToManyConnection(
             'log',
             'user',
-            ['userId'],
+            ['log_user_id'],
             ['user_id']
         )
     );

@@ -14,81 +14,81 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'id',
-                    'INT',
+                    'int',
                     [10],
-                    'UNSIGNED NOT NULL',
+                    'unsigned not null',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'email',
-                    'VARCHAR',
+                    'varchar',
                     [64],
-                    'COLLATE latin1_general_ci NOT NULL',
+                    'collate latin1_general_ci not null',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'password',
-                    'VARCHAR',
+                    'varchar',
                     [32],
-                    'COLLATE latin1_general_ci NOT NULL',
+                    'collate latin1_general_ci not null',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'nick',
-                    'VARCHAR',
+                    'varchar',
                     [16],
-                    'COLLATE latin1_general_ci DEFAULT NULL',
+                    'collate latin1_general_ci default null',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'status',
-                    'ENUM',
+                    'enum',
                     ['enabled', 'disabled'],
-                    'COLLATE latin1_general_ci DEFAULT NULL',
+                    'collate latin1_general_ci default null',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'admin',
-                    'BIT',
-                    [],
-                    'NULL',
+                    'bit',
+                    [1],
+                    'default null',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'geom',
-                    'GEOMETRY',
+                    'geometry',
                     [],
-                    'NOT NULL',
+                    'not null',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'created_at',
-                    'DATETIME',
+                    'datetime',
                     [],
-                    'NULL',
+                    'default null',
                     ''
                 )
             )
             ->addColumn(
                 new Column(
                     'updated_at',
-                    'DATETIME',
+                    'datetime',
                     [],
-                    'NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    'default current_timestamp on update current_timestamp',
                     ''
                 )
             )

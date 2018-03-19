@@ -83,7 +83,7 @@ class MysqlParserTest extends TestCase
                     $expectedTable->getColumns()->offsetGet($columnName),
                     $column,
                     sprintf(
-                        'Bad column. Schema: %s, table: %s, column: %s',
+                        "Bad column.\n Schema: %s \nTable: %s \nColumn: %s",
                         $file->getRealPath(),
                         $table->getName(),
                         $columnName
@@ -94,31 +94,31 @@ class MysqlParserTest extends TestCase
             $this->assertEquals(
                 $expectedTable->getSimpleIndexs(),
                 $table->getSimpleIndexs(),
-                sprintf('Bad simple indexs. Schema: %s, table: %s', $file->getRealPath(), $table->getName())
+                sprintf("Bad simple indexs. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
             );
 
             $this->assertEquals(
                 $expectedTable->getUniqueIndexs(),
                 $table->getUniqueIndexs(),
-                sprintf('Bad unique indexs. Schema: %s, table: %s', $file->getRealPath(), $table->getName())
+                sprintf("Bad unique indexs. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
             );
 
             $this->assertEquals(
                 $expectedTable->getFulltextIndexs(),
                 $table->getFulltextIndexs(),
-                sprintf('Bad fulltext indexs. Schema: %s, table: %s', $file->getRealPath(), $table->getName())
+                sprintf("Bad fulltext indexs. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
             );
 
             $this->assertEquals(
                 $expectedTable->getSpatialIndexs(),
                 $table->getSpatialIndexs(),
-                sprintf('Bad spatial indexs. Schema: %s, table: %s', $file->getRealPath(), $table->getName())
+                sprintf("Bad spatial indexs. \nSchema: %s \ntable: %s", $file->getRealPath(), $table->getName())
             );
 
             $this->assertEquals(
                 $expectedTable->getPrimaryKey(),
                 $table->getPrimaryKey(),
-                sprintf('Bad primary key. Schema: %s, table: %s', $file->getRealPath(), $table->getName())
+                sprintf("Bad primary key. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
             );
         }
 

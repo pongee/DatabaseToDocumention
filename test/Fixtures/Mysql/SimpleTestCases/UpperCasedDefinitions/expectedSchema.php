@@ -60,8 +60,8 @@ return (new Schema())
                 new Column(
                     'admin',
                     'BIT',
-                    [],
-                    'NULL',
+                    [1],
+                    'DEFAULT NULL',
                     ''
                 )
             )
@@ -79,7 +79,7 @@ return (new Schema())
                     'created_at',
                     'DATETIME',
                     [],
-                    'NULL',
+                    'DEFAULT NULL',
                     ''
                 )
             )
@@ -88,7 +88,7 @@ return (new Schema())
                     'updated_at',
                     'DATETIME',
                     [],
-                    'NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
                     ''
                 )
             )

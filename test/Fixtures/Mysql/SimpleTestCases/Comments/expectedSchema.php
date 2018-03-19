@@ -14,16 +14,16 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'id',
-                    'INT',
+                    'int',
                     [10],
-                    'UNSIGNED NOT NULL',
+                    'unsigned NOT NULL',
                     'The id'
                 )
             )
             ->addColumn(
                 new Column(
                     'email',
-                    'VARCHAR',
+                    'varchar',
                     [64],
                     'COLLATE latin1_general_ci NOT NULL',
                     'The email'
@@ -32,7 +32,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'password',
-                    'VARCHAR',
+                    'varchar',
                     [32],
                     'COLLATE latin1_general_ci NOT NULL',
                     'The password'
@@ -41,7 +41,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'nick',
-                    'VARCHAR',
+                    'varchar',
                     [16],
                     'COLLATE latin1_general_ci DEFAULT NULL',
                     'The nick'
@@ -50,7 +50,7 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'status',
-                    'ENUM',
+                    'enum',
                     ['enabled', 'disabled'],
                     'COLLATE latin1_general_ci DEFAULT NULL',
                     'The status flag'
@@ -59,16 +59,16 @@ return (new Schema())
             ->addColumn(
                 new Column(
                     'admin',
-                    'BIT',
-                    [],
-                    'NULL',
+                    'bit',
+                    [1],
+                    'DEFAULT NULL',
                     'The admin flag'
                 )
             )
             ->addColumn(
                 new Column(
                     'geom',
-                    'GEOMETRY',
+                    'geometry',
                     [],
                     'NOT NULL',
                     'The geom'
@@ -76,19 +76,46 @@ return (new Schema())
             )
             ->addColumn(
                 new Column(
+                    'fake_special_column',
+                    'varchar',
+                    [64],
+                    'COLLATE latin1_general_ci NOT NULL',
+                    '~!@#$%^&*()_+[];,./{}:"|\?<>'
+                )
+            )
+            ->addColumn(
+                new Column(
+                    'fake_english_column',
+                    'varchar',
+                    [64],
+                    'COLLATE latin1_general_ci NOT NULL',
+                    'a b c d e f g h i j k l m n o p q r s t u v w x y z'
+                )
+            )
+            ->addColumn(
+                new Column(
+                    'fake_chinese_column',
+                    'varchar',
+                    [64],
+                    'CHARACTER SET utf8 NOT NULL',
+                    '诶 比 西 迪 伊 艾弗 吉 艾尺 艾 杰 开 艾勒 艾马 艾娜 哦 屁 吉吾 艾儿 艾丝 提 伊吾 维 豆贝尔维 艾克斯 吾艾 贼德'
+                )
+            )
+            ->addColumn(
+                new Column(
                     'created_at',
-                    'DATETIME',
+                    'datetime',
                     [],
-                    'NULL',
+                    'DEFAULT NULL',
                     'The created at'
                 )
             )
             ->addColumn(
                 new Column(
                     'updated_at',
-                    'DATETIME',
+                    'datetime',
                     [],
-                    'NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+                    'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
                     'The updated at'
                 )
             )
