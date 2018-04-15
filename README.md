@@ -2,6 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/pongee/database-to-documention.svg)](https://packagist.org/packages/pongee/database-to-documention)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
+[![License](https://poser.pugx.org/pongee/database-to-documention/license)](https://packagist.org/packages/pongee/database-to-documention)
 [![Build Status](https://travis-ci.org/pongee/database-to-documention.svg?branch=master)](https://travis-ci.org/pongee/database-to-documention)
 
 ## Project goal
@@ -17,7 +18,8 @@ The aim of this project is to generate database documention from sql schema.
 
 ## Installation
 ```bash
-$ composer require pongee/database-to-documentation "^0.1"
+$ composer require pongee/database-to-documentation
+or add it the your composer.json and make a composer update pongee/database-to-documentation.
 ```
 ## Usage
 ### In console
@@ -44,7 +46,7 @@ include './vendor/autoload.php';
 
 $sqlSchema = '
   CREATE TABLE IF NOT EXISTS `foo` (
-    `id` INT(10) UNSIGNED NOT NULL COMMENT 'The id'
+    `id` INT(10) UNSIGNED NOT NULL COMMENT "The id"
    ) ENGINE=innodb DEFAULT CHARSET=utf8;
 ';
 
@@ -60,7 +62,7 @@ print $jsonExport->export($schema);
 <details>
   <summary>This will generate:</summary>
   <div>
-```json
+    <pre>
 {
     "tables": {
         "foo": {
@@ -86,6 +88,6 @@ print $jsonExport->export($schema);
     },
     "connections": []
 }
-```
-    <div>
+    <pre>
+   <div>
 </details>
