@@ -9,7 +9,8 @@ use Pongee\DatabaseToDocumention\DataObject\Sql\Schema;
 
 return (new Schema())
     ->addTable(
-        (new Table('user'))
+        (new Table())
+            ->setName('user')
             ->addColumn(
                 new Column(
                     'user_id',
@@ -55,7 +56,8 @@ return (new Schema())
             )
     )
     ->addTable(
-        (new Table('developer'))
+        (new Table())
+            ->setName('developer')
             ->addColumn(
                 new Column(
                     'id',
@@ -125,7 +127,8 @@ return (new Schema())
             )
     )
     ->addTable(
-        (new Table('log'))
+        (new Table())
+            ->setName('log')
             ->addColumn(
                 new Column(
                     'id',

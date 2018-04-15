@@ -106,7 +106,7 @@ class TableTest extends TestCase
 
     public function testInstanceOf(): void
     {
-        $table = new Table('table_name');
+        $table = new Table();
 
         $this->assertInstanceOf(TableInterface::class, $table);
     }
@@ -116,7 +116,8 @@ class TableTest extends TestCase
      */
     public function testName(string $name): void
     {
-        $table = new Table($name);
+        $table = new Table();
+        $table->setName($name);
 
         $this->assertEquals($name, $table->getName());
     }
@@ -126,7 +127,7 @@ class TableTest extends TestCase
      */
     public function testPrimaryKey(PrimaryKeyInterface $primaryKey): void
     {
-        $table = new Table('table_name');
+        $table = new Table();
 
         $table->setPrimaryKey($primaryKey);
         $this->assertEquals($primaryKey, $table->getPrimaryKey());
@@ -137,7 +138,7 @@ class TableTest extends TestCase
      */
     public function testColumn(ColumnInterface ...$columns): void
     {
-        $table = new Table('table_name');
+        $table = new Table();
 
         foreach ($columns as $column) {
             $table->addColumn($column);
@@ -153,7 +154,7 @@ class TableTest extends TestCase
      */
     public function testKey(SimpleIndexInterface ...$simpleIndexs): void
     {
-        $table = new Table('table_name');
+        $table = new Table();
 
         foreach ($simpleIndexs as $simpleIndex) {
             $table->addSimpleIndex($simpleIndex);
@@ -170,7 +171,7 @@ class TableTest extends TestCase
      */
     public function testUniqueKey(UniqueIndexInterface ...$uniquekeys): void
     {
-        $table = new Table('table_name');
+        $table = new Table();
 
         foreach ($uniquekeys as $uniquekey) {
             $table->addUniqueIndex($uniquekey);
@@ -187,7 +188,7 @@ class TableTest extends TestCase
      */
     public function testFulltextKey(FulltextIndexInterface ...$fulltextIndexs): void
     {
-        $table = new Table('table_name');
+        $table = new Table();
 
         foreach ($fulltextIndexs as $fulltextIndex) {
             $table->addFullTextIndex($fulltextIndex);
@@ -204,7 +205,7 @@ class TableTest extends TestCase
      */
     public function testSpatialKey(SpatialIndexInterface ...$spatialIndexs): void
     {
-        $table = new Table('table_name');
+        $table = new Table();
 
         foreach ($spatialIndexs as $spatialIndex) {
             $table->addSpatialIndex($spatialIndex);

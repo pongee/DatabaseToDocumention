@@ -14,15 +14,15 @@ class TableCollectionTest extends TestCase
     {
         return [
             [
-                new Table('member'),
+                (new Table())->setName('member'),
             ],
             [
-                new Table('account'),
+                (new Table())->setName('account'),
             ],
             [
-                new Table('member'),
-                new Table('account'),
-                new Table('log'),
+                (new Table())->setName('member'),
+                (new Table())->setName('account'),
+                (new Table())->setName('log'),
             ],
         ];
     }
@@ -53,7 +53,10 @@ class TableCollectionTest extends TestCase
         foreach ($tableCollection as $tableName => $table) {
             $this->assertEquals($tableName, $table->getName());
             $this->assertTrue(in_array($table->getName(), $tableNames));
+
+            $tableCollection->remove($table);
         }
+
 
         $this->assertTrue(is_array($tableCollection->toArray()));
     }

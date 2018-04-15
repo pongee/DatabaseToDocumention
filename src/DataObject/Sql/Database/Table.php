@@ -22,7 +22,7 @@ use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndex
 class Table implements TableInterface
 {
     /** @var string */
-    private $name;
+    private $name = '';
 
     /** @var ColumnCollectionInterface */
     private $columns;
@@ -42,9 +42,8 @@ class Table implements TableInterface
     /** @var SpatialIndexCollectionInterface */
     private $spatialIndexs;
 
-    public function __construct(string $name)
+    public function __construct()
     {
-        $this->name           = $name;
         $this->primaryKey     = null;
         $this->columns        = new ColumnCollection();
         $this->simpleIndexs   = new SimpleIndexCollection();
@@ -56,6 +55,13 @@ class Table implements TableInterface
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     public function setPrimaryKey(PrimaryKeyInterface $primaryKey): self

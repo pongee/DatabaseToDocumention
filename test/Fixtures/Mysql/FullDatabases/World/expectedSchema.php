@@ -9,7 +9,8 @@ use Pongee\DatabaseToDocumention\DataObject\Sql\Schema;
 
 return (new Schema())
     ->addTable(
-        (new Table('city'))
+        (new Table())
+            ->setName('city')
             ->addColumn(
                 new Column(
                     'ID',
@@ -72,7 +73,8 @@ return (new Schema())
         )
     )
     ->addTable(
-        (new Table('country'))
+        (new Table())
+            ->setName('country')
             ->addColumn(
                 new Column(
                     'Code',
@@ -211,7 +213,8 @@ return (new Schema())
             ->setPrimaryKey(new PrimaryKey(['Code']))
     )
     ->addTable(
-        (new Table('countrylanguage'))
+        (new Table())
+            ->setName('countrylanguage')
             ->addColumn(
                 new Column(
                     'CountryCode',

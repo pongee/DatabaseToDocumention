@@ -14,6 +14,13 @@ class TableCollection implements TableCollectionInterface
         return $this;
     }
 
+    public function remove(TableInterface $table): self
+    {
+        unset($this->tables[$table->getName()]);
+
+        return $this;
+    }
+
     public function rewind(): void
     {
         reset($this->tables);

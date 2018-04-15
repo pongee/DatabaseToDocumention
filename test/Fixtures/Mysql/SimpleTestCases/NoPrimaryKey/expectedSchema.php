@@ -7,7 +7,8 @@ use Pongee\DatabaseToDocumention\DataObject\Sql\Schema;
 
 return (new Schema())
     ->addTable(
-        (new Table('user'))
+        (new Table())
+            ->setName('user')
             ->addColumn(
                 new Column(
                     'user_id',

@@ -24,7 +24,8 @@ class MysqlParser extends ParserAbstract
 {
     protected function parseCreateCondition(string $createTableSchema): ?TableInterface
     {
-        $table = new Table($this->getTableNameFromCreateTableSchema($createTableSchema));
+        $table = new Table();
+        $table->setName($this->getTableNameFromCreateTableSchema($createTableSchema));
 
         foreach ($this->getColumnsWithoutRequiredTypeParametersFromCreateTableSchema($createTableSchema) as $column) {
             $table->addColumn($column);

@@ -16,9 +16,11 @@ use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndex
 
 interface TableInterface
 {
-    public function __construct(string $name);
+    public function __construct();
 
     public function getName(): string;
+
+    public function setName(string $name);
 
     public function setPrimaryKey(PrimaryKeyInterface $primaryKey);
 

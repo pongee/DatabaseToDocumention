@@ -27,7 +27,8 @@ class V1TemplateTest extends TestCase
             [
                 (new Schema())
                     ->addTable(
-                        (new Table('actor'))
+                        (new Table())
+                            ->setName('actor')
                             ->addColumn(
                                 new Column(
                                     'actor_id',
@@ -66,7 +67,8 @@ class V1TemplateTest extends TestCase
                             )
                     )
                     ->addTable(
-                        (new Table('address'))
+                        (new Table())
+                            ->setName('address')
                             ->addColumn(
                                 new Column(
                                     'address_id',
@@ -122,7 +124,8 @@ table(address) {
             [
                 (new Schema())
                     ->addTable(
-                        (new Table('member'))
+                        (new Table())
+                            ->setName('member')
                             ->addColumn(
                                 new Column(
                                     'id',
@@ -142,7 +145,8 @@ table(member) {
             [
                 (new Schema())
                     ->addTable(
-                        (new Table('member'))
+                        (new Table())
+                            ->setName('member')
                             ->addColumn(
                                 new Column(
                                     'id',
@@ -155,7 +159,8 @@ table(member) {
                             ->setPrimaryKey(new PrimaryKey(['id']))
                     )
                     ->addTable(
-                        (new Table('member_data'))
+                        (new Table())
+                            ->setName('member_data')
                             ->addColumn(
                                 new Column(
                                     'id',
@@ -219,7 +224,8 @@ table(member) {
                             )
                     )
                     ->addTable(
-                        (new Table('member_log'))
+                        (new Table())
+                            ->setName('member_log')
                             ->addColumn(
                                 new Column(
                                     'id',
