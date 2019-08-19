@@ -3,16 +3,18 @@
 namespace Pongee\DatabaseToDocumentation\Export;
 
 use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
+use Twig\Environment;
+use Twig\Loader\ArrayLoader;
 
 class Plantuml implements ExportInterface
 {
-    /** @var \Twig_Environment */
+    /** @var Environment */
     protected $twig;
 
     public function __construct(string $template)
     {
-        $this->twig = new \Twig_Environment(
-            new \Twig_Loader_Array([
+        $this->twig = new Environment(
+            new ArrayLoader([
                 'template' => $template,
             ])
         );
@@ -23,7 +25,7 @@ class Plantuml implements ExportInterface
         $text = $this->twig->render(
             'template',
             [
-                'tables'      => $schema->getTables(),
+                'tables' => $schema->getTables(),
                 'connections' => $schema->getConnections(),
             ]
         );
