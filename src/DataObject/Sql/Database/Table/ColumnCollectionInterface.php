@@ -10,5 +10,7 @@ interface ColumnCollectionInterface extends IteratorAggregate
 
     public function getColumnsName(): array;
 
+    public function offsetGet(string $columnName): ?ColumnInterface;
+
     public function getIterator(): ColumnIterator;
 }

@@ -27,14 +27,14 @@ class ColumnTest extends TestCase
         string $otherParameters,
         string $comment
     ): void {
-        $column = new Column($name, $type, $typeParameters, $otherParameters, $comment);
+        $sut = new Column($name, $type, $typeParameters, $otherParameters, $comment);
 
-        $this->assertInstanceOf(ColumnInterface::class, $column);
+        $this->assertInstanceOf(ColumnInterface::class, $sut);
 
-        $this->assertEquals($name, $column->getName());
-        $this->assertEquals($type, $column->getType());
-        $this->assertEquals($typeParameters, $column->getTypeParameters());
-        $this->assertEquals($otherParameters, $column->getOtherParameters());
-        $this->assertEquals($comment, $column->getComment());
+        $this->assertEquals($name, $sut->getName());
+        $this->assertEquals($type, $sut->getType());
+        $this->assertEquals($typeParameters, $sut->getTypeParameters());
+        $this->assertEquals($otherParameters, $sut->getOtherParameters());
+        $this->assertEquals($comment, $sut->getComment());
     }
 }

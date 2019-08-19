@@ -66,8 +66,8 @@ class MysqlParserTest extends TestCase
         SchemaInterface $schemaObject,
         ConnectionCollectionInterface $forcedConnections
     ) {
-        $mysqlParser = new MysqlParser();
-        $result      = $mysqlParser->run(file_get_contents($file->getRealPath()), $forcedConnections); //@todo
+        $sut = new MysqlParser();
+        $result = $sut->run(file_get_contents($file->getRealPath()), $forcedConnections); //@todo
 
         foreach ($result->getTables() as $table) {
             $expectedTable = $schemaObject->getTables()->offsetGet($table->getName());

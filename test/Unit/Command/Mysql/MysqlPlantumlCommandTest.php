@@ -93,8 +93,8 @@ class MysqlPlantumlCommandTest extends TestCase
                     ->add(new NotDefinedConnection('log', 'user', ['user_id'], ['user_id']))
             );
 
-        $command = new MysqlPlantumlCommand($parser, FIXTURES_DIRECTORY);
-        $command->run(
+        $sut = new MysqlPlantumlCommand($parser, FIXTURES_DIRECTORY);
+        $sut->run(
             new ArrayInput([
                 'file'         => $fakeSqlName,
                 '--template'   => $fakeTemplateName,

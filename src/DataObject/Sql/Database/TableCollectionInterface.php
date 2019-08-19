@@ -8,6 +8,8 @@ interface TableCollectionInterface extends IteratorAggregate
 {
     public function add(TableInterface $table);
 
+    public function offsetGet(string $tableName): ?TableInterface;
+
     public function getIterator(): TableIterator;
 
     public function jsonSerialize(): array;

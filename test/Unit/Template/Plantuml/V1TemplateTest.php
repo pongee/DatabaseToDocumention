@@ -376,11 +376,11 @@ connection_one_to_many(member_log, member)
     {
         $template = file_get_contents(__DIR__ . '/../../../../src/Template/Plantuml/v1.twig');
 
-        $plantuml = new Plantuml($template);
+        $sut = new Plantuml($template);
 
         $this->assertStringContainsString(
             $this->trim($extendOutput),
-            $this->trim($plantuml->export($schema))
+            $this->trim($sut->export($schema))
         );
     }
 

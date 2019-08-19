@@ -9,9 +9,9 @@ class SimpleIndexTest extends NamedIndexAbstract
 {
     public function testInstanceOf(): void
     {
-        $simpleIndex = new SimpleIndex('idx_id', ['id']);
+        $sut = new SimpleIndex('idx_id', ['id']);
 
-        $this->assertInstanceOf(SimpleIndexInterface::class, $simpleIndex);
+        $this->assertInstanceOf(SimpleIndexInterface::class, $sut);
     }
 
     /**
@@ -19,10 +19,10 @@ class SimpleIndexTest extends NamedIndexAbstract
      */
     public function testData(string $name, array $columns, string $otherParameters = ''): void
     {
-        $simpleIndex = new SimpleIndex($name, $columns, $otherParameters);
+        $sut = new SimpleIndex($name, $columns, $otherParameters);
 
-        $this->assertEquals($name, $simpleIndex->getName());
-        $this->assertEquals($columns, $simpleIndex->getColumns());
-        $this->assertEquals($otherParameters, $simpleIndex->getOtherParameters());
+        $this->assertEquals($name, $sut->getName());
+        $this->assertEquals($columns, $sut->getColumns());
+        $this->assertEquals($otherParameters, $sut->getOtherParameters());
     }
 }

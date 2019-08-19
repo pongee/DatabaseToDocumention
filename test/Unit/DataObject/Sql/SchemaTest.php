@@ -42,9 +42,9 @@ class SchemaTest extends TestCase
 
     public function testInstanceOf(): void
     {
-        $schema = new Schema();
+        $sut = new Schema();
 
-        $this->assertInstanceOf(SchemaInterface::class, $schema);
+        $this->assertInstanceOf(SchemaInterface::class, $sut);
     }
 
     /**
@@ -52,13 +52,13 @@ class SchemaTest extends TestCase
      */
     public function testTable(TableInterface ...$tables): void
     {
-        $schema = new Schema();
+        $sut = new Schema();
 
         foreach ($tables as $table) {
-            $schema->addTable($table);
+            $sut->addTable($table);
         }
 
-        foreach ($schema->getTables() as $table) {
+        foreach ($sut->getTables() as $table) {
             $this->assertTrue(in_array($table, $tables, true));
         }
     }
@@ -68,13 +68,13 @@ class SchemaTest extends TestCase
      */
     public function testConnection(ConnectionInterface ...$connections): void
     {
-        $schema = new Schema();
+        $sut = new Schema();
 
         foreach ($connections as $connection) {
-            $schema->addConnection($connection);
+            $sut->addConnection($connection);
         }
 
-        foreach ($schema->getConnections() as $connection) {
+        foreach ($sut->getConnections() as $connection) {
             $this->assertTrue(in_array($connection, $connections, true));
         }
     }

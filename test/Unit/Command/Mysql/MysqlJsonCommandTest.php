@@ -62,8 +62,8 @@ class MysqlJsonCommandTest extends TestCase
                     ->add(new NotDefinedConnection('log', 'user', ['user_id'], ['user_id']))
             );
 
-        $command = new MysqlJsonCommand($parser, FIXTURES_DIRECTORY);
-        $command->run(
+        $sut = new MysqlJsonCommand($parser, FIXTURES_DIRECTORY);
+        $sut->run(
             new ArrayInput([
                 'file'         => $fakeSqlName,
                 '--connection' => ['log.user_id=>user.user_id']

@@ -239,8 +239,8 @@ class JsonTest extends TestCase
      */
     public function testExportTableWithColumns(SchemaInterface $schema, string $expectedJson)
     {
-        $plantuml = new Json();
+        $sut = new Json();
 
-        $this->assertJsonStringEqualsJsonString($expectedJson, $plantuml->export($schema));
+        $this->assertJsonStringEqualsJsonString($expectedJson, $sut->export($schema));
     }
 }

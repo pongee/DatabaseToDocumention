@@ -25,9 +25,9 @@ class PrimaryKeyTest extends TestCase
 
     public function testInstanceOf(): void
     {
-        $primaryKey = new PrimaryKey([]);
+        $sut = new PrimaryKey([]);
 
-        $this->assertInstanceOf(PrimaryKeyInterface::class, $primaryKey);
+        $this->assertInstanceOf(PrimaryKeyInterface::class, $sut);
     }
 
     /**
@@ -35,9 +35,9 @@ class PrimaryKeyTest extends TestCase
      */
     public function testIndex(array $columns, string $otherParameters = ''): void
     {
-        $primaryKey = new PrimaryKey($columns, $otherParameters);
+        $sut = new PrimaryKey($columns, $otherParameters);
 
-        $this->assertEquals($columns, $primaryKey->getColumns());
-        $this->assertEquals($otherParameters, $primaryKey->getOtherParameters());
+        $this->assertEquals($columns, $sut->getColumns());
+        $this->assertEquals($otherParameters, $sut->getOtherParameters());
     }
 }

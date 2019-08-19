@@ -73,7 +73,7 @@ class PlantumlTest extends TestCase
      */
     public function testExportTableWithColumns(SchemaInterface $schema)
     {
-        $plantuml = new Plantuml(
+        $sut = new Plantuml(
             'tables:{{ tables.jsonSerialize()|json_encode|raw }}|connections:{{ connections.jsonSerialize()|json_encode()|raw }}'
         );
 
@@ -85,7 +85,7 @@ class PlantumlTest extends TestCase
                     '%connections%' => json_encode($schema->getConnections()->jsonSerialize()),
                 ]
             ),
-            $plantuml->export($schema)
+            $sut->export($schema)
         );
     }
 }
