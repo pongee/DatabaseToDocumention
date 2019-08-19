@@ -19,7 +19,7 @@ class Schema implements SchemaInterface
 
     public function __construct()
     {
-        $this->tableCollection      = new TableCollection();
+        $this->tableCollection = new TableCollection();
         $this->connectionCollection = new ConnectionCollection();
     }
 

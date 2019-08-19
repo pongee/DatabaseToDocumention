@@ -6,7 +6,7 @@ class PrimaryKey extends IndexAbstract implements PrimaryKeyInterface
 {
     public function __construct(array $columns, string $otherParameters = '')
     {
-        $this->columns         = $columns;
+        $this->columns = $columns;
         $this->otherParameters = $otherParameters;
     }
 }

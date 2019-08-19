@@ -40,29 +40,6 @@ class Json implements ExportInterface
         );
     }
 
-    private function getConnction(ConnectionInterface $connection): array
-    {
-        return [
-            'type' => $connection->getType(),
-            'childTableName' => $connection->getChildTableName(),
-            'childTableColumns' => $connection->getChildTableColumns(),
-            'parentTableName' => $connection->getParentTableName(),
-            'parentTableColumns' => $connection->getParentTableColumns(),
-        ];
-    }
-
-    private function getPrimiaryKey(TableInterface $table): array
-    {
-        if ($table->getPrimaryKey()) {
-            return [
-                'columns' => $table->getPrimaryKey()->getColumns(),
-                'otherParameters' => $table->getPrimaryKey()->getOtherParameters(),
-            ];
-        }
-
-        return [];
-    }
-
     private function getColumns(TableInterface $table): array
     {
         $columns = [];
@@ -79,6 +56,16 @@ class Json implements ExportInterface
         return $columns;
     }
 
+    private function getSimpleIndexs(TableInterface $table): array
+    {
+        $indexs = [];
+        foreach ($table->getSimpleIndexs() as $index) {
+            $indexs[] = $this->getIndexData($index);
+        }
+
+        return $indexs;
+    }
+
     private function getIndexData(IndexInterface $index): array
     {
         $data = [
@@ -93,10 +80,10 @@ class Json implements ExportInterface
         return $data;
     }
 
-    private function getSimpleIndexs(TableInterface $table): array
+    private function getSpatialIndexs(TableInterface $table): array
     {
         $indexs = [];
-        foreach ($table->getSimpleIndexs() as $index) {
+        foreach ($table->getSpatialIndexs() as $index) {
             $indexs[] = $this->getIndexData($index);
         }
 
@@ -123,13 +110,26 @@ class Json implements ExportInterface
         return $indexs;
     }
 
-    private function getSpatialIndexs(TableInterface $table): array
+    private function getPrimiaryKey(TableInterface $table): array
     {
-        $indexs = [];
-        foreach ($table->getSpatialIndexs() as $index) {
-            $indexs[] = $this->getIndexData($index);
+        if ($table->getPrimaryKey()) {
+            return [
+                'columns' => $table->getPrimaryKey()->getColumns(),
+                'otherParameters' => $table->getPrimaryKey()->getOtherParameters(),
+            ];
         }
 
-        return $indexs;
+        return [];
+    }
+
+    private function getConnction(ConnectionInterface $connection): array
+    {
+        return [
+            'type' => $connection->getType(),
+            'childTableName' => $connection->getChildTableName(),
+            'childTableColumns' => $connection->getChildTableColumns(),
+            'parentTableName' => $connection->getParentTableName(),
+            'parentTableColumns' => $connection->getParentTableColumns(),
+        ];
     }
 }

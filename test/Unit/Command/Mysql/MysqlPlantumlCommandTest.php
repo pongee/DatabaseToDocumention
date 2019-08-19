@@ -19,6 +19,14 @@ class MysqlPlantumlCommandTest extends TestCase
         $this->assertNotEmpty($this->getCommand()->getName());
     }
 
+    private function getCommand(string $rootDir = ''): MysqlPlantumlCommand
+    {
+        /** @var MysqlParser $mysqlParser */
+        $mysqlParser = $this->createMock(MysqlParser::class);
+
+        return new MysqlPlantumlCommand($mysqlParser, $rootDir);
+    }
+
     public function testDescription(): void
     {
         $this->assertNotEmpty($this->getCommand()->getDescription());
@@ -66,7 +74,7 @@ class MysqlPlantumlCommandTest extends TestCase
         $command = $this->getCommand(FIXTURES_DIRECTORY);
         $command->run(
             new ArrayInput([
-                'file'       => 'fake.sql',
+                'file' => 'fake.sql',
                 '--template' => 'badTemplateFile.twig',
             ]),
             new BufferedOutput()
@@ -75,9 +83,9 @@ class MysqlPlantumlCommandTest extends TestCase
 
     public function testRunWithAllParameters(): void
     {
-        $fakeSqlName         = 'fake.sql';
-        $fakeSqlContent      = file_get_contents(FIXTURES_DIRECTORY . $fakeSqlName);
-        $fakeTemplateName    = 'fake.twig';
+        $fakeSqlName = 'fake.sql';
+        $fakeSqlContent = file_get_contents(FIXTURES_DIRECTORY . $fakeSqlName);
+        $fakeTemplateName = 'fake.twig';
         $fakeTemplateContent = file_get_contents(FIXTURES_DIRECTORY . 'fake.twig');
 
         $output = new BufferedOutput();
@@ -96,21 +104,13 @@ class MysqlPlantumlCommandTest extends TestCase
         $sut = new MysqlPlantumlCommand($parser, FIXTURES_DIRECTORY);
         $sut->run(
             new ArrayInput([
-                'file'         => $fakeSqlName,
-                '--template'   => $fakeTemplateName,
+                'file' => $fakeSqlName,
+                '--template' => $fakeTemplateName,
                 '--connection' => ['log.user_id=>user.user_id'],
             ]),
             $output
         );
 
         $this->assertEquals($fakeTemplateContent, $output->fetch());
-    }
-
-    private function getCommand(string $rootDir = ''): MysqlPlantumlCommand
-    {
-        /** @var MysqlParser $mysqlParser */
-        $mysqlParser = $this->createMock(MysqlParser::class);
-
-        return new MysqlPlantumlCommand($mysqlParser, $rootDir);
     }
 }

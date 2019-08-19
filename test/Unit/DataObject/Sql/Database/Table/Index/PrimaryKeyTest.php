@@ -15,7 +15,8 @@ class PrimaryKeyTest extends TestCase
                 ['member_id']
             ],
             [
-                ['member_id'], 'USING HASH'
+                ['member_id'],
+                'USING HASH'
             ],
             [
                 ['member_id', 'type']

@@ -24,9 +24,9 @@ class MysqlParserTest extends TestCase
         foreach ($directoryIterator as $file) {
             /** @var SplFileInfo $file */
             if ($file->isFile() && $file->getExtension() === 'sql') {
-                $forcedConnections  = new ConnectionCollection();
+                $forcedConnections = new ConnectionCollection();
                 $expendedSchemaPath = dirname($file->getRealPath()) . '/expectedSchema.php';
-                $schemaObject       = include $expendedSchemaPath;
+                $schemaObject = include $expendedSchemaPath;
 
                 if (!$schemaObject instanceof SchemaInterface) {
                     throw new \InvalidArgumentException(

@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class MysqlPlantumlCommand extends MysqlCommandAbstract
 {
-    protected const OPTION_TEMPLATE  = 'template';
+    protected const OPTION_TEMPLATE = 'template';
     protected const DEFAULT_TEMPLATE = 'src/Template/Plantuml/v1.twig';
 
     protected function configure(): void
@@ -29,7 +29,7 @@ class MysqlPlantumlCommand extends MysqlCommandAbstract
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $sqlFileContent      = $this->getSqlFileContent($input);
+        $sqlFileContent = $this->getSqlFileContent($input);
         $templateFileContent = $this->getTemplateFileContent($input);
 
         $plantuml = new Plantuml($templateFileContent);

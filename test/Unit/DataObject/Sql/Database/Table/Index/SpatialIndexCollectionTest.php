@@ -24,6 +24,7 @@ class SpatialIndexCollectionTest extends TestCase
             ],
         ];
     }
+
     /**
      * @dataProvider getSpatialIndexsProvider
      */

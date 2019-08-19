@@ -18,6 +18,14 @@ class MysqlJsonCommandTest extends TestCase
         $this->assertNotEmpty($this->getCommand()->getName());
     }
 
+    private function getCommand(string $rootDir = ''): MysqlJsonCommand
+    {
+        /** @var MysqlParser $mysqlParser */
+        $mysqlParser = $this->createMock(MysqlParser::class);
+
+        return new MysqlJsonCommand($mysqlParser, $rootDir);
+    }
+
     public function testDescription(): void
     {
         $this->assertNotEmpty($this->getCommand()->getDescription());
@@ -47,7 +55,7 @@ class MysqlJsonCommandTest extends TestCase
 
     public function testCommand(): void
     {
-        $fakeSqlName    = 'fake.sql';
+        $fakeSqlName = 'fake.sql';
         $fakeSqlContent = file_get_contents(FIXTURES_DIRECTORY . $fakeSqlName);
 
         $output = new BufferedOutput();
@@ -65,7 +73,7 @@ class MysqlJsonCommandTest extends TestCase
         $sut = new MysqlJsonCommand($parser, FIXTURES_DIRECTORY);
         $sut->run(
             new ArrayInput([
-                'file'         => $fakeSqlName,
+                'file' => $fakeSqlName,
                 '--connection' => ['log.user_id=>user.user_id']
             ]),
             $output
@@ -73,18 +81,10 @@ class MysqlJsonCommandTest extends TestCase
 
         $this->assertJsonStringEqualsJsonString(
             json_encode([
-                'tables'      => [],
+                'tables' => [],
                 'connections' => []
             ]),
             $output->fetch()
         );
-    }
-
-    private function getCommand(string $rootDir = ''): MysqlJsonCommand
-    {
-        /** @var MysqlParser $mysqlParser */
-        $mysqlParser = $this->createMock(MysqlParser::class);
-
-        return new MysqlJsonCommand($mysqlParser, $rootDir);
     }
 }

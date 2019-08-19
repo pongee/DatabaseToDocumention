@@ -9,8 +9,8 @@ abstract class NamedIndexAbstract extends IndexAbstract
 
     public function __construct(string $name, array $columns, string $otherParameters = '')
     {
-        $this->name            = $name;
-        $this->columns         = $columns;
+        $this->name = $name;
+        $this->columns = $columns;
         $this->otherParameters = $otherParameters;
     }
 

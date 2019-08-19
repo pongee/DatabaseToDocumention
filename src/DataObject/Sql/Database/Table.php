@@ -44,11 +44,11 @@ class Table implements TableInterface
 
     public function __construct()
     {
-        $this->columns        = new ColumnCollection();
-        $this->simpleIndexs   = new SimpleIndexCollection();
-        $this->uniqueIndexs   = new UniqueIndexCollection();
+        $this->columns = new ColumnCollection();
+        $this->simpleIndexs = new SimpleIndexCollection();
+        $this->uniqueIndexs = new UniqueIndexCollection();
         $this->fulltextIndexs = new FulltextIndexCollection();
-        $this->spatialIndexs  = new SpatialIndexCollection();
+        $this->spatialIndexs = new SpatialIndexCollection();
     }
 
     public function getName(): string
@@ -59,13 +59,6 @@ class Table implements TableInterface
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function setPrimaryKey(PrimaryKeyInterface $primaryKey): self
-    {
-        $this->primaryKey = $primaryKey;
 
         return $this;
     }
@@ -113,6 +106,13 @@ class Table implements TableInterface
     public function getPrimaryKey(): ?PrimaryKeyInterface
     {
         return $this->primaryKey;
+    }
+
+    public function setPrimaryKey(PrimaryKeyInterface $primaryKey): self
+    {
+        $this->primaryKey = $primaryKey;
+
+        return $this;
     }
 
     public function getSimpleIndexs(): SimpleIndexCollectionInterface

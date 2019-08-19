@@ -22,9 +22,9 @@ abstract class ConnectionAbstract implements ConnectionInterface
         array $childTableColumns,
         array $parentTableColumns
     ) {
-        $this->childTablename     = $childTablename;
-        $this->parentTableName    = $parentTableName;
-        $this->childTableColumns  = $childTableColumns;
+        $this->childTablename = $childTablename;
+        $this->parentTableName = $parentTableName;
+        $this->childTableColumns = $childTableColumns;
         $this->parentTableColumns = $parentTableColumns;
     }
 

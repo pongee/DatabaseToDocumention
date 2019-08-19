@@ -55,116 +55,6 @@ abstract class ParserAbstract implements ParserInterface
         return $schema;
     }
 
-    protected function removeFormating($schema): string
-    {
-        return preg_replace(
-            '/^\s+/m',
-            '',
-            $schema
-        );
-    }
-
-    protected function removeLineComments($schema): string
-    {
-        return preg_replace(
-            '#--.+$#m',
-            '',
-            $schema
-        );
-    }
-
-    protected function getSafeRandomString(string $schema): string
-    {
-        do {
-            $safeRandomString = (string)rand();
-        } while (strpos(
-            $schema,
-            $safeRandomString
-        ) !== false);
-
-        return $safeRandomString;
-    }
-
-    protected function replaceCharactersInString(string $schema, array $replacePairs)
-    {
-        return preg_replace_callback(
-            '#(\'.*\')#Uxsm',
-            static function ($matches) use ($replacePairs): string {
-                return strtr(
-                    $matches[0],
-                    $replacePairs
-                );
-            },
-            $schema
-        );
-    }
-
-    protected function getCreateTableConditions(string $schema): array
-    {
-        $semicolonReplaceString = $this->getSafeRandomString($schema);
-
-        $schema = $this->replaceCharactersInString(
-            $schema,
-            [';' => $semicolonReplaceString]
-        );
-
-        preg_match_all(
-            '
-            #
-            
-                (?<createConditions>
-                    CREATE\s+TABLE\s+.+\(.*\).*
-                    (;|$)
-                )
-            #xsUi',
-            $schema,
-            $matches
-        );
-
-        $createTables = [];
-        foreach ($matches['createConditions'] as $condition) {
-            $createTables[] = $this->replaceCharactersInString(
-                $condition,
-                [$semicolonReplaceString => ';']
-            );
-        }
-
-        return $createTables;
-    }
-
-    protected function removeMultiLineComments($schema): string
-    {
-        $commentBeginReplaceString = $this->getSafeRandomString($schema);
-        $commentEndReplaceString   = $this->getSafeRandomString($schema);
-
-        // Replace /* and */ in string
-        $schema = $this->replaceCharactersInString(
-            $schema,
-            [
-                '/*' => $commentBeginReplaceString,
-                '*/' => $commentEndReplaceString,
-            ]
-        );
-
-        // Remove multiline coments
-        $schema = preg_replace(
-            '#(/\*.*\*/)#Us',
-            '',
-            $schema
-        );
-
-        // Repair /* and */ in string
-        $schema = $this->replaceCharactersInString(
-            $schema,
-            [
-                $commentBeginReplaceString => '/*',
-                $commentEndReplaceString => '*/',
-            ]
-        );
-
-        return $schema;
-    }
-
     public function getConnectionsByAlterTable(string $sqls): ConnectionCollectionInterface
     {
         preg_match_all(
@@ -186,30 +76,6 @@ abstract class ParserAbstract implements ParserInterface
         if (!empty($alterTableMatches['alterTableCondition'])) {
             foreach ($alterTableMatches['alterTableCondition'] as $index => $condition) {
                 $conditions[$alterTableMatches['childTableName'][$index]][] = $condition;
-            }
-        }
-
-        return $this->generateConnections($conditions);
-    }
-
-    public function getConnectionsByCreateTable(string $sql): ConnectionCollectionInterface
-    {
-        preg_match_all(
-            '/#
-            (
-                CONSTRAINT
-                 (?<foreignKeyCondition>.*)$
-               
-            )
-        #/mxsU',
-            $sql,
-            $createTableMatches
-        );
-
-        $conditions = [];
-        if (!empty($createTableMatches['foreignKeyCondition'])) {
-            foreach ($createTableMatches['foreignKeyCondition'] as $condition) {
-                $conditions[$this->getTableNameFromCreateTableSchema($sql)][] = $condition;
             }
         }
 
@@ -302,6 +168,140 @@ abstract class ParserAbstract implements ParserInterface
         return $connectionCollection;
     }
 
+    protected function removeLineComments($schema): string
+    {
+        return preg_replace(
+            '#--.+$#m',
+            '',
+            $schema
+        );
+    }
+
+    protected function removeMultiLineComments($schema): string
+    {
+        $commentBeginReplaceString = $this->getSafeRandomString($schema);
+        $commentEndReplaceString = $this->getSafeRandomString($schema);
+
+        // Replace /* and */ in string
+        $schema = $this->replaceCharactersInString(
+            $schema,
+            [
+                '/*' => $commentBeginReplaceString,
+                '*/' => $commentEndReplaceString,
+            ]
+        );
+
+        // Remove multiline coments
+        $schema = preg_replace(
+            '#(/\*.*\*/)#Us',
+            '',
+            $schema
+        );
+
+        // Repair /* and */ in string
+        $schema = $this->replaceCharactersInString(
+            $schema,
+            [
+                $commentBeginReplaceString => '/*',
+                $commentEndReplaceString => '*/',
+            ]
+        );
+
+        return $schema;
+    }
+
+    protected function getSafeRandomString(string $schema): string
+    {
+        do {
+            $safeRandomString = (string)rand();
+        } while (strpos(
+            $schema,
+            $safeRandomString
+        ) !== false);
+
+        return $safeRandomString;
+    }
+
+    protected function replaceCharactersInString(string $schema, array $replacePairs)
+    {
+        return preg_replace_callback(
+            '#(\'.*\')#Uxsm',
+            static function ($matches) use ($replacePairs): string {
+                return strtr(
+                    $matches[0],
+                    $replacePairs
+                );
+            },
+            $schema
+        );
+    }
+
+    protected function removeFormating($schema): string
+    {
+        return preg_replace(
+            '/^\s+/m',
+            '',
+            $schema
+        );
+    }
+
+    protected function getCreateTableConditions(string $schema): array
+    {
+        $semicolonReplaceString = $this->getSafeRandomString($schema);
+
+        $schema = $this->replaceCharactersInString(
+            $schema,
+            [';' => $semicolonReplaceString]
+        );
+
+        preg_match_all(
+            '
+            #
+            
+                (?<createConditions>
+                    CREATE\s+TABLE\s+.+\(.*\).*
+                    (;|$)
+                )
+            #xsUi',
+            $schema,
+            $matches
+        );
+
+        $createTables = [];
+        foreach ($matches['createConditions'] as $condition) {
+            $createTables[] = $this->replaceCharactersInString(
+                $condition,
+                [$semicolonReplaceString => ';']
+            );
+        }
+
+        return $createTables;
+    }
+
+    public function getConnectionsByCreateTable(string $sql): ConnectionCollectionInterface
+    {
+        preg_match_all(
+            '/#
+            (
+                CONSTRAINT
+                 (?<foreignKeyCondition>.*)$
+               
+            )
+        #/mxsU',
+            $sql,
+            $createTableMatches
+        );
+
+        $conditions = [];
+        if (!empty($createTableMatches['foreignKeyCondition'])) {
+            foreach ($createTableMatches['foreignKeyCondition'] as $condition) {
+                $conditions[$this->getTableNameFromCreateTableSchema($sql)][] = $condition;
+            }
+        }
+
+        return $this->generateConnections($conditions);
+    }
+
     private function parserConnections(
         TableCollection $tables,
         ConnectionCollectionInterface $connections
@@ -320,10 +320,10 @@ abstract class ParserAbstract implements ParserInterface
 
                         if ($parentTable instanceof TableInterface
                             && empty(
-                                array_diff(
-                                    $connection->getParentTableColumns(),
-                                    $parentTable->getColumns()->getColumnsName()
-                                )
+                            array_diff(
+                                $connection->getParentTableColumns(),
+                                $parentTable->getColumns()->getColumnsName()
+                            )
                             )
                             && $connection->getParentTableName() !== $iteratedTable->getName()
                         ) {
