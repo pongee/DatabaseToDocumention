@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\Parser;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\Parser;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
-use Pongee\DatabaseToDocumention\Parser\MysqlParser;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\Parser\MysqlParser;
 use RecursiveIteratorIterator;
 use SplFileInfo;
 

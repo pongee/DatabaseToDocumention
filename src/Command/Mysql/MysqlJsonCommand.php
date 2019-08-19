@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Command\Mysql;
+namespace Pongee\DatabaseToDocumentation\Command\Mysql;
 
-use Pongee\DatabaseToDocumention\Export\Json;
+use Pongee\DatabaseToDocumentation\Export\Json;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

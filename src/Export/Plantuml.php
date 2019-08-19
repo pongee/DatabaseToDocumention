@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Export;
+namespace Pongee\DatabaseToDocumentation\Export;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
 
 class Plantuml implements ExportInterface
 {

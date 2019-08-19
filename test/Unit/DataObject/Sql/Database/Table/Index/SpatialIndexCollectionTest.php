@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Database\Table\Index;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database\Table\Index;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndexCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndexCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
 
 class SpatialIndexCollectionTest extends TestCase
 {

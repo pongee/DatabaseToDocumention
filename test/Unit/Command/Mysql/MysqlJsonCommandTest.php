@@ -1,12 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\Command\Mysql;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\Command\Mysql;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\Command\Mysql\MysqlJsonCommand;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\NotDefinedConnection;
-use Pongee\DatabaseToDocumention\Parser\MysqlParser;
+use Pongee\DatabaseToDocumentation\Command\Mysql\MysqlJsonCommand;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\NotDefinedConnection;
+use Pongee\DatabaseToDocumentation\Parser\MysqlParser;
+use RuntimeException as RuntimeExceptionAlias;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
@@ -30,12 +31,11 @@ class MysqlJsonCommandTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Not enough arguments (missing: "file").
-     */
     public function testNoParameters(): void
     {
+        $this->expectException(RuntimeExceptionAlias::class);
+        $this->expectExceptionMessage('Not enough arguments (missing: "file").');
+
         $parser = new MysqlParser();
 
         $command = new MysqlJsonCommand($parser, '');

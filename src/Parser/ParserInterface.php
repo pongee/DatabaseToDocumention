@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Parser;
+namespace Pongee\DatabaseToDocumentation\Parser;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
 
 interface ParserInterface
 {

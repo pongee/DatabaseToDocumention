@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Command\Mysql;
+namespace Pongee\DatabaseToDocumentation\Command\Mysql;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\NotDefinedConnection;
-use Pongee\DatabaseToDocumention\Parser\ParserInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\NotDefinedConnection;
+use Pongee\DatabaseToDocumentation\Parser\ParserInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\RuntimeException;
 use Symfony\Component\Console\Input\InputArgument;

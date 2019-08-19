@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit
-    backupGlobals="false"
-    backupStaticAttributes="false"
-    colors="true"
+<phpunit bootstrap="test/bootstrap.php"
+    colors="false"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
     convertWarningsToExceptions="true"
-    processIsolation="false"
-    stopOnFailure="false"
-    syntaxCheck="true"
-    bootstrap="test/bootstrap.php"
->
+    stopOnFailure="false">
     <logging>
-        <log type="coverage-html" target="./doc/coverage" charset="UTF-8"/>
+        <log type="coverage-html" target="./doc/coverage"/>
         <log type="coverage-text" target="php://stdout"/>
     </logging>
     <filter>

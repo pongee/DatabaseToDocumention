@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Export;
+namespace Pongee\DatabaseToDocumentation\Export;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\IndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\IndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
 
 class Json implements ExportInterface
 {

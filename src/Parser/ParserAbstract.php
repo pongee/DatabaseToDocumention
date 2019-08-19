@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Parser;
+namespace Pongee\DatabaseToDocumentation\Parser;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\NotDefinedConnection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToManyConnection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToOneConnection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Schema;
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\NotDefinedConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToManyConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToOneConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Schema;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
 
 abstract class ParserAbstract implements ParserInterface
 {

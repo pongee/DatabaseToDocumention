@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Database\Table;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database\Table;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Column;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Column;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnInterface;
 
 class ColumnCollectionTest extends TestCase
 {

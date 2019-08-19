@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Table\Database;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Table\Database;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToManyConnection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToOneConnection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Schema;
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToManyConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToOneConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Schema;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
 
 class SchemaTest extends TestCase
 {

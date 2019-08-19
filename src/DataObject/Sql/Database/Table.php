@@ -1,23 +1,23 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\DataObject\Sql\Database;
+namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndexCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndexCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndexCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndexCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndexCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndexCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndexCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndexCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndexCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndexCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndexCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndexCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueIndexCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueIndexCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueIndexInterface;
 
 class Table implements TableInterface
 {
@@ -44,7 +44,6 @@ class Table implements TableInterface
 
     public function __construct()
     {
-        $this->primaryKey     = null;
         $this->columns        = new ColumnCollection();
         $this->simpleIndexs   = new SimpleIndexCollection();
         $this->uniqueIndexs   = new UniqueIndexCollection();

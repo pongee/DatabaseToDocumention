@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Table\Database;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Table\Database;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Column;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKey;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Column;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKey;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
 
 class TableTest extends TestCase
 {

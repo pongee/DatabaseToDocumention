@@ -1,12 +1,12 @@
-# Database documention generator
+# Database documentation generator
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/pongee/database-to-documention.svg)](https://packagist.org/packages/pongee/database-to-documention)
+[![Latest Stable Version](https://img.shields.io/packagist/v/pongee/database-to-documentation.svg)](https://packagist.org/packages/pongee/database-to-documentation)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
-[![License](https://poser.pugx.org/pongee/database-to-documention/license)](https://packagist.org/packages/pongee/database-to-documention)
-[![Build Status](https://travis-ci.org/pongee/database-to-documention.svg?branch=master)](https://travis-ci.org/pongee/database-to-documention)
+[![License](https://poser.pugx.org/pongee/database-to-documentation/license)](https://packagist.org/packages/pongee/database-to-documentation)
+[![Build Status](https://travis-ci.org/pongee/database-to-documentation.svg?branch=master)](https://travis-ci.org/pongee/database-to-documentation)
 
 ## Project goal
-The aim of this project is to generate database documention from sql schema.
+The aim of this project is to generate database documentation from sql schema.
 
 ## Supported databases
 - MySQL
@@ -26,21 +26,21 @@ or add it the your composer.json and make a composer update pongee/database-to-d
 #### Json export
 
 ```bash
-$  php71 ./database-to-documention mysql:json ./my_mysql_schema_export.sql
+$  php71 ./database-to-documentation mysql:json ./my_mysql_schema_export.sql
 ```
 
 #### Plantuml export
 ```bash
-$  php71 ./database-to-documention mysql:plantuml ./my_mysql_schema_export.sql
+$  php71 ./database-to-documentation mysql:plantuml ./my_mysql_schema_export.sql
 ```
 
 ### PHP
 ```php
-<?php
+<?php declare(strict_types=1);
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\Export\Json;
-use Pongee\DatabaseToDocumention\Parser\MysqlParser;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\Export\Json;
+use Pongee\DatabaseToDocumentation\Parser\MysqlParser;
 
 include './vendor/autoload.php';
 

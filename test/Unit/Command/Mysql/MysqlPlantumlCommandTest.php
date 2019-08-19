@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\Command\Mysql;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\Command\Mysql;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\Command\Mysql\MysqlPlantumlCommand;
-use Pongee\DatabaseToDocumention\Command\Plantuml;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\NotDefinedConnection;
-use Pongee\DatabaseToDocumention\Parser\MysqlParser;
+use Pongee\DatabaseToDocumentation\Command\Mysql\MysqlPlantumlCommand;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\NotDefinedConnection;
+use Pongee\DatabaseToDocumentation\Parser\MysqlParser;
+use RuntimeException as RuntimeExceptionAlias;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
@@ -32,12 +32,11 @@ class MysqlPlantumlCommandTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Not enough arguments (missing: "file").
-     */
     public function testRunWithNoParameters(): void
     {
+        $this->expectException(RuntimeExceptionAlias::class);
+        $this->expectExceptionMessage('Not enough arguments (missing: "file").');
+
         $command = $this->getCommand();
         $command->run(
             new ArrayInput([]),
@@ -45,12 +44,11 @@ class MysqlPlantumlCommandTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Bad sql file path.
-     */
     public function testRunWithBadSqlPath(): void
     {
+        $this->expectException(RuntimeExceptionAlias::class);
+        $this->expectExceptionMessage('Bad sql file path.');
+
         $command = $this->getCommand(FIXTURES_DIRECTORY);
         $command->run(
             new ArrayInput([
@@ -60,12 +58,11 @@ class MysqlPlantumlCommandTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Bad template file path.
-     */
     public function testRunWithBadTemplatePath(): void
     {
+        $this->expectException(RuntimeExceptionAlias::class);
+        $this->expectExceptionMessage('Bad template file path.');
+
         $command = $this->getCommand(FIXTURES_DIRECTORY);
         $command->run(
             new ArrayInput([

@@ -10,18 +10,18 @@ foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', 
     }
 }
 
-$parser = new \Pongee\DatabaseToDocumention\Parser\MysqlParser();
+$parser = new \Pongee\DatabaseToDocumentation\Parser\MysqlParser();
 
 $application = new Application();
 
 $application->add(
-    new \Pongee\DatabaseToDocumention\Command\Mysql\MysqlPlantumlCommand(
+    new \Pongee\DatabaseToDocumentation\Command\Mysql\MysqlPlantumlCommand(
         $parser, getcwd()
     )
 );
 
 $application->add(
-    new \Pongee\DatabaseToDocumention\Command\Mysql\MysqlJsonCommand(
+    new \Pongee\DatabaseToDocumentation\Command\Mysql\MysqlJsonCommand(
         $parser, getcwd()
     )
 );

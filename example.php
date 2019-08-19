@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\Export\Json;
-use Pongee\DatabaseToDocumention\Parser\MysqlParser;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\Export\Json;
+use Pongee\DatabaseToDocumentation\Parser\MysqlParser;
 
 include './vendor/autoload.php';
 
