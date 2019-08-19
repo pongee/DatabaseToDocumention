@@ -14,28 +14,8 @@ class SpatialIndexCollection implements SpatialIndexCollectionInterface
         return $this;
     }
 
-    public function rewind(): void
+    public function getIterator(): SpatialIndexIterator
     {
-        reset($this->spatialIndexs);
-    }
-
-    public function current(): ?SpatialIndexInterface
-    {
-        return current($this->spatialIndexs) ?: null;
-    }
-
-    public function key(): ?int
-    {
-        return key($this->spatialIndexs) ?: null;
-    }
-
-    public function next(): ?SpatialIndexInterface
-    {
-        return next($this->spatialIndexs) ?: null;
-    }
-
-    public function valid(): bool
-    {
-        return $this->current() instanceof SpatialIndexInterface;
+        return new SpatialIndexIterator($this->spatialIndexs);
     }
 }

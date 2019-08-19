@@ -28,7 +28,7 @@ class Table implements TableInterface
     private $columns;
 
     /** @var PrimaryKeyInterface */
-    private $primaryKey = null;
+    private $primaryKey;
 
     /** @var SimpleIndexCollectionInterface */
     private $simpleIndexs;

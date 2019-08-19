@@ -14,28 +14,8 @@ class UniqueIndexCollection implements UniqueIndexCollectionInterface
         return $this;
     }
 
-    public function rewind(): void
+    public function getIterator(): UniqueIndexIterator
     {
-        reset($this->uniqueIndexs);
-    }
-
-    public function current(): ?UniqueIndexInterface
-    {
-        return current($this->uniqueIndexs) ?: null;
-    }
-
-    public function key(): ?int
-    {
-        return key($this->uniqueIndexs) ?: null;
-    }
-
-    public function next(): ?UniqueIndexInterface
-    {
-        return next($this->uniqueIndexs) ?: null;
-    }
-
-    public function valid(): bool
-    {
-        return $this->current() instanceof UniqueIndexInterface;
+        return new UniqueIndexIterator($this->uniqueIndexs);
     }
 }

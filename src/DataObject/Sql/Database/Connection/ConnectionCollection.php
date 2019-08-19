@@ -23,32 +23,12 @@ class ConnectionCollection implements ConnectionCollectionInterface
         return $this;
     }
 
-    public function rewind(): void
+    public function getIterator(): ConnectionIterator
     {
-        reset($this->connections);
+        return new ConnectionIterator($this->connections);
     }
 
-    public function current(): ?ConnectionInterface
-    {
-        return current($this->connections) ?: null;
-    }
-
-    public function key(): ?int
-    {
-        return key($this->connections) ?: null;
-    }
-
-    public function next(): ?ConnectionInterface
-    {
-        return next($this->connections) ?: null;
-    }
-
-    public function valid(): bool
-    {
-        return $this->current() instanceof ConnectionInterface;
-    }
-
-    public function toArray(): array
+    public function jsonSerialize(): array
     {
         return $this->connections;
     }

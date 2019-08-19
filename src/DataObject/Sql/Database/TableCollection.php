@@ -14,44 +14,17 @@ class TableCollection implements TableCollectionInterface
         return $this;
     }
 
-    public function remove(TableInterface $table): self
-    {
-        unset($this->tables[$table->getName()]);
-
-        return $this;
-    }
-
-    public function rewind(): void
-    {
-        reset($this->tables);
-    }
-
-    public function current(): ?TableInterface
-    {
-        return current($this->tables) ?: null;
-    }
-
-    public function key(): string
-    {
-        return key($this->tables);
-    }
-
-    public function next(): ?TableInterface
-    {
-        return next($this->tables) ?:null;
-    }
-
-    public function valid(): bool
-    {
-        return $this->current() instanceof TableInterface;
-    }
-
     public function offsetGet(string $tableName): ?TableInterface
     {
-        return isset($this->tables[$tableName]) ? $this->tables[$tableName] :null;
+        return $this->tables[$tableName] ?? null;
     }
 
-    public function toArray(): array
+    public function getIterator(): TableIterator
+    {
+        return new TableIterator($this->tables);
+    }
+
+    public function jsonSerialize(): array
     {
         return $this->tables;
     }

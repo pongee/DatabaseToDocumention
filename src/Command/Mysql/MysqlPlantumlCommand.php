@@ -10,8 +10,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class MysqlPlantumlCommand extends MysqlCommandAbstract
 {
-    const OPTION_TEMPLATE  = 'template';
-    const DEFAULT_TEMPLATE = 'src/Template/Plantuml/v1.twig';
+    protected const OPTION_TEMPLATE  = 'template';
+    protected const DEFAULT_TEMPLATE = 'src/Template/Plantuml/v1.twig';
 
     protected function configure(): void
     {
@@ -51,11 +51,11 @@ class MysqlPlantumlCommand extends MysqlCommandAbstract
         $templateFilePath = $this->rootDir . $input->getOption(self::OPTION_TEMPLATE);
 
         if (!is_file($templateFilePath)) {
-            throw new RuntimeException(sprintf('Bad template file path. %s is not a file', $templateFilePath));
+            throw new RuntimeException(sprintf('Bad template file path. [%s] is not a file', $templateFilePath));
         }
 
         if (!is_readable($templateFilePath)) {
-            throw new RuntimeException(sprintf('The template file is unreadable.', $templateFilePath));
+            throw new RuntimeException(sprintf('Bad template file path. [%s] is unreadable.', $templateFilePath));
         }
 
         return file_get_contents($templateFilePath);

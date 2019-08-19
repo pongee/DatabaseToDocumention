@@ -2,17 +2,11 @@
 
 namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index;
 
-interface SimpleIndexCollectionInterface extends \Iterator
+use IteratorAggregate;
+
+interface SimpleIndexCollectionInterface extends IteratorAggregate
 {
     public function add(SimpleIndexInterface $key);
 
-    public function rewind(): void;
-
-    public function current(): ?SimpleIndexInterface;
-
-    public function key(): ?int;
-
-    public function next(): ?SimpleIndexInterface;
-
-    public function valid(): bool;
+    public function getIterator(): SimpleIndexIterator;
 }

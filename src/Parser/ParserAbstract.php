@@ -89,7 +89,7 @@ abstract class ParserAbstract implements ParserInterface
     {
         return preg_replace_callback(
             '#(\'.*\')#Uxsm',
-            function ($matches) use ($replacePairs) {
+            static function ($matches) use ($replacePairs): string {
                 return strtr(
                     $matches[0],
                     $replacePairs
@@ -257,7 +257,7 @@ abstract class ParserAbstract implements ParserInterface
                             $matches['childTableColumns'][$index]
                         );
                         $childTableColumns = array_map(
-                            function ($column) {
+                            static function ($column): string {
                                 return trim(
                                     $column,
                                     '` '
@@ -271,7 +271,7 @@ abstract class ParserAbstract implements ParserInterface
                             $matches['parentTableColumns'][$index]
                         );
                         $parentTableColumns = array_map(
-                            function ($column) {
+                            static function ($column): string {
                                 return trim(
                                     $column,
                                     '` '

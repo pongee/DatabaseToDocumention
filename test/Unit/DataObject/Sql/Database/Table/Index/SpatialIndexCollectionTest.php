@@ -5,7 +5,6 @@ namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database\Table
 use PHPUnit\Framework\TestCase;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndex;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexCollection;
-use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexCollectionInterface;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
 
 class SpatialIndexCollectionTest extends TestCase
@@ -25,34 +24,21 @@ class SpatialIndexCollectionTest extends TestCase
             ],
         ];
     }
-
-    public function testInstanceOf(): void
-    {
-        $spatialIndexCollection = new SpatialIndexCollection();
-
-        $this->assertInstanceOf(SpatialIndexCollectionInterface::class, $spatialIndexCollection);
-    }
-
     /**
      * @dataProvider getSpatialIndexsProvider
      */
-    public function testKeys(SpatialIndexInterface ...$spatialIndexs): void
+    public function testCollection(SpatialIndexInterface ...$spatialIndexs): void
     {
-        $spatialIndexCollection = new SpatialIndexCollection();
+        $sut = new SpatialIndexCollection();
 
         foreach ($spatialIndexs as $spatialIndex) {
-            $spatialIndexCollection->add($spatialIndex);
+            $sut->add($spatialIndex);
         }
 
-        foreach ($spatialIndexCollection as $i => $spatialIndex) {
-            $this->assertInstanceOf(SpatialIndexInterface::class, $spatialIndex);
+        foreach ($sut as $item) {
+            $this->assertInstanceOf(SpatialIndex::class, $item);
         }
 
-        $this->assertNull($spatialIndexCollection->next());
-        $this->assertNull($spatialIndexCollection->key());
-        $this->assertNull($spatialIndexCollection->current());
-        $this->assertFalse($spatialIndexCollection->valid());
-
-        $this->assertEquals(count($spatialIndexs), $i + 1);
+        $this->assertCount(count($spatialIndexs), $sut->getIterator());
     }
 }

@@ -14,28 +14,8 @@ class SimpleIndexCollection implements SimpleIndexCollectionInterface
         return $this;
     }
 
-    public function rewind(): void
+    public function getIterator(): SimpleIndexIterator
     {
-        reset($this->simpleIndexs);
-    }
-
-    public function current(): ?SimpleIndexInterface
-    {
-        return current($this->simpleIndexs) ?: null;
-    }
-
-    public function key(): ?int
-    {
-        return key($this->simpleIndexs) ?: null;
-    }
-
-    public function next(): ?SimpleIndexInterface
-    {
-        return next($this->simpleIndexs) ?: null;
-    }
-
-    public function valid(): bool
-    {
-        return $this->current() instanceof SimpleIndexInterface;
+        return new SimpleIndexIterator($this->simpleIndexs);
     }
 }

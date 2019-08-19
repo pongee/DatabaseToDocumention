@@ -34,7 +34,7 @@ class Plantuml implements ExportInterface
             $text,
             [
                 '[\t]' => "\t",
-                '[\n]' => "",
+                '[\n]' => '',
             ]
         );
     }

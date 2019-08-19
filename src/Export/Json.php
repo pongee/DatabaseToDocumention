@@ -4,6 +4,7 @@ namespace Pongee\DatabaseToDocumentation\Export;
 
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionInterface;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\IndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\NamedIndexAbstract;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
 
@@ -80,11 +81,16 @@ class Json implements ExportInterface
 
     private function getIndexData(IndexInterface $index): array
     {
-        return [
-            'name' => $index->getName(),
+        $data = [
             'columns' => $index->getColumns(),
             'otherParameters' => $index->getOtherParameters(),
         ];
+
+        if ($index instanceof NamedIndexAbstract) {
+            $data['name'] = $index->getName();
+        }
+
+        return $data;
     }
 
     private function getSimpleIndexs(TableInterface $table): array

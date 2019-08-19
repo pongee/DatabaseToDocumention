@@ -2,17 +2,11 @@
 
 namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index;
 
-interface UniqueIndexCollectionInterface extends \Iterator
+use IteratorAggregate;
+
+interface UniqueIndexCollectionInterface extends IteratorAggregate
 {
     public function add(UniqueIndexInterface $uniqueIndex);
 
-    public function rewind(): void;
-
-    public function current(): ?UniqueIndexInterface;
-
-    public function key(): ?int;
-
-    public function next(): ?UniqueIndexInterface;
-
-    public function valid(): bool;
+    public function getIterator(): UniqueIndexIterator;
 }

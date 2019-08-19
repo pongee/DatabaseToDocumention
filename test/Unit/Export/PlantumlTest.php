@@ -74,15 +74,15 @@ class PlantumlTest extends TestCase
     public function testExportTableWithColumns(SchemaInterface $schema)
     {
         $plantuml = new Plantuml(
-            'tables:{{ tables.toArray()|json_encode|raw }}|connections:{{ connections.toArray()|json_encode()|raw }}'
+            'tables:{{ tables.jsonSerialize()|json_encode|raw }}|connections:{{ connections.jsonSerialize()|json_encode()|raw }}'
         );
 
         $this->assertEquals(
             strtr(
                 'tables:%tables%|connections:%connections%',
                 [
-                    '%tables%' => json_encode($schema->getTables()->toArray()),
-                    '%connections%' => json_encode($schema->getConnections()->toArray()),
+                    '%tables%' => json_encode($schema->getTables()->jsonSerialize()),
+                    '%connections%' => json_encode($schema->getConnections()->jsonSerialize()),
                 ]
             ),
             $plantuml->export($schema)

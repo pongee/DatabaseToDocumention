@@ -13,8 +13,8 @@ use Symfony\Component\Console\Input\InputOption;
 
 abstract class MysqlCommandAbstract extends Command
 {
-    const ARGUMENT_FILE     = 'file';
-    const OPTION_CONNECTION = 'connection';
+    protected const ARGUMENT_FILE     = 'file';
+    protected const OPTION_CONNECTION = 'connection';
 
     /** @var ParserInterface */
     protected $parser;
@@ -131,11 +131,11 @@ abstract class MysqlCommandAbstract extends Command
         $sqlFilePath = $this->rootDir . $input->getArgument(self::ARGUMENT_FILE);
 
         if (!is_file($sqlFilePath)) {
-            throw new RuntimeException(sprintf('Bad sql file path. %s is not a file', $sqlFilePath));
+            throw new RuntimeException(sprintf('Bad sql file path. [%s] is not a file.', $sqlFilePath));
         }
 
         if (!is_readable($sqlFilePath)) {
-            throw new RuntimeException(sprintf('The sql file is unreadable.', $sqlFilePath));
+            throw new RuntimeException(sprintf('Bad sql file path. [%s] is unreadable.', $sqlFilePath));
         }
 
         return file_get_contents($sqlFilePath);

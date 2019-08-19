@@ -144,8 +144,8 @@ class TableTest extends TestCase
             $table->addColumn($column);
         }
 
-        foreach ($columns as $column) {
-            $this->assertEquals($column, $table->getColumns()->offsetGet($column->getName()));
+        foreach ($table->getColumns() as $column) {
+            $this->assertInstanceOf(ColumnInterface::class, $column);
         }
     }
 
@@ -162,7 +162,7 @@ class TableTest extends TestCase
 
         foreach ($table->getSimpleIndexs() as $simpleIndex) {
             $this->assertInstanceOf(SimpleIndexInterface::class, $simpleIndex);
-            $this->assertTrue(in_array($simpleIndex, $simpleIndexs));
+            $this->assertTrue(in_array($simpleIndex, $simpleIndexs, true));
         }
     }
 

@@ -5,7 +5,6 @@ namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database;
 use PHPUnit\Framework\TestCase;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableCollection;
-use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableCollectionInterface;
 use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
 
 class TableCollectionTest extends TestCase
@@ -27,37 +26,21 @@ class TableCollectionTest extends TestCase
         ];
     }
 
-    public function testInstanceOf(): void
-    {
-        $tableCollection = new TableCollection();
-
-        $this->assertInstanceOf(TableCollectionInterface::class, $tableCollection);
-    }
-
     /**
      * @dataProvider getTablesProvider
      */
-    public function testTables(TableInterface ...$tables): void
+    public function testCollection(TableInterface ...$tables): void
     {
-        $tableCollection = new TableCollection();
+        $sut = new TableCollection();
 
-        $tableNames = [];
         foreach ($tables as $table) {
-            $tableNames[] = $table->getName();
-
-            $tableCollection->add($table);
-
-            $this->assertEquals($table, $tableCollection->offsetGet($table->getName()));
+            $sut->add($table);
         }
 
-        foreach ($tableCollection as $tableName => $table) {
-            $this->assertEquals($tableName, $table->getName());
-            $this->assertTrue(in_array($table->getName(), $tableNames));
-
-            $tableCollection->remove($table);
+        foreach ($sut as $item) {
+            $this->assertInstanceOf(TableInterface::class, $item);
         }
 
-
-        $this->assertTrue(is_array($tableCollection->toArray()));
+        $this->assertCount(count($tables), $sut->getIterator());
     }
 }

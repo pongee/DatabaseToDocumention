@@ -2,17 +2,11 @@
 
 namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index;
 
-interface SpatialIndexCollectionInterface extends \Iterator
+use IteratorAggregate;
+
+interface SpatialIndexCollectionInterface extends IteratorAggregate
 {
     public function add(SpatialIndexInterface $key);
 
-    public function rewind(): void;
-
-    public function current(): ?SpatialIndexInterface;
-
-    public function key(): ?int;
-
-    public function next(): ?SpatialIndexInterface;
-
-    public function valid(): bool;
+    public function getIterator(): SpatialIndexIterator;
 }

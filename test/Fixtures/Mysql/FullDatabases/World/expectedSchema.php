@@ -125,7 +125,7 @@ return (new Schema())
                     'IndepYear',
                     'SMALLINT',
                     [6],
-                    "DEFAULT NULL",
+                    'DEFAULT NULL',
                     ''
                 )
             )
@@ -143,7 +143,7 @@ return (new Schema())
                     'LifeExpectancy',
                     'FLOAT',
                     [3, 1],
-                    "DEFAULT NULL",
+                    'DEFAULT NULL',
                     ''
                 )
             )
@@ -152,7 +152,7 @@ return (new Schema())
                     'GNP',
                     'FLOAT',
                     [10, 2],
-                    "DEFAULT NULL",
+                    'DEFAULT NULL',
                     ''
                 )
             )
@@ -161,7 +161,7 @@ return (new Schema())
                     'GNPOld',
                     'FLOAT',
                     [10, 2],
-                    "DEFAULT NULL",
+                    'DEFAULT NULL',
                     ''
                 )
             )
@@ -188,7 +188,7 @@ return (new Schema())
                     'HeadOfState',
                     'CHAR',
                     [60],
-                    "DEFAULT NULL",
+                    'DEFAULT NULL',
                     ''
                 )
             )
@@ -197,7 +197,7 @@ return (new Schema())
                     'Capital',
                     'INT',
                     [11],
-                    "DEFAULT NULL",
+                    'DEFAULT NULL',
                     ''
                 )
             )
