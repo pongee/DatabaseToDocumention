@@ -1,7 +1,5 @@
 # Database documentation generator
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/pongee/database-to-documentation.svg)](https://packagist.org/packages/pongee/database-to-documentation)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 [![License](https://img.shields.io/github/license/pongee/database-to-documentation)](https://github.com/pongee/database-to-documentation/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/pongee/database-to-documentation.svg?branch=master)](https://travis-ci.org/pongee/database-to-documentation)
 
