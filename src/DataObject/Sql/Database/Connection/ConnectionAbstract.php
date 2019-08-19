@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection;
+namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection;
 
 abstract class ConnectionAbstract implements ConnectionInterface
 {
@@ -22,9 +22,9 @@ abstract class ConnectionAbstract implements ConnectionInterface
         array $childTableColumns,
         array $parentTableColumns
     ) {
-        $this->childTablename     = $childTablename;
-        $this->parentTableName    = $parentTableName;
-        $this->childTableColumns  = $childTableColumns;
+        $this->childTablename = $childTablename;
+        $this->parentTableName = $parentTableName;
+        $this->childTableColumns = $childTableColumns;
         $this->parentTableColumns = $parentTableColumns;
     }
 

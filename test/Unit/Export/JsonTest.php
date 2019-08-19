@@ -1,20 +1,20 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\Export;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\Export;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToManyConnection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToOneConnection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Column;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKey;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Schema;
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
-use Pongee\DatabaseToDocumention\Export\Json;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToManyConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToOneConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Column;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKey;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Schema;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\Export\Json;
 
 class JsonTest extends TestCase
 {
@@ -239,8 +239,8 @@ class JsonTest extends TestCase
      */
     public function testExportTableWithColumns(SchemaInterface $schema, string $expectedJson)
     {
-        $plantuml = new Json();
+        $sut = new Json();
 
-        $this->assertJsonStringEqualsJsonString($expectedJson, $plantuml->export($schema));
+        $this->assertJsonStringEqualsJsonString($expectedJson, $sut->export($schema));
     }
 }

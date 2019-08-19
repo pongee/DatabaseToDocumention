@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table;
+namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table;
 
 interface ColumnInterface
 {

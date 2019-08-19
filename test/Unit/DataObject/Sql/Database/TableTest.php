@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Table\Database;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Table\Database;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Column;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKey;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\UniqueIndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Column;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKey;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
 
 class TableTest extends TestCase
 {
@@ -106,9 +106,9 @@ class TableTest extends TestCase
 
     public function testInstanceOf(): void
     {
-        $table = new Table();
+        $sut = new Table();
 
-        $this->assertInstanceOf(TableInterface::class, $table);
+        $this->assertInstanceOf(TableInterface::class, $sut);
     }
 
     /**
@@ -116,10 +116,10 @@ class TableTest extends TestCase
      */
     public function testName(string $name): void
     {
-        $table = new Table();
-        $table->setName($name);
+        $sut = new Table();
+        $sut->setName($name);
 
-        $this->assertEquals($name, $table->getName());
+        $this->assertEquals($name, $sut->getName());
     }
 
     /**
@@ -127,10 +127,10 @@ class TableTest extends TestCase
      */
     public function testPrimaryKey(PrimaryKeyInterface $primaryKey): void
     {
-        $table = new Table();
+        $sut = new Table();
 
-        $table->setPrimaryKey($primaryKey);
-        $this->assertEquals($primaryKey, $table->getPrimaryKey());
+        $sut->setPrimaryKey($primaryKey);
+        $this->assertEquals($primaryKey, $sut->getPrimaryKey());
     }
 
     /**
@@ -138,14 +138,14 @@ class TableTest extends TestCase
      */
     public function testColumn(ColumnInterface ...$columns): void
     {
-        $table = new Table();
+        $sut = new Table();
 
         foreach ($columns as $column) {
-            $table->addColumn($column);
+            $sut->addColumn($column);
         }
 
-        foreach ($columns as $column) {
-            $this->assertEquals($column, $table->getColumns()->offsetGet($column->getName()));
+        foreach ($sut->getColumns() as $column) {
+            $this->assertInstanceOf(ColumnInterface::class, $column);
         }
     }
 
@@ -154,15 +154,15 @@ class TableTest extends TestCase
      */
     public function testKey(SimpleIndexInterface ...$simpleIndexs): void
     {
-        $table = new Table();
+        $sut = new Table();
 
         foreach ($simpleIndexs as $simpleIndex) {
-            $table->addSimpleIndex($simpleIndex);
+            $sut->addSimpleIndex($simpleIndex);
         }
 
-        foreach ($table->getSimpleIndexs() as $simpleIndex) {
+        foreach ($sut->getSimpleIndexs() as $simpleIndex) {
             $this->assertInstanceOf(SimpleIndexInterface::class, $simpleIndex);
-            $this->assertTrue(in_array($simpleIndex, $simpleIndexs));
+            $this->assertTrue(in_array($simpleIndex, $simpleIndexs, true));
         }
     }
 
@@ -171,13 +171,13 @@ class TableTest extends TestCase
      */
     public function testUniqueKey(UniqueIndexInterface ...$uniquekeys): void
     {
-        $table = new Table();
+        $sut = new Table();
 
         foreach ($uniquekeys as $uniquekey) {
-            $table->addUniqueIndex($uniquekey);
+            $sut->addUniqueIndex($uniquekey);
         }
 
-        foreach ($table->getUniqueIndexs() as $uniqueIndex) {
+        foreach ($sut->getUniqueIndexs() as $uniqueIndex) {
             $this->assertInstanceOf(UniqueIndexInterface::class, $uniqueIndex);
             $this->assertTrue(in_array($uniqueIndex, $uniquekeys));
         }
@@ -188,13 +188,13 @@ class TableTest extends TestCase
      */
     public function testFulltextKey(FulltextIndexInterface ...$fulltextIndexs): void
     {
-        $table = new Table();
+        $sut = new Table();
 
         foreach ($fulltextIndexs as $fulltextIndex) {
-            $table->addFullTextIndex($fulltextIndex);
+            $sut->addFullTextIndex($fulltextIndex);
         }
 
-        foreach ($table->getFulltextIndexs() as $fulltextIndex) {
+        foreach ($sut->getFulltextIndexs() as $fulltextIndex) {
             $this->assertInstanceOf(FulltextIndexInterface::class, $fulltextIndex);
             $this->assertTrue(in_array($fulltextIndex, $fulltextIndexs));
         }
@@ -205,13 +205,13 @@ class TableTest extends TestCase
      */
     public function testSpatialKey(SpatialIndexInterface ...$spatialIndexs): void
     {
-        $table = new Table();
+        $sut = new Table();
 
         foreach ($spatialIndexs as $spatialIndex) {
-            $table->addSpatialIndex($spatialIndex);
+            $sut->addSpatialIndex($spatialIndex);
         }
 
-        foreach ($table->getSpatialIndexs() as $spatialIndex) {
+        foreach ($sut->getSpatialIndexs() as $spatialIndex) {
             $this->assertInstanceOf(SpatialIndexInterface::class, $spatialIndex);
             $this->assertTrue(in_array($spatialIndex, $spatialIndexs));
         }

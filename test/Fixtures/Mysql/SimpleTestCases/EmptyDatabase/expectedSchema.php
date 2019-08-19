@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Schema;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Schema;
 
 return (new Schema());

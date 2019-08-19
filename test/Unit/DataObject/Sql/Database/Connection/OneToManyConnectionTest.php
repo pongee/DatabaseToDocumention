@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Database\Connection;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database\Connection;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToManyConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToManyConnection;
 
 class OneToManyConnectionTest extends ConnectionAbstract
 {

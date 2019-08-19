@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Database\Table\Index;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database\Table\Index;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndexCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\SimpleIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndexCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleIndexInterface;
 
 class SimpleIndexCollectionTest extends TestCase
 {
@@ -28,23 +28,18 @@ class SimpleIndexCollectionTest extends TestCase
     /**
      * @dataProvider getSimpleIndexsProvider
      */
-    public function testKeys(SimpleIndexInterface ...$simpleIndexs): void
+    public function testCollection(SimpleIndexInterface ...$simpleIndexs): void
     {
-        $simpleIndexCollection = new SimpleIndexCollection();
+        $sut = new SimpleIndexCollection();
 
         foreach ($simpleIndexs as $simpleIndex) {
-            $simpleIndexCollection->add($simpleIndex);
+            $sut->add($simpleIndex);
         }
 
-        foreach ($simpleIndexCollection as $i => $simpleIndex) {
-            $this->assertInstanceOf(SimpleIndexInterface::class, $simpleIndex);
+        foreach ($sut as $item) {
+            $this->assertInstanceOf(SimpleIndex::class, $item);
         }
 
-        $this->assertNull($simpleIndexCollection->next());
-        $this->assertNull($simpleIndexCollection->key());
-        $this->assertNull($simpleIndexCollection->current());
-        $this->assertFalse($simpleIndexCollection->valid());
-
-        $this->assertEquals(count($simpleIndexs), $i + 1);
+        $this->assertCount(count($simpleIndexs), $sut->getIterator());
     }
 }

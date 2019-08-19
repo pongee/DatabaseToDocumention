@@ -1,18 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index;
+namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index;
 
-interface FulltextIndexCollectionInterface extends \Iterator
+use IteratorAggregate;
+
+interface FulltextIndexCollectionInterface extends IteratorAggregate
 {
     public function add(FulltextIndexInterface $key);
 
-    public function rewind(): void;
-
-    public function current(): ?FulltextIndexInterface;
-
-    public function key(): ?int;
-
-    public function next(): ?FulltextIndexInterface;
-
-    public function valid(): bool;
+    public function getIterator(): FulltextIndexIterator;
 }

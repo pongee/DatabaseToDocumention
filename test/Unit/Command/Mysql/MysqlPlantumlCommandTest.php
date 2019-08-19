@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\Command\Mysql;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\Command\Mysql;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\Command\Mysql\MysqlPlantumlCommand;
-use Pongee\DatabaseToDocumention\Command\Plantuml;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\NotDefinedConnection;
-use Pongee\DatabaseToDocumention\Parser\MysqlParser;
+use Pongee\DatabaseToDocumentation\Command\Mysql\MysqlPlantumlCommand;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\NotDefinedConnection;
+use Pongee\DatabaseToDocumentation\Parser\MysqlParser;
+use RuntimeException as RuntimeExceptionAlias;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
@@ -17,6 +17,14 @@ class MysqlPlantumlCommandTest extends TestCase
     public function testName(): void
     {
         $this->assertNotEmpty($this->getCommand()->getName());
+    }
+
+    private function getCommand(string $rootDir = ''): MysqlPlantumlCommand
+    {
+        /** @var MysqlParser $mysqlParser */
+        $mysqlParser = $this->createMock(MysqlParser::class);
+
+        return new MysqlPlantumlCommand($mysqlParser, $rootDir);
     }
 
     public function testDescription(): void
@@ -32,12 +40,11 @@ class MysqlPlantumlCommandTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Not enough arguments (missing: "file").
-     */
     public function testRunWithNoParameters(): void
     {
+        $this->expectException(RuntimeExceptionAlias::class);
+        $this->expectExceptionMessage('Not enough arguments (missing: "file").');
+
         $command = $this->getCommand();
         $command->run(
             new ArrayInput([]),
@@ -45,12 +52,11 @@ class MysqlPlantumlCommandTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Bad sql file path.
-     */
     public function testRunWithBadSqlPath(): void
     {
+        $this->expectException(RuntimeExceptionAlias::class);
+        $this->expectExceptionMessage('Bad sql file path.');
+
         $command = $this->getCommand(FIXTURES_DIRECTORY);
         $command->run(
             new ArrayInput([
@@ -60,16 +66,15 @@ class MysqlPlantumlCommandTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Bad template file path.
-     */
     public function testRunWithBadTemplatePath(): void
     {
+        $this->expectException(RuntimeExceptionAlias::class);
+        $this->expectExceptionMessage('Bad template file path.');
+
         $command = $this->getCommand(FIXTURES_DIRECTORY);
         $command->run(
             new ArrayInput([
-                'file'       => 'fake.sql',
+                'file' => 'fake.sql',
                 '--template' => 'badTemplateFile.twig',
             ]),
             new BufferedOutput()
@@ -78,9 +83,9 @@ class MysqlPlantumlCommandTest extends TestCase
 
     public function testRunWithAllParameters(): void
     {
-        $fakeSqlName         = 'fake.sql';
-        $fakeSqlContent      = file_get_contents(FIXTURES_DIRECTORY . $fakeSqlName);
-        $fakeTemplateName    = 'fake.twig';
+        $fakeSqlName = 'fake.sql';
+        $fakeSqlContent = file_get_contents(FIXTURES_DIRECTORY . $fakeSqlName);
+        $fakeTemplateName = 'fake.twig';
         $fakeTemplateContent = file_get_contents(FIXTURES_DIRECTORY . 'fake.twig');
 
         $output = new BufferedOutput();
@@ -96,24 +101,16 @@ class MysqlPlantumlCommandTest extends TestCase
                     ->add(new NotDefinedConnection('log', 'user', ['user_id'], ['user_id']))
             );
 
-        $command = new MysqlPlantumlCommand($parser, FIXTURES_DIRECTORY);
-        $command->run(
+        $sut = new MysqlPlantumlCommand($parser, FIXTURES_DIRECTORY);
+        $sut->run(
             new ArrayInput([
-                'file'         => $fakeSqlName,
-                '--template'   => $fakeTemplateName,
+                'file' => $fakeSqlName,
+                '--template' => $fakeTemplateName,
                 '--connection' => ['log.user_id=>user.user_id'],
             ]),
             $output
         );
 
         $this->assertEquals($fakeTemplateContent, $output->fetch());
-    }
-
-    private function getCommand(string $rootDir = ''): MysqlPlantumlCommand
-    {
-        /** @var MysqlParser $mysqlParser */
-        $mysqlParser = $this->createMock(MysqlParser::class);
-
-        return new MysqlPlantumlCommand($mysqlParser, $rootDir);
     }
 }

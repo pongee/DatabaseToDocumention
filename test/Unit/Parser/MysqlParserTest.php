@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\Parser;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\Parser;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
-use Pongee\DatabaseToDocumention\Parser\MysqlParser;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\Parser\MysqlParser;
 use RecursiveIteratorIterator;
 use SplFileInfo;
 
@@ -24,9 +24,9 @@ class MysqlParserTest extends TestCase
         foreach ($directoryIterator as $file) {
             /** @var SplFileInfo $file */
             if ($file->isFile() && $file->getExtension() === 'sql') {
-                $forcedConnections  = new ConnectionCollection();
+                $forcedConnections = new ConnectionCollection();
                 $expendedSchemaPath = dirname($file->getRealPath()) . '/expectedSchema.php';
-                $schemaObject       = include $expendedSchemaPath;
+                $schemaObject = include $expendedSchemaPath;
 
                 if (!$schemaObject instanceof SchemaInterface) {
                     throw new \InvalidArgumentException(
@@ -66,8 +66,8 @@ class MysqlParserTest extends TestCase
         SchemaInterface $schemaObject,
         ConnectionCollectionInterface $forcedConnections
     ) {
-        $mysqlParser = new MysqlParser();
-        $result      = $mysqlParser->run(file_get_contents($file->getRealPath()), $forcedConnections); //@todo
+        $sut = new MysqlParser();
+        $result = $sut->run(file_get_contents($file->getRealPath()), $forcedConnections); //@todo
 
         foreach ($result->getTables() as $table) {
             $expectedTable = $schemaObject->getTables()->offsetGet($table->getName());

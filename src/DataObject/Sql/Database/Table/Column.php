@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table;
+namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table;
 
 class Column implements ColumnInterface
 {
@@ -22,11 +22,11 @@ class Column implements ColumnInterface
         string $otherParameters,
         string $comment
     ) {
-        $this->name            = $name;
-        $this->type            = $type;
-        $this->typeParameters  = $typeParameters;
+        $this->name = $name;
+        $this->type = $type;
+        $this->typeParameters = $typeParameters;
         $this->otherParameters = $otherParameters;
-        $this->comment         = $comment;
+        $this->comment = $comment;
     }
 
     public function getName(): string

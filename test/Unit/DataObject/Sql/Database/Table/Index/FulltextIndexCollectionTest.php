@@ -1,12 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Database\Table\Index;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database\Table\Index;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndex;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndexCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndexCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\FulltextIndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndex;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextIndexCollection;
 
 class FulltextIndexCollectionTest extends TestCase
 {
@@ -26,33 +24,21 @@ class FulltextIndexCollectionTest extends TestCase
         ];
     }
 
-    public function testInstanceOf(): void
-    {
-        $fulltextIndexCollection = new FulltextIndexCollection();
-
-        $this->assertInstanceOf(FulltextIndexCollectionInterface::class, $fulltextIndexCollection);
-    }
-
     /**
      * @dataProvider getFulltextIndexsProvider
      */
-    public function testKeys(FulltextIndexInterface ...$fulltextIndexs): void
+    public function testCollection(FulltextIndex ...$indexs): void
     {
-        $fulltextIndexCollection = new FulltextIndexCollection();
+        $sut = new FulltextIndexCollection();
 
-        foreach ($fulltextIndexs as $fulltextIndex) {
-            $fulltextIndexCollection->add($fulltextIndex);
+        foreach ($indexs as $index) {
+            $sut->add($index);
         }
 
-        foreach ($fulltextIndexCollection as $i => $fulltextIndex) {
-            $this->assertInstanceOf(FulltextIndexInterface::class, $fulltextIndex);
+        foreach ($sut as $item) {
+            $this->assertInstanceOf(FulltextIndex::class, $item);
         }
 
-        $this->assertNull($fulltextIndexCollection->next());
-        $this->assertNull($fulltextIndexCollection->key());
-        $this->assertNull($fulltextIndexCollection->current());
-        $this->assertFalse($fulltextIndexCollection->valid());
-
-        $this->assertEquals(count($fulltextIndexs), $i + 1);
+        $this->assertCount(count($indexs), $sut->getIterator());
     }
 }

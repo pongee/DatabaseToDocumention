@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Command\Mysql;
+namespace Pongee\DatabaseToDocumentation\Command\Mysql;
 
-use Pongee\DatabaseToDocumention\Export\Plantuml;
+use Pongee\DatabaseToDocumentation\Export\Plantuml;
 use RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -10,8 +10,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class MysqlPlantumlCommand extends MysqlCommandAbstract
 {
-    const OPTION_TEMPLATE  = 'template';
-    const DEFAULT_TEMPLATE = 'src/Template/Plantuml/v1.twig';
+    protected const OPTION_TEMPLATE = 'template';
+    protected const DEFAULT_TEMPLATE = 'src/Template/Plantuml/v1.twig';
 
     protected function configure(): void
     {
@@ -29,7 +29,7 @@ class MysqlPlantumlCommand extends MysqlCommandAbstract
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $sqlFileContent      = $this->getSqlFileContent($input);
+        $sqlFileContent = $this->getSqlFileContent($input);
         $templateFileContent = $this->getTemplateFileContent($input);
 
         $plantuml = new Plantuml($templateFileContent);
@@ -51,11 +51,11 @@ class MysqlPlantumlCommand extends MysqlCommandAbstract
         $templateFilePath = $this->rootDir . $input->getOption(self::OPTION_TEMPLATE);
 
         if (!is_file($templateFilePath)) {
-            throw new RuntimeException(sprintf('Bad template file path. %s is not a file', $templateFilePath));
+            throw new RuntimeException(sprintf('Bad template file path. [%s] is not a file', $templateFilePath));
         }
 
         if (!is_readable($templateFilePath)) {
-            throw new RuntimeException(sprintf('The template file is unreadable.', $templateFilePath));
+            throw new RuntimeException(sprintf('Bad template file path. [%s] is unreadable.', $templateFilePath));
         }
 
         return file_get_contents($templateFilePath);

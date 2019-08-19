@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Command\Mysql;
+namespace Pongee\DatabaseToDocumentation\Command\Mysql;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\NotDefinedConnection;
-use Pongee\DatabaseToDocumention\Parser\ParserInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\NotDefinedConnection;
+use Pongee\DatabaseToDocumentation\Parser\ParserInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\RuntimeException;
 use Symfony\Component\Console\Input\InputArgument;
@@ -13,8 +13,8 @@ use Symfony\Component\Console\Input\InputOption;
 
 abstract class MysqlCommandAbstract extends Command
 {
-    const ARGUMENT_FILE     = 'file';
-    const OPTION_CONNECTION = 'connection';
+    protected const ARGUMENT_FILE = 'file';
+    protected const OPTION_CONNECTION = 'connection';
 
     /** @var ParserInterface */
     protected $parser;
@@ -26,39 +26,13 @@ abstract class MysqlCommandAbstract extends Command
     {
         parent::__construct();
 
-        $this->parser  = $parser;
+        $this->parser = $parser;
         $this->rootDir = rtrim($rootDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
         $this
             ->setHelpDescription()
             ->addFileArgument()
             ->addConnectionOption();
-    }
-
-    protected function setHelpDescription(): self
-    {
-        $this->setHelp(
-            sprintf(
-                "If the tables contain foreign keys it automatically resolves table connections.\n"
-                . "Otherwise the relations need to be defined under --%s parameter.\n"
-                . "The table connection types (one-to-one, one-to-many) are automatically resolved.\n"
-                . "For connection type resolving conditions please see REAMDME.",
-                self::OPTION_CONNECTION
-            )
-        );
-
-        return $this;
-    }
-
-    protected function addFileArgument(): self
-    {
-        $this->addArgument(
-            self::ARGUMENT_FILE,
-            InputArgument::REQUIRED,
-            'The sql schema file.'
-        );
-
-        return $this;
     }
 
     protected function addConnectionOption(): self
@@ -86,6 +60,32 @@ abstract class MysqlCommandAbstract extends Command
             <info>*.bar_id=>bar.id</info><comment>
             It defines a foreign key definition between any table's bar_id field and bar table's id field.</comment>
             "
+        );
+
+        return $this;
+    }
+
+    protected function addFileArgument(): self
+    {
+        $this->addArgument(
+            self::ARGUMENT_FILE,
+            InputArgument::REQUIRED,
+            'The sql schema file.'
+        );
+
+        return $this;
+    }
+
+    protected function setHelpDescription(): self
+    {
+        $this->setHelp(
+            sprintf(
+                "If the tables contain foreign keys it automatically resolves table connections.\n"
+                . "Otherwise the relations need to be defined under --%s parameter.\n"
+                . "The table connection types (one-to-one, one-to-many) are automatically resolved.\n"
+                . "For connection type resolving conditions please see REAMDME.",
+                self::OPTION_CONNECTION
+            )
         );
 
         return $this;
@@ -131,11 +131,11 @@ abstract class MysqlCommandAbstract extends Command
         $sqlFilePath = $this->rootDir . $input->getArgument(self::ARGUMENT_FILE);
 
         if (!is_file($sqlFilePath)) {
-            throw new RuntimeException(sprintf('Bad sql file path. %s is not a file', $sqlFilePath));
+            throw new RuntimeException(sprintf('Bad sql file path. [%s] is not a file.', $sqlFilePath));
         }
 
         if (!is_readable($sqlFilePath)) {
-            throw new RuntimeException(sprintf('The sql file is unreadable.', $sqlFilePath));
+            throw new RuntimeException(sprintf('Bad sql file path. [%s] is unreadable.', $sqlFilePath));
         }
 
         return file_get_contents($sqlFilePath);

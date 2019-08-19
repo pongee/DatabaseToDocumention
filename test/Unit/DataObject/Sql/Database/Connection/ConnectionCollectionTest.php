@@ -1,17 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Database;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToManyConnection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\OneToOneConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToManyConnection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\OneToOneConnection;
 
 class ConnectionCollectionTest extends TestCase
 {
-    public function getCollactionProvider(): array
+    public function getCollectionProvider(): array
     {
         return [
             [
@@ -28,43 +27,21 @@ class ConnectionCollectionTest extends TestCase
         ];
     }
 
-    public function testInstanceOf(): void
-    {
-        $connectionCollection = new ConnectionCollection();
-
-        $this->assertInstanceOf(ConnectionCollectionInterface::class, $connectionCollection);
-    }
-
     /**
-     * @dataProvider getCollactionProvider
+     * @dataProvider getCollectionProvider
      */
-    public function testAddCollection(ConnectionInterface ...$connections): void
+    public function testCollection(ConnectionInterface ...$connections): void
     {
-        $connectionCollection = new ConnectionCollection();
+        $sut = new ConnectionCollection();
 
-        $connectionCollection->adds(...$connections);
-
-        foreach ($connectionCollection as $i => $connection) {
-            $this->assertTrue(in_array($connection, $connections));
+        foreach ($connections as $connection) {
+            $sut->add($connection);
         }
 
-        $this->assertNull($connectionCollection->next());
-        $this->assertNull($connectionCollection->key());
-        $this->assertNull($connectionCollection->current());
-        $this->assertFalse($connectionCollection->valid());
+        foreach ($sut as $item) {
+            $this->assertInstanceOf(ConnectionInterface::class, $item);
+        }
 
-        $this->assertEquals($connections, $connectionCollection->toArray());
-    }
-
-    public function testEmptyCollection(): void
-    {
-        $connectionCollection = new ConnectionCollection();
-
-        $this->assertNull($connectionCollection->next());
-        $this->assertNull($connectionCollection->key());
-        $this->assertNull($connectionCollection->current());
-        $this->assertFalse($connectionCollection->valid());
-
-        $this->assertEquals([], $connectionCollection->toArray());
+        $this->assertCount(count($connections), $sut->getIterator());
     }
 }

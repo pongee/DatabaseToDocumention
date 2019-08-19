@@ -1,11 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Export;
+namespace Pongee\DatabaseToDocumentation\Export;
 
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Connection\ConnectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\IndexInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\TableInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\SchemaInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection\ConnectionInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\IndexInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\NamedIndexAbstract;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\TableInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\SchemaInterface;
 
 class Json implements ExportInterface
 {
@@ -39,29 +40,6 @@ class Json implements ExportInterface
         );
     }
 
-    private function getConnction(ConnectionInterface $connection): array
-    {
-        return [
-            'type' => $connection->getType(),
-            'childTableName' => $connection->getChildTableName(),
-            'childTableColumns' => $connection->getChildTableColumns(),
-            'parentTableName' => $connection->getParentTableName(),
-            'parentTableColumns' => $connection->getParentTableColumns(),
-        ];
-    }
-
-    private function getPrimiaryKey(TableInterface $table): array
-    {
-        if ($table->getPrimaryKey()) {
-            return [
-                'columns' => $table->getPrimaryKey()->getColumns(),
-                'otherParameters' => $table->getPrimaryKey()->getOtherParameters(),
-            ];
-        }
-
-        return [];
-    }
-
     private function getColumns(TableInterface $table): array
     {
         $columns = [];
@@ -78,19 +56,34 @@ class Json implements ExportInterface
         return $columns;
     }
 
-    private function getIndexData(IndexInterface $index): array
-    {
-        return [
-            'name' => $index->getName(),
-            'columns' => $index->getColumns(),
-            'otherParameters' => $index->getOtherParameters(),
-        ];
-    }
-
     private function getSimpleIndexs(TableInterface $table): array
     {
         $indexs = [];
         foreach ($table->getSimpleIndexs() as $index) {
+            $indexs[] = $this->getIndexData($index);
+        }
+
+        return $indexs;
+    }
+
+    private function getIndexData(IndexInterface $index): array
+    {
+        $data = [
+            'columns' => $index->getColumns(),
+            'otherParameters' => $index->getOtherParameters(),
+        ];
+
+        if ($index instanceof NamedIndexAbstract) {
+            $data['name'] = $index->getName();
+        }
+
+        return $data;
+    }
+
+    private function getSpatialIndexs(TableInterface $table): array
+    {
+        $indexs = [];
+        foreach ($table->getSpatialIndexs() as $index) {
             $indexs[] = $this->getIndexData($index);
         }
 
@@ -117,13 +110,26 @@ class Json implements ExportInterface
         return $indexs;
     }
 
-    private function getSpatialIndexs(TableInterface $table): array
+    private function getPrimiaryKey(TableInterface $table): array
     {
-        $indexs = [];
-        foreach ($table->getSpatialIndexs() as $index) {
-            $indexs[] = $this->getIndexData($index);
+        if ($table->getPrimaryKey()) {
+            return [
+                'columns' => $table->getPrimaryKey()->getColumns(),
+                'otherParameters' => $table->getPrimaryKey()->getOtherParameters(),
+            ];
         }
 
-        return $indexs;
+        return [];
+    }
+
+    private function getConnction(ConnectionInterface $connection): array
+    {
+        return [
+            'type' => $connection->getType(),
+            'childTableName' => $connection->getChildTableName(),
+            'childTableColumns' => $connection->getChildTableColumns(),
+            'parentTableName' => $connection->getParentTableName(),
+            'parentTableColumns' => $connection->getParentTableColumns(),
+        ];
     }
 }

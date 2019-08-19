@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Database\Table\Index;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database\Table\Index;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKey;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKey;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\PrimaryKeyInterface;
 
 class PrimaryKeyTest extends TestCase
 {
@@ -15,7 +15,8 @@ class PrimaryKeyTest extends TestCase
                 ['member_id']
             ],
             [
-                ['member_id'], 'USING HASH'
+                ['member_id'],
+                'USING HASH'
             ],
             [
                 ['member_id', 'type']
@@ -25,9 +26,9 @@ class PrimaryKeyTest extends TestCase
 
     public function testInstanceOf(): void
     {
-        $primaryKey = new PrimaryKey([]);
+        $sut = new PrimaryKey([]);
 
-        $this->assertInstanceOf(PrimaryKeyInterface::class, $primaryKey);
+        $this->assertInstanceOf(PrimaryKeyInterface::class, $sut);
     }
 
     /**
@@ -35,9 +36,9 @@ class PrimaryKeyTest extends TestCase
      */
     public function testIndex(array $columns, string $otherParameters = ''): void
     {
-        $primaryKey = new PrimaryKey($columns, $otherParameters);
+        $sut = new PrimaryKey($columns, $otherParameters);
 
-        $this->assertEquals($columns, $primaryKey->getColumns());
-        $this->assertEquals($otherParameters, $primaryKey->getOtherParameters());
+        $this->assertEquals($columns, $sut->getColumns());
+        $this->assertEquals($otherParameters, $sut->getOtherParameters());
     }
 }

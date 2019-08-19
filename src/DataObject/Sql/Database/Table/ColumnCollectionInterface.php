@@ -1,22 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table;
+namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table;
 
-interface ColumnCollectionInterface extends \Iterator
+use IteratorAggregate;
+
+interface ColumnCollectionInterface extends IteratorAggregate
 {
     public function add(ColumnInterface $column);
 
-    public function rewind(): void;
-
-    public function current(): ?ColumnInterface;
-
-    public function key(): string;
-
-    public function next(): ?ColumnInterface;
-
-    public function valid(): bool;
+    public function getColumnsName(): array;
 
     public function offsetGet(string $columnName): ?ColumnInterface;
 
-    public function getColumnsName(): array;
+    public function getIterator(): ColumnIterator;
 }

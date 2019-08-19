@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Index;
+namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index;
 
 class FulltextIndexCollection implements FulltextIndexCollectionInterface
 {
@@ -14,28 +14,8 @@ class FulltextIndexCollection implements FulltextIndexCollectionInterface
         return $this;
     }
 
-    public function rewind(): void
+    public function getIterator(): FulltextIndexIterator
     {
-        reset($this->fulltextIndexs);
-    }
-
-    public function current(): ?FulltextIndexInterface
-    {
-        return current($this->fulltextIndexs) ?: null;
-    }
-
-    public function key(): ?int
-    {
-        return key($this->fulltextIndexs) ?: null;
-    }
-
-    public function next(): ?FulltextIndexInterface
-    {
-        return next($this->fulltextIndexs) ?: null;
-    }
-
-    public function valid(): bool
-    {
-        return $this->current() instanceof FulltextIndexInterface;
+        return new FulltextIndexIterator($this->fulltextIndexs);
     }
 }

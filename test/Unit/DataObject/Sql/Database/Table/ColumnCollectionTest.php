@@ -1,12 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumention\Test\Unit\DataObject\Sql\Database\Table;
+namespace Pongee\DatabaseToDocumentation\Test\Unit\DataObject\Sql\Database\Table;
 
 use PHPUnit\Framework\TestCase;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\Column;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnCollection;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnCollectionInterface;
-use Pongee\DatabaseToDocumention\DataObject\Sql\Database\Table\ColumnInterface;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Column;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnCollection;
+use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\ColumnInterface;
 
 class ColumnCollectionTest extends TestCase
 {
@@ -28,33 +27,21 @@ class ColumnCollectionTest extends TestCase
         ];
     }
 
-    public function testInstanceOf(): void
-    {
-        $columnCollection = new ColumnCollection();
-
-        $this->assertInstanceOf(ColumnCollectionInterface::class, $columnCollection);
-    }
-
     /**
      * @dataProvider getColumnsProvider
      */
-    public function testColumns(ColumnInterface ...$columns): void
+    public function testCollection(ColumnInterface ...$columns): void
     {
-        $columnCollection = new ColumnCollection();
+        $sut = new ColumnCollection();
 
-        $columnNames = [];
         foreach ($columns as $column) {
-            $columnNames[] = $column->getName();
-
-            $columnCollection->add($column);
-
-            $this->assertEquals($column, $columnCollection->offsetGet($column->getName()));
+            $sut->add($column);
         }
 
-        foreach ($columnCollection as $oolumnName => $column) {
-            $this->assertEquals($oolumnName, $column->getName());
+        foreach ($sut as $item) {
+            $this->assertInstanceOf(ColumnInterface::class, $item);
         }
 
-        $this->assertTrue(empty(array_diff($columnNames, $columnCollection->getColumnsName())));
+        $this->assertCount(count($columns), $sut->getIterator());
     }
 }
