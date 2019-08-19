@@ -1,7 +1,10 @@
 # Database documentation generator
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/pongee/database-to-documentation.svg)](https://packagist.org/packages/pongee/database-to-documentation)
+[![Minimum PHP Version](https://img.shields.io/packagist/php-v/pongee/database-to-documentation)](https://php.net/)
 [![License](https://img.shields.io/github/license/pongee/database-to-documentation)](https://github.com/pongee/database-to-documentation/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/pongee/database-to-documentation.svg?branch=master)](https://travis-ci.org/pongee/database-to-documentation)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/pongee/database-to-documentation)
 
 ## Project goal
 The aim of this project is to generate database documentation from sql schema.
@@ -32,7 +35,7 @@ $  php71 ./database-to-documentation mysql:json ./my_mysql_schema_export.sql
 $  php71 ./database-to-documentation mysql:plantuml ./my_mysql_schema_export.sql
 ```
 Example output:
-![Example output](img/example_plantuml1.png?raw=true "Schema")
+![Example output](img/example_plantuml1.png?raw=true "Example output")
 
 ### PHP
 ```php
