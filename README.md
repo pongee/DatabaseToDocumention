@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/pongee/database-to-documentation.svg)](https://packagist.org/packages/pongee/database-to-documentation)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
-[![License](https://poser.pugx.org/pongee/database-to-documentation/license)](https://packagist.org/packages/pongee/database-to-documentation)
+[![License](https://img.shields.io/github/license/pongee/database-to-documentation)](https://github.com/pongee/database-to-documentation/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/pongee/database-to-documentation.svg?branch=master)](https://travis-ci.org/pongee/database-to-documentation)
 
 ## Project goal
@@ -33,6 +33,8 @@ $  php71 ./database-to-documentation mysql:json ./my_mysql_schema_export.sql
 ```bash
 $  php71 ./database-to-documentation mysql:plantuml ./my_mysql_schema_export.sql
 ```
+Example output:
+![Example output](img/example_plantuml1.png?raw=true "Schema")
 
 ### PHP
 ```php
@@ -51,7 +53,7 @@ $sqlSchema = '
 ';
 
 $mysqlParser                = new MysqlParser();
-$jsonExport                 = new Json(); // or use new Plantuml();
+$jsonExport                 = new Json(); // or use new Plantuml(file_get_contents(__DIR__ . '/src/Template/Plantuml/v1.twig'));
 $forcedConnectionCollection = new ConnectionCollection();
 
 $schema = $mysqlParser->run($sqlSchema, $forcedConnectionCollection);
