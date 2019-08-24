@@ -2,7 +2,7 @@
   "name": "pongee/database-to-documentation",
   "license": "MIT",
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.1",
     "ext-json": "*",
     "symfony/console": "^3.0|^4.0",
     "twig/twig": "^2.0"

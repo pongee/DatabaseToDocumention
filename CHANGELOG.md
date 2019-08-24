@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.2] - 2019-08-24
 ### Changed
-- Add php 7.4 support
+- Add php 7.1 support
 ### Fixed
 - Fixed licence in composer
 
