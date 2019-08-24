@@ -38,11 +38,11 @@ interface TableInterface
 
     public function getPrimaryKey(): ?PrimaryKeyInterface;
 
-    public function getSimpleIndexs(): SimpleIndexCollectionInterface;
+    public function getSimpleIndexes(): SimpleIndexCollectionInterface;
 
-    public function getUniqueIndexs(): UniqueIndexCollectionInterface;
+    public function getUniqueIndexes(): UniqueIndexCollectionInterface;
 
-    public function getFulltextIndexs(): FulltextIndexCollectionInterface;
+    public function getFulltextIndexes(): FulltextIndexCollectionInterface;
 
-    public function getSpatialIndexs(): SpatialIndexCollectionInterface;
+    public function getSpatialIndexes(): SpatialIndexCollectionInterface;
 }

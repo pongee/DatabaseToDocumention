@@ -5,17 +5,17 @@ namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index;
 class SpatialIndexCollection implements SpatialIndexCollectionInterface
 {
     /** @var SpatialIndexInterface[] */
-    private $spatialIndexs = [];
+    private $spatialIndexes = [];
 
     public function add(SpatialIndexInterface $spatialIndex): self
     {
-        $this->spatialIndexs[] = $spatialIndex;
+        $this->spatialIndexes[] = $spatialIndex;
 
         return $this;
     }
 
     public function getIterator(): SpatialIndexIterator
     {
-        return new SpatialIndexIterator($this->spatialIndexs);
+        return new SpatialIndexIterator($this->spatialIndexes);
     }
 }

@@ -5,7 +5,7 @@ namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection;
 interface ConnectionInterface
 {
     public function __construct(
-        string $childTablename,
+        string $childTableName,
         string $parentTableName,
         array $childTableColumns,
         array $parentTableColumns

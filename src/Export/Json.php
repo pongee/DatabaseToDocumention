@@ -20,11 +20,11 @@ class Json implements ExportInterface
         foreach ($schema->getTables() as $table) {
             $return['tables'][$table->getName()] = [
                 'columns' => $this->getColumns($table),
-                'indexs' => [
-                    'simple' => $this->getSimpleIndexs($table),
-                    'spatial' => $this->getSpatialIndexs($table),
-                    'fulltext' => $this->getFulltextIndexs($table),
-                    'unique' => $this->getUniqueIndexs($table),
+                'indexes' => [
+                    'simple' => $this->getSimpleIndexes($table),
+                    'spatial' => $this->getSpatialIndexes($table),
+                    'fulltext' => $this->getFulltextIndexes($table),
+                    'unique' => $this->getUniqueIndexes($table),
                 ],
                 'primaryKey' => $this->getPrimiaryKey($table),
             ];
@@ -56,14 +56,14 @@ class Json implements ExportInterface
         return $columns;
     }
 
-    private function getSimpleIndexs(TableInterface $table): array
+    private function getSimpleIndexes(TableInterface $table): array
     {
-        $indexs = [];
-        foreach ($table->getSimpleIndexs() as $index) {
-            $indexs[] = $this->getIndexData($index);
+        $indexes = [];
+        foreach ($table->getSimpleIndexes() as $index) {
+            $indexes[] = $this->getIndexData($index);
         }
 
-        return $indexs;
+        return $indexes;
     }
 
     private function getIndexData(IndexInterface $index): array
@@ -80,34 +80,34 @@ class Json implements ExportInterface
         return $data;
     }
 
-    private function getSpatialIndexs(TableInterface $table): array
+    private function getSpatialIndexes(TableInterface $table): array
     {
-        $indexs = [];
-        foreach ($table->getSpatialIndexs() as $index) {
-            $indexs[] = $this->getIndexData($index);
+        $indexes = [];
+        foreach ($table->getSpatialIndexes() as $index) {
+            $indexes[] = $this->getIndexData($index);
         }
 
-        return $indexs;
+        return $indexes;
     }
 
-    private function getFulltextIndexs(TableInterface $table): array
+    private function getFulltextIndexes(TableInterface $table): array
     {
-        $indexs = [];
-        foreach ($table->getFulltextIndexs() as $index) {
-            $indexs[] = $this->getIndexData($index);
+        $indexes = [];
+        foreach ($table->getFulltextIndexes() as $index) {
+            $indexes[] = $this->getIndexData($index);
         }
 
-        return $indexs;
+        return $indexes;
     }
 
-    private function getUniqueIndexs(TableInterface $table): array
+    private function getUniqueIndexes(TableInterface $table): array
     {
-        $indexs = [];
-        foreach ($table->getUniqueIndexs() as $index) {
-            $indexs[] = $this->getIndexData($index);
+        $indexes = [];
+        foreach ($table->getUniqueIndexes() as $index) {
+            $indexes[] = $this->getIndexData($index);
         }
 
-        return $indexs;
+        return $indexes;
     }
 
     private function getPrimiaryKey(TableInterface $table): array

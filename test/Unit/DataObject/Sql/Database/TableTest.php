@@ -65,7 +65,7 @@ class TableTest extends TestCase
         ];
     }
 
-    public function getUniqueIndexsDataProvider(): array
+    public function getUniqueIndexesDataProvider(): array
     {
         return [
             [
@@ -78,7 +78,7 @@ class TableTest extends TestCase
         ];
     }
 
-    public function getFulltextIndexsDataProvider(): array
+    public function getFulltextIndexesDataProvider(): array
     {
         return [
             [
@@ -91,7 +91,7 @@ class TableTest extends TestCase
         ];
     }
 
-    public function getSpatialIndexsDataProvider(): array
+    public function getSpatialIndexesDataProvider(): array
     {
         return [
             [
@@ -152,22 +152,22 @@ class TableTest extends TestCase
     /**
      * @dataProvider getKeysDataProvider
      */
-    public function testKey(SimpleIndexInterface ...$simpleIndexs): void
+    public function testKey(SimpleIndexInterface ...$simpleIndexes): void
     {
         $sut = new Table();
 
-        foreach ($simpleIndexs as $simpleIndex) {
+        foreach ($simpleIndexes as $simpleIndex) {
             $sut->addSimpleIndex($simpleIndex);
         }
 
-        foreach ($sut->getSimpleIndexs() as $simpleIndex) {
+        foreach ($sut->getSimpleIndexes() as $simpleIndex) {
             $this->assertInstanceOf(SimpleIndexInterface::class, $simpleIndex);
-            $this->assertTrue(in_array($simpleIndex, $simpleIndexs, true));
+            $this->assertTrue(in_array($simpleIndex, $simpleIndexes, true));
         }
     }
 
     /**
-     * @dataProvider getUniqueIndexsDataProvider
+     * @dataProvider getUniqueIndexesDataProvider
      */
     public function testUniqueKey(UniqueIndexInterface ...$uniquekeys): void
     {
@@ -177,43 +177,43 @@ class TableTest extends TestCase
             $sut->addUniqueIndex($uniquekey);
         }
 
-        foreach ($sut->getUniqueIndexs() as $uniqueIndex) {
+        foreach ($sut->getUniqueIndexes() as $uniqueIndex) {
             $this->assertInstanceOf(UniqueIndexInterface::class, $uniqueIndex);
             $this->assertTrue(in_array($uniqueIndex, $uniquekeys));
         }
     }
 
     /**
-     * @dataProvider getFulltextIndexsDataProvider
+     * @dataProvider getFulltextIndexesDataProvider
      */
-    public function testFulltextKey(FulltextIndexInterface ...$fulltextIndexs): void
+    public function testFulltextKey(FulltextIndexInterface ...$fulltextIndexes): void
     {
         $sut = new Table();
 
-        foreach ($fulltextIndexs as $fulltextIndex) {
+        foreach ($fulltextIndexes as $fulltextIndex) {
             $sut->addFullTextIndex($fulltextIndex);
         }
 
-        foreach ($sut->getFulltextIndexs() as $fulltextIndex) {
+        foreach ($sut->getFulltextIndexes() as $fulltextIndex) {
             $this->assertInstanceOf(FulltextIndexInterface::class, $fulltextIndex);
-            $this->assertTrue(in_array($fulltextIndex, $fulltextIndexs));
+            $this->assertTrue(in_array($fulltextIndex, $fulltextIndexes));
         }
     }
 
     /**
-     * @dataProvider getSpatialIndexsDataProvider
+     * @dataProvider getSpatialIndexesDataProvider
      */
-    public function testSpatialKey(SpatialIndexInterface ...$spatialIndexs): void
+    public function testSpatialKey(SpatialIndexInterface ...$spatialIndexes): void
     {
         $sut = new Table();
 
-        foreach ($spatialIndexs as $spatialIndex) {
+        foreach ($spatialIndexes as $spatialIndex) {
             $sut->addSpatialIndex($spatialIndex);
         }
 
-        foreach ($sut->getSpatialIndexs() as $spatialIndex) {
+        foreach ($sut->getSpatialIndexes() as $spatialIndex) {
             $this->assertInstanceOf(SpatialIndexInterface::class, $spatialIndex);
-            $this->assertTrue(in_array($spatialIndex, $spatialIndexs));
+            $this->assertTrue(in_array($spatialIndex, $spatialIndexes));
         }
     }
 }

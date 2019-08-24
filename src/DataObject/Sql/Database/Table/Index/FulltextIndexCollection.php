@@ -5,17 +5,17 @@ namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index;
 class FulltextIndexCollection implements FulltextIndexCollectionInterface
 {
     /** @var FulltextIndexInterface[] */
-    private $fulltextIndexs = [];
+    private $fulltextIndexes = [];
 
-    public function add(FulltextIndexInterface $fulltextIndexs): self
+    public function add(FulltextIndexInterface $fulltextIndexes): self
     {
-        $this->fulltextIndexs[] = $fulltextIndexs;
+        $this->fulltextIndexes[] = $fulltextIndexes;
 
         return $this;
     }
 
     public function getIterator(): FulltextIndexIterator
     {
-        return new FulltextIndexIterator($this->fulltextIndexs);
+        return new FulltextIndexIterator($this->fulltextIndexes);
     }
 }

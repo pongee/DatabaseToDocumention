@@ -8,7 +8,7 @@ use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\FulltextI
 
 class FulltextIndexCollectionTest extends TestCase
 {
-    public function getFulltextIndexsProvider(): array
+    public function getFulltextIndexesProvider(): array
     {
         return [
             [
@@ -25,13 +25,13 @@ class FulltextIndexCollectionTest extends TestCase
     }
 
     /**
-     * @dataProvider getFulltextIndexsProvider
+     * @dataProvider getFulltextIndexesProvider
      */
-    public function testCollection(FulltextIndex ...$indexs): void
+    public function testCollection(FulltextIndex ...$indexes): void
     {
         $sut = new FulltextIndexCollection();
 
-        foreach ($indexs as $index) {
+        foreach ($indexes as $index) {
             $sut->add($index);
         }
 
@@ -39,6 +39,6 @@ class FulltextIndexCollectionTest extends TestCase
             $this->assertInstanceOf(FulltextIndex::class, $item);
         }
 
-        $this->assertCount(count($indexs), $sut->getIterator());
+        $this->assertCount(count($indexes), $sut->getIterator());
     }
 }

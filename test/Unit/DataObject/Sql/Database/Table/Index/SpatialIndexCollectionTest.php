@@ -9,7 +9,7 @@ use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SpatialIn
 
 class SpatialIndexCollectionTest extends TestCase
 {
-    public function getSpatialIndexsProvider(): array
+    public function getSpatialIndexesProvider(): array
     {
         return [
             [
@@ -26,13 +26,13 @@ class SpatialIndexCollectionTest extends TestCase
     }
 
     /**
-     * @dataProvider getSpatialIndexsProvider
+     * @dataProvider getSpatialIndexesProvider
      */
-    public function testCollection(SpatialIndexInterface ...$spatialIndexs): void
+    public function testCollection(SpatialIndexInterface ...$spatialIndexes): void
     {
         $sut = new SpatialIndexCollection();
 
-        foreach ($spatialIndexs as $spatialIndex) {
+        foreach ($spatialIndexes as $spatialIndex) {
             $sut->add($spatialIndex);
         }
 
@@ -40,6 +40,6 @@ class SpatialIndexCollectionTest extends TestCase
             $this->assertInstanceOf(SpatialIndex::class, $item);
         }
 
-        $this->assertCount(count($spatialIndexs), $sut->getIterator());
+        $this->assertCount(count($spatialIndexes), $sut->getIterator());
     }
 }

@@ -5,17 +5,17 @@ namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index;
 class UniqueIndexCollection implements UniqueIndexCollectionInterface
 {
     /** @var UniqueIndexInterface[] */
-    private $uniqueIndexs = [];
+    private $uniqueIndexes = [];
 
     public function add(UniqueIndexInterface $uniqueIndex): self
     {
-        $this->uniqueIndexs[] = $uniqueIndex;
+        $this->uniqueIndexes[] = $uniqueIndex;
 
         return $this;
     }
 
     public function getIterator(): UniqueIndexIterator
     {
-        return new UniqueIndexIterator($this->uniqueIndexs);
+        return new UniqueIndexIterator($this->uniqueIndexes);
     }
 }

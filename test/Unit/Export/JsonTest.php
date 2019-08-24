@@ -41,7 +41,7 @@ class JsonTest extends TestCase
                     "comment": "The id"
                 }
             ],
-            "indexs": {"simple": [], "spatial": [], "fulltext": [], "unique": []},
+            "indexes": {"simple": [], "spatial": [], "fulltext": [], "unique": []},
             "primaryKey": []
         }
     },
@@ -97,7 +97,7 @@ class JsonTest extends TestCase
                     "comment": "The id"
                 }
             ],
-            "indexs": {"simple": [], "spatial": [], "fulltext": [], "unique": []},
+            "indexes": {"simple": [], "spatial": [], "fulltext": [], "unique": []},
             "primaryKey": []
         },
         "member_data": {
@@ -131,7 +131,7 @@ class JsonTest extends TestCase
                     "comment": ""
                 }
             ],
-            "indexs": {
+            "indexes": {
                 "simple": [
                     {
                         "name": "idx_member_id",
@@ -194,7 +194,7 @@ class JsonTest extends TestCase
                     "comment": "The log"
                 }
             ],
-            "indexs": {
+            "indexes": {
                 "simple": [
                     {
                         "name": "idx_member_id",
