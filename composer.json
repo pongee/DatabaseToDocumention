@@ -1,6 +1,6 @@
 {
   "name": "pongee/database-to-documentation",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "require": {
     "php": ">=7.2",
     "ext-json": "*",
