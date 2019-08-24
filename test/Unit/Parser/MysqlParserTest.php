@@ -92,27 +92,27 @@ class MysqlParserTest extends TestCase
             }
 
             $this->assertEquals(
-                $expectedTable->getSimpleIndexs(),
-                $table->getSimpleIndexs(),
-                sprintf("Bad simple indexs. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
+                $expectedTable->getSimpleIndexes(),
+                $table->getSimpleIndexes(),
+                sprintf("Bad simple indexes. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
             );
 
             $this->assertEquals(
-                $expectedTable->getUniqueIndexs(),
-                $table->getUniqueIndexs(),
-                sprintf("Bad unique indexs. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
+                $expectedTable->getUniqueIndexes(),
+                $table->getUniqueIndexes(),
+                sprintf("Bad unique indexes. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
             );
 
             $this->assertEquals(
-                $expectedTable->getFulltextIndexs(),
-                $table->getFulltextIndexs(),
-                sprintf("Bad fulltext indexs. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
+                $expectedTable->getFulltextIndexes(),
+                $table->getFulltextIndexes(),
+                sprintf("Bad fulltext indexes. \nSchema: %s \nTable: %s", $file->getRealPath(), $table->getName())
             );
 
             $this->assertEquals(
-                $expectedTable->getSpatialIndexs(),
-                $table->getSpatialIndexs(),
-                sprintf("Bad spatial indexs. \nSchema: %s \ntable: %s", $file->getRealPath(), $table->getName())
+                $expectedTable->getSpatialIndexes(),
+                $table->getSpatialIndexes(),
+                sprintf("Bad spatial indexes. \nSchema: %s \ntable: %s", $file->getRealPath(), $table->getName())
             );
 
             $this->assertEquals(

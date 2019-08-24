@@ -162,7 +162,7 @@ left to right direction
         {% endif %}
     {% endif %}
 
-    {% for simpleIndex in table.getSimpleIndexs() %}
+    {% for simpleIndex in table.getSimpleIndexes() %}
         {% if simpleIndex.getOtherParameters() %}
             [\t]index('{{ simpleIndex.getColumns()|join(', ') }}', '{{ simpleIndex.getOtherParameters()|replace({"'": '"'})|raw }}')
         {% else %}
@@ -170,7 +170,7 @@ left to right direction
         {% endif %}
     {% endfor %}
 
-    {% for uniqueIndex in table.getUniqueIndexs() %}
+    {% for uniqueIndex in table.getUniqueIndexes() %}
         {% if uniqueIndex.getOtherParameters() %}
             [\t]unique_index('{{ uniqueIndex.getColumns()|join(', ') }}', '{{ uniqueIndex.getOtherParameters()|replace({"'": '"'})|raw }}')
         {% else %}
@@ -178,7 +178,7 @@ left to right direction
         {% endif %}
     {% endfor %}
 
-    {% for fulltextIndex in table.getFullTextIndexs() %}
+    {% for fulltextIndex in table.getFullTextIndexes() %}
         {% if fulltextIndex.getOtherParameters() %}
             [\t]fulltext_index('{{ fulltextIndex.getColumns()|join(', ') }}', '{{ fulltextIndex.getOtherParameters()|replace({"'": '"'})|raw }}')
         {% else %}
@@ -186,7 +186,7 @@ left to right direction
         {% endif %}
     {% endfor %}
 
-    {% for spatialIndex in table.getSpatialIndexs() %}
+    {% for spatialIndex in table.getSpatialIndexes() %}
         {% if spatialIndex.getOtherParameters() %}
             [\t]spatial_index('{{ spatialIndex.getColumns()|join(', ') }}', '{{ spatialIndex.getOtherParameters()|replace({"'": '"'})|raw }}')
         {% else %}

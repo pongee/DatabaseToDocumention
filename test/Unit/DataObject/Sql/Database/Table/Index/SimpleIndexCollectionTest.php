@@ -9,7 +9,7 @@ use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\SimpleInd
 
 class SimpleIndexCollectionTest extends TestCase
 {
-    public function getSimpleIndexsProvider(): array
+    public function getSimpleIndexesProvider(): array
     {
         return [
             [
@@ -26,13 +26,13 @@ class SimpleIndexCollectionTest extends TestCase
     }
 
     /**
-     * @dataProvider getSimpleIndexsProvider
+     * @dataProvider getSimpleIndexesProvider
      */
-    public function testCollection(SimpleIndexInterface ...$simpleIndexs): void
+    public function testCollection(SimpleIndexInterface ...$simpleIndexes): void
     {
         $sut = new SimpleIndexCollection();
 
-        foreach ($simpleIndexs as $simpleIndex) {
+        foreach ($simpleIndexes as $simpleIndex) {
             $sut->add($simpleIndex);
         }
 
@@ -40,6 +40,6 @@ class SimpleIndexCollectionTest extends TestCase
             $this->assertInstanceOf(SimpleIndex::class, $item);
         }
 
-        $this->assertCount(count($simpleIndexs), $sut->getIterator());
+        $this->assertCount(count($simpleIndexes), $sut->getIterator());
     }
 }

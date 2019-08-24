@@ -35,19 +35,19 @@ class MysqlParser extends ParserAbstract
             $table->addColumn($column);
         }
 
-        foreach ($this->getSimpleIndexsFromCreateTableSchema($createTableSchema) as $index) {
+        foreach ($this->getSimpleIndexesFromCreateTableSchema($createTableSchema) as $index) {
             $table->addSimpleIndex($index);
         }
 
-        foreach ($this->getUniqueIndexsFromCreateTableSchema($createTableSchema) as $index) {
+        foreach ($this->getUniqueIndexesFromCreateTableSchema($createTableSchema) as $index) {
             $table->addUniqueIndex($index);
         }
 
-        foreach ($this->getFulltextIndexsFromCreateTableSchema($createTableSchema) as $index) {
+        foreach ($this->getFulltextIndexesFromCreateTableSchema($createTableSchema) as $index) {
             $table->addFullTextIndex($index);
         }
 
-        foreach ($this->getSpatialIndexsFromCreateTableSchema($createTableSchema) as $index) {
+        foreach ($this->getSpatialIndexesFromCreateTableSchema($createTableSchema) as $index) {
             $table->addSpatialIndex($index);
         }
 
@@ -262,7 +262,7 @@ class MysqlParser extends ParserAbstract
         return $columnCollection;
     }
 
-    protected function getSimpleIndexsFromCreateTableSchema(string $createTableSchema): SimpleIndexCollectionInterface
+    protected function getSimpleIndexesFromCreateTableSchema(string $createTableSchema): SimpleIndexCollectionInterface
     {
         preg_match_all(
             '#
@@ -304,7 +304,7 @@ class MysqlParser extends ParserAbstract
         return $keyCollection;
     }
 
-    protected function getUniqueIndexsFromCreateTableSchema(string $createTableSchema): UniqueIndexCollectionInterface
+    protected function getUniqueIndexesFromCreateTableSchema(string $createTableSchema): UniqueIndexCollectionInterface
     {
         preg_match_all(
             '#
@@ -347,7 +347,7 @@ class MysqlParser extends ParserAbstract
         return $keyCollection;
     }
 
-    protected function getFulltextIndexsFromCreateTableSchema(string $createTableSchema
+    protected function getFulltextIndexesFromCreateTableSchema(string $createTableSchema
     ): FulltextIndexCollectionInterface {
         preg_match_all(
             '#
@@ -389,7 +389,7 @@ class MysqlParser extends ParserAbstract
         return $keyCollection;
     }
 
-    protected function getSpatialIndexsFromCreateTableSchema(string $createTableSchema): SpatialIndexCollectionInterface
+    protected function getSpatialIndexesFromCreateTableSchema(string $createTableSchema): SpatialIndexCollectionInterface
     {
         preg_match_all(
             '#

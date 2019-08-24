@@ -5,7 +5,7 @@ namespace Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Connection;
 abstract class ConnectionAbstract implements ConnectionInterface
 {
     /** @var string */
-    protected $childTablename;
+    protected $childTableName;
 
     /** @var string */
     protected $parentTableName;
@@ -17,12 +17,12 @@ abstract class ConnectionAbstract implements ConnectionInterface
     protected $parentTableColumns;
 
     public function __construct(
-        string $childTablename,
+        string $childTableName,
         string $parentTableName,
         array $childTableColumns,
         array $parentTableColumns
     ) {
-        $this->childTablename = $childTablename;
+        $this->childTableName = $childTableName;
         $this->parentTableName = $parentTableName;
         $this->childTableColumns = $childTableColumns;
         $this->parentTableColumns = $parentTableColumns;
@@ -30,7 +30,7 @@ abstract class ConnectionAbstract implements ConnectionInterface
 
     public function getChildTableName(): string
     {
-        return $this->childTablename;
+        return $this->childTableName;
     }
 
     public function getParentTableName(): string

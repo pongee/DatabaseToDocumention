@@ -9,7 +9,7 @@ use Pongee\DatabaseToDocumentation\DataObject\Sql\Database\Table\Index\UniqueInd
 
 class UniqueIndexCollectionTest extends TestCase
 {
-    public function getUniqueIndexsProvider(): array
+    public function getUniqueIndexesProvider(): array
     {
         return [
             [
@@ -26,13 +26,13 @@ class UniqueIndexCollectionTest extends TestCase
     }
 
     /**
-     * @dataProvider getUniqueIndexsProvider
+     * @dataProvider getUniqueIndexesProvider
      */
-    public function testCollection(UniqueIndexInterface ...$uniqueIndexs): void
+    public function testCollection(UniqueIndexInterface ...$uniqueIndexes): void
     {
         $sut = new UniqueIndexCollection();
 
-        foreach ($uniqueIndexs as $uniqueIndex) {
+        foreach ($uniqueIndexes as $uniqueIndex) {
             $sut->add($uniqueIndex);
         }
 
@@ -40,6 +40,6 @@ class UniqueIndexCollectionTest extends TestCase
             $this->assertInstanceOf(UniqueIndex::class, $item);
         }
 
-        $this->assertCount(count($uniqueIndexs), $sut->getIterator());
+        $this->assertCount(count($uniqueIndexes), $sut->getIterator());
     }
 }

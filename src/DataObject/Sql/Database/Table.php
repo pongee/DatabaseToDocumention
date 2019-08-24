@@ -31,24 +31,24 @@ class Table implements TableInterface
     private $primaryKey;
 
     /** @var SimpleIndexCollectionInterface */
-    private $simpleIndexs;
+    private $simpleIndexes;
 
     /** @var UniqueIndexCollectionInterface */
-    private $uniqueIndexs;
+    private $uniqueIndexes;
 
     /** @var FulltextIndexCollectionInterface */
-    private $fulltextIndexs;
+    private $fulltextIndexes;
 
     /** @var SpatialIndexCollectionInterface */
-    private $spatialIndexs;
+    private $spatialIndexes;
 
     public function __construct()
     {
         $this->columns = new ColumnCollection();
-        $this->simpleIndexs = new SimpleIndexCollection();
-        $this->uniqueIndexs = new UniqueIndexCollection();
-        $this->fulltextIndexs = new FulltextIndexCollection();
-        $this->spatialIndexs = new SpatialIndexCollection();
+        $this->simpleIndexes = new SimpleIndexCollection();
+        $this->uniqueIndexes = new UniqueIndexCollection();
+        $this->fulltextIndexes = new FulltextIndexCollection();
+        $this->spatialIndexes = new SpatialIndexCollection();
     }
 
     public function getName(): string
@@ -72,28 +72,28 @@ class Table implements TableInterface
 
     public function addSimpleIndex(SimpleIndexInterface $index): self
     {
-        $this->simpleIndexs->add($index);
+        $this->simpleIndexes->add($index);
 
         return $this;
     }
 
     public function addUniqueIndex(UniqueIndexInterface $unique): self
     {
-        $this->uniqueIndexs->add($unique);
+        $this->uniqueIndexes->add($unique);
 
         return $this;
     }
 
     public function addFullTextIndex(FulltextIndexInterface $fulltextIndex): self
     {
-        $this->fulltextIndexs->add($fulltextIndex);
+        $this->fulltextIndexes->add($fulltextIndex);
 
         return $this;
     }
 
     public function addSpatialIndex(SpatialIndexInterface $spatialIndex): self
     {
-        $this->spatialIndexs->add($spatialIndex);
+        $this->spatialIndexes->add($spatialIndex);
 
         return $this;
     }
@@ -115,23 +115,23 @@ class Table implements TableInterface
         return $this;
     }
 
-    public function getSimpleIndexs(): SimpleIndexCollectionInterface
+    public function getSimpleIndexes(): SimpleIndexCollectionInterface
     {
-        return $this->simpleIndexs;
+        return $this->simpleIndexes;
     }
 
-    public function getUniqueIndexs(): UniqueIndexCollectionInterface
+    public function getUniqueIndexes(): UniqueIndexCollectionInterface
     {
-        return $this->uniqueIndexs;
+        return $this->uniqueIndexes;
     }
 
-    public function getFulltextIndexs(): FulltextIndexCollectionInterface
+    public function getFulltextIndexes(): FulltextIndexCollectionInterface
     {
-        return $this->fulltextIndexs;
+        return $this->fulltextIndexes;
     }
 
-    public function getSpatialIndexs(): SpatialIndexCollectionInterface
+    public function getSpatialIndexes(): SpatialIndexCollectionInterface
     {
-        return $this->spatialIndexs;
+        return $this->spatialIndexes;
     }
 }
