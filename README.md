@@ -52,7 +52,7 @@ $  php ./database-to-documentation mysql:plantuml ./example/schema/sakila.sql
 ```
 
 ### PHP
-#### Json export
+#### Png export
 ```php
 <?php declare(strict_types=1);
 
