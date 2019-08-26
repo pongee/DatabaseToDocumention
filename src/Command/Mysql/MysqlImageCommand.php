@@ -2,7 +2,8 @@
 
 namespace Pongee\DatabaseToDocumentation\Command\Mysql;
 
-use Pongee\DatabaseToDocumentation\Export\Image;
+use Pongee\DatabaseToDocumentation\Export\Plantuml;
+use Pongee\DatabaseToDocumentation\Generator\ImageGenerator;
 use RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -44,19 +45,20 @@ class MysqlImageCommand extends MysqlCommandAbstract
         $sqlFileContent = $this->getSqlFileContent($input);
         $templateFileContent = $this->getTemplateFileContent($input);
 
-        $image = new Image(
-            $templateFileContent,
-            $this->getImageType($input),
-            $this->rootDir . self::PLANTUML_BIN,
-            $this->rootDir . self::TEMP_DIR
-        );
-
-        echo $image->export(
+        $generatedPlantuml = (new Plantuml($templateFileContent))->export(
             $this->parser->run(
                 $sqlFileContent,
                 $this->getForcedConnections($input->getOption(self::OPTION_CONNECTION))
             )
         );
+
+        $image = new ImageGenerator(
+            $this->getImageType($input),
+            $this->rootDir . self::PLANTUML_BIN,
+            $this->rootDir . self::TEMP_DIR
+        );
+
+        echo $image->generate($generatedPlantuml);
 
         return 0;
     }
