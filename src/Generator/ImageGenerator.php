@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Pongee\DatabaseToDocumentation\Export;
+namespace Pongee\DatabaseToDocumentation\Generator;
 
 use DateTime;
 use Exception;
@@ -10,7 +10,7 @@ use SplFileObject;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 
-class Image implements ExportInterface
+class ImageGenerator
 {
     private const PLANTUML_LIMIT_SIZE = 16384;
 
@@ -23,45 +23,11 @@ class Image implements ExportInterface
     /** @var Environment */
     protected $twig;
 
-    public function __construct(string $template, string $imageType, string $plantumlJarPath, string $outputFolder)
+    public function __construct(string $imageType, string $plantumlJarPath, string $outputFolder)
     {
         $this->imageType = $imageType;
         $this->plantumlJarPath = $plantumlJarPath;
         $this->outputFolder = $outputFolder;
-
-        $this->twig = new Environment(
-            new ArrayLoader([
-                'template' => $template,
-            ])
-        );
-    }
-
-    public function export(SchemaInterface $schema): string
-    {
-        $plantuml = $this->generatePlantuml($schema);
-
-        return $this->generateImage($plantuml);
-    }
-
-    public function generatePlantuml(SchemaInterface $schema): string
-    {
-        $text = $this->twig->render(
-            'template',
-            [
-                'tables' => $schema->getTables(),
-                'connections' => $schema->getConnections(),
-            ]
-        );
-
-        $text = preg_replace('/^\s+/m', '', $text);
-
-        return strtr(
-            $text,
-            [
-                '[\t]' => "\t",
-                '[\n]' => '',
-            ]
-        );
     }
 
     /**
@@ -70,14 +36,14 @@ class Image implements ExportInterface
      * @return string
      * @throws Exception
      */
-    private function generateImage(string $plantuml): string
+    public function generate(string $plantuml): string
     {
         $fileName = sprintf('plantuml-%s-%s', (new DateTime())->format('Y-m-d-H-i-s-u'), mt_rand());
 
         $sourceFile = new SplFileObject($this->outputFolder . '/' . $fileName . '.puml', 'w');
         $sourceFile->fwrite($plantuml);
 
-        $output = $this->runPlantumlBinary($sourceFile);
+        $output = $this->generatePlantuml($sourceFile);
 
         try {
             $outputFile = new SplFileObject($this->outputFolder . '/' . $fileName . '.' . $this->imageType, 'r');
@@ -105,7 +71,7 @@ class Image implements ExportInterface
      *
      * @return string
      */
-    private function runPlantumlBinary(SplFileObject $sourceFile): string
+    private function generatePlantuml(SplFileObject $sourceFile): string
     {
         exec(
             sprintf(
