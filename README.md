@@ -14,28 +14,44 @@ The aim of this project is to generate database documentation from sql schema.
 - MariaDB
 
 ## Supported Output formats
-- Plantuml diagram
+- PNG, SVG image
+- Plantuml raw text
 - Json
 
+## Pre Installation
+- https://graphviz.gitlab.io/download/
+
 ## Installation
+
 ```bash
 $ composer require pongee/database-to-documentation
 or add it the your composer.json and make a composer update pongee/database-to-documentation.
 ```
 ## Usage
 ### In console
-#### Json export
-
+#### PNG export
 ```bash
-$  php71 ./database-to-documentation mysql:json ./my_mysql_schema_export.sql
-```
-
-#### Plantuml export
-```bash
-$  php71 ./database-to-documentation mysql:plantuml ./my_mysql_schema_export.sql
+$  php ./database-to-documentation mysql:image ./example/schema/sakila.sql > ./example/img/sakila.png
+$  php ./database-to-documentation mysql:image --type png ./example/schema/sakila.sql > ./example/img/sakila.png
 ```
 Example output:
-![Example output](img/example_plantuml1.png?raw=true "Example output")
+![Example output](example/img/sakila.png?raw=true "Output")
+
+#### SVG export
+```bash
+$  php ./database-to-documentation mysql:image --type svg ./example/schema/sakila.sql > ./example/img/sakila.svg
+```
+Example output:
+![Example output](example/img/sakila.svg?raw=true "Output")
+
+#### Json export
+```bash
+$  php ./database-to-documentation mysql:json ./example/schema/sakila.sql
+```
+#### Plantuml export
+```bash
+$  php ./database-to-documentation mysql:plantuml ./example/schema/sakila.sql
+```
 
 ### PHP
 ```php
@@ -54,7 +70,17 @@ $sqlSchema = '
 ';
 
 $mysqlParser                = new MysqlParser();
-$jsonExport                 = new Json(); // or use new Plantuml(file_get_contents(__DIR__ . '/src/Template/Plantuml/v1.twig'));
+$jsonExport                 = new Json(); 
+/*
+$plantumlExport = new Plantuml(file_get_contents(__DIR__ . '/src/Template/Plantuml/v1.twig'));
+$pngExport      = new Image(
+    file_get_contents(__DIR__ . '/src/Template/Plantuml/v1.twig'),
+    'png',
+    __DIR__ . '/bin/plantuml.jar',
+    __DIR__ . '/tmp/',
+);
+*/
+
 $forcedConnectionCollection = new ConnectionCollection();
 
 $schema = $mysqlParser->run($sqlSchema, $forcedConnectionCollection);

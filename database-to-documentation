@@ -26,4 +26,10 @@ $application->add(
     )
 );
 
+$application->add(
+    new \Pongee\DatabaseToDocumentation\Command\Mysql\MysqlImageCommand(
+        $parser, getcwd()
+    )
+);
+
 $application->run();
