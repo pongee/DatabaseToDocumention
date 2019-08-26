@@ -34,15 +34,13 @@ or add it the your composer.json and make a composer update pongee/database-to-d
 $  php ./database-to-documentation mysql:image ./example/schema/sakila.sql > ./example/img/sakila.png
 $  php ./database-to-documentation mysql:image --type png ./example/schema/sakila.sql > ./example/img/sakila.png
 ```
-Example output:
+Output:
 ![Example output](example/img/sakila.png?raw=true "Output")
 
 #### SVG export
 ```bash
 $  php ./database-to-documentation mysql:image --type svg ./example/schema/sakila.sql > ./example/img/sakila.svg
 ```
-Example output:
-![Example output](example/img/sakila.svg?raw=true "Output")
 
 #### Json export
 ```bash
